@@ -1,0 +1,145 @@
+/**
+ * Live Search Modal Overlay
+ * Pradyumna Law Associates (Pure Architectural Monochrome & Navy Palette)
+ * NOTE: Strictly no gold accents.
+ */
+.search-modal-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: rgba(4, 8, 18, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(2rem, 6vh, 6rem) var(--container-pad);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-fast), visibility var(--transition-fast);
+}
+
+.search-modal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.search-modal-container {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--white-100);
+  padding-bottom: 0.75rem;
+}
+
+.search-input-field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  color: var(--white-100);
+  outline: none;
+}
+
+.search-input-field::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+  font-style: italic;
+}
+
+.search-close-trigger {
+  padding: 0.5rem;
+  color: var(--white-75);
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+
+.search-close-trigger:hover {
+  color: var(--white-100);
+}
+
+.search-results-panel {
+  max-height: 55vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 0.5rem;
+}
+
+.search-result-item {
+  padding: 1.125rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.search-result-item:hover,
+.search-result-item:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--white-100);
+  transform: translateX(4px);
+}
+
+.result-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--silver-400);
+}
+
+.result-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--white-100);
+}
+
+.result-snippet {
+  font-size: 0.85rem;
+  color: var(--white-75);
+  line-height: 1.5;
+}
+
+.search-quick-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.8125rem;
+  color: var(--white-50);
+}
+
+.search-quick-pill {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--white-75);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.search-quick-pill:hover {
+  border-color: var(--white-100);
+  color: var(--white-100);
+  background: rgba(255, 255, 255, 0.08);
+}

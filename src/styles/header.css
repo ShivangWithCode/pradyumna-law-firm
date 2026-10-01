@@ -1,0 +1,250 @@
+/**
+ * Adaptive Fixed Header
+ * Pradyumna Law Associates (Pure Architectural Monochrome & Navy Palette)
+ * NOTE: Strictly no gold accents.
+ */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: var(--z-nav);
+  display: flex;
+  align-items: center;
+  transition: background-color var(--transition-smooth), 
+              border-color var(--transition-smooth),
+              backdrop-filter var(--transition-smooth),
+              transform var(--transition-fast);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(7, 14, 30, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.site-header .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Logo & Brand Identity (Pure Architectural White & Platinum)
+   ========================================================================== */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.header-brand:hover {
+  opacity: 0.85;
+}
+
+.brand-monogram {
+  font-family: var(--font-serif);
+  font-size: 2.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--white-100);
+  display: inline-block;
+  transform: translateY(-1px);
+}
+
+.brand-divider {
+  width: 1px;
+  height: 2.1rem;
+  background-color: rgba(255, 255, 255, 0.35);
+  transition: background-color var(--transition-smooth);
+}
+
+.brand-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-wordmark span:first-child {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--white-100);
+  transition: color var(--transition-smooth);
+}
+
+.brand-wordmark span:nth-child(2) {
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--white-90);
+  margin-top: 2px;
+  transition: color var(--transition-smooth);
+}
+
+.brand-wordmark span:last-child {
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--white-90);
+  margin-top: 2px;
+  transition: color var(--transition-smooth);
+}
+
+/* ==========================================================================
+   Header Actions (Search & Menu)
+   ========================================================================== */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: transparent;
+  color: var(--white-90);
+  padding: 0.65rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.header-action-btn:hover {
+  color: var(--white-100);
+}
+
+.header-action-btn svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  stroke: currentColor;
+}
+
+/* Menu Toggle Button with 3 Vertical Lines (Khaitan & Co signature aesthetic) */
+.menu-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.menu-toggle-btn:hover {
+  opacity: 0.8;
+}
+
+.vertical-bars-icon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+}
+
+.vertical-bars-icon span {
+  display: block;
+  width: 2px;
+  height: 20px;
+  background-color: currentColor;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.menu-toggle-btn:hover .vertical-bars-icon span:nth-child(2) {
+  transform: scaleY(0.7);
+}
+
+/* ==========================================================================
+   Dynamic Theme Switching (When over Light Sections)
+   ========================================================================== */
+.site-header.theme-light-active {
+  background-color: rgba(248, 249, 250, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.site-header.theme-light-active .brand-monogram {
+  color: var(--charcoal-950);
+}
+
+.site-header.theme-light-active .brand-divider {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.site-header.theme-light-active .brand-wordmark span:first-child {
+  color: var(--charcoal-950);
+}
+
+.site-header.theme-light-active .brand-wordmark span:nth-child(2),
+.site-header.theme-light-active .brand-wordmark span:last-child {
+  color: var(--charcoal-700);
+}
+
+.site-header.theme-light-active .header-action-btn {
+  color: var(--charcoal-950);
+}
+
+.site-header.theme-light-active .header-action-btn:hover {
+  color: #000000;
+}
+
+.site-header.theme-light-active .menu-toggle-btn {
+  border-color: rgba(0, 0, 0, 0.2);
+  color: var(--charcoal-950);
+}
+
+.site-header.theme-light-active .menu-toggle-btn:hover {
+  border-color: var(--charcoal-950);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================================
+   Mobile Responsiveness for Header
+   ========================================================================== */
+@media (max-width: 640px) {
+  .site-header {
+    height: 4.25rem;
+  }
+
+  .brand-monogram {
+    font-size: 1.75rem;
+  }
+
+  .brand-divider {
+    height: 1.75rem;
+  }
+
+  .brand-wordmark span:first-child {
+    font-size: 0.75rem;
+  }
+
+  .brand-wordmark span:nth-child(2),
+  .brand-wordmark span:last-child {
+    font-size: 0.65rem;
+  }
+
+  .header-actions {
+    gap: 0.5rem;
+  }
+
+  .header-action-btn.search-btn span {
+    display: none;
+  }
+
+  .menu-toggle-btn {
+    padding: 0.55rem 0.85rem;
+  }
+
+  .menu-toggle-btn .menu-label {
+    display: none;
+  }
+}

@@ -1,0 +1,244 @@
+/**
+ * Full-Screen Editorial Menu Overlay
+ * Pradyumna Law Associates (Pure Architectural Monochrome & Navy Palette)
+ * NOTE: Strictly no gold accents.
+ */
+.fullscreen-menu-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: var(--navy-900);
+  background-image: 
+    radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 10% 85%, rgba(26, 43, 82, 0.3) 0%, transparent 50%);
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.5rem, 4vw, 3rem) var(--container-pad);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fullscreen-menu-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   Menu Header (Close Button & Branding)
+   ========================================================================== */
+.menu-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.menu-close-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--white-100);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: all var(--transition-fast);
+}
+
+.menu-close-btn:hover {
+  border-color: var(--white-100);
+  color: var(--white-100);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.menu-close-btn svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  stroke: currentColor;
+}
+
+/* ==========================================================================
+   Menu Body & Staggered Navigation Items
+   ========================================================================== */
+.menu-content-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(2rem, 5vw, 6rem);
+  align-items: center;
+  margin: auto 0;
+  padding: var(--space-xl) 0;
+}
+
+.menu-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.75vh, 1.5rem);
+}
+
+.menu-nav-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fullscreen-menu-overlay.is-active .menu-nav-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.fullscreen-menu-overlay.is-active .menu-nav-item:nth-child(1) { transition-delay: 100ms; }
+.fullscreen-menu-overlay.is-active .menu-nav-item:nth-child(2) { transition-delay: 150ms; }
+.fullscreen-menu-overlay.is-active .menu-nav-item:nth-child(3) { transition-delay: 200ms; }
+.fullscreen-menu-overlay.is-active .menu-nav-item:nth-child(4) { transition-delay: 250ms; }
+.fullscreen-menu-overlay.is-active .menu-nav-item:nth-child(5) { transition-delay: 300ms; }
+.fullscreen-menu-overlay.is-active .menu-nav-item:nth-child(6) { transition-delay: 350ms; }
+
+.menu-nav-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--white-90);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.menu-nav-index {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--silver-400);
+}
+
+.menu-nav-link:hover {
+  color: var(--white-100);
+  transform: translateX(12px);
+}
+
+/* Sidebar with Firm Information */
+.menu-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding-left: clamp(1rem, 3vw, 3rem);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.menu-info-block h4 {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--silver-400);
+  margin-bottom: 0.75rem;
+}
+
+.menu-info-block p, 
+.menu-info-block a {
+  font-size: 0.95rem;
+  color: var(--white-75);
+  line-height: 1.6;
+  display: block;
+  transition: color var(--transition-fast);
+}
+
+.menu-info-block a:hover {
+  color: var(--white-100);
+}
+
+/* ==========================================================================
+   Menu Footer (Direct Contact & Legal Notice)
+   ========================================================================== */
+.menu-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8125rem;
+  color: var(--white-50);
+}
+
+.menu-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.menu-bottom-links a {
+  color: var(--white-75);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.menu-bottom-links a:hover {
+  color: var(--white-100);
+}
+
+/* ==========================================================================
+   Mobile Menu Adaptations
+   ========================================================================== */
+@media (max-width: 900px) {
+  .menu-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: var(--space-lg) 0;
+  }
+
+  .menu-sidebar {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem 3rem;
+  }
+
+  .menu-nav-link {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .fullscreen-menu-overlay {
+    padding: 1.25rem 1.25rem;
+  }
+
+  .menu-sidebar {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .menu-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .menu-bottom-links {
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+  }
+}

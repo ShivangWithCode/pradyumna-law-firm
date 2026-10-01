@@ -1,0 +1,630 @@
+/**
+ * Khaitan & Co Exact Visual Recreation
+ * Pradyumna Law Associates
+ * 
+ * Strict specifications:
+ * - Zero gold. Deep corporate navy (#002352), royal blue (#003882), cerulean (#0077C8), pure white (#FFFFFF).
+ * - Exact 50/50 split editorial composition.
+ * - Continuous vertical line stepper with double-ring active target dot.
+ * - Circular animated scroll-next down arrow button.
+ * - Vertical rotated copyright on bottom left.
+ * - 3-vertical-bar menu button (|||) and clean search icon.
+ */
+
+:root {
+  --kh-navy-dark: #002352;
+  --kh-navy-deep: #001B40;
+  --kh-blue-royal: #003882;
+  --kh-blue-cerulean: #0077C8;
+  --kh-blue-sky: #38BDF8;
+  --kh-blue-body: #004D8C;
+  --kh-white: #FFFFFF;
+  --kh-slate-muted: #8E9CAE;
+  --kh-font: -apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --kh-header-height: 76px;
+  --kh-gutter-left: clamp(2.5rem, 3.8vw, 3.75rem);
+}
+
+/* ==========================================================================
+   Base Viewport Architecture (Zero Browser Scrollbar, Pure 100vh Frame)
+   ========================================================================== */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: var(--kh-font);
+  background-color: #001B40;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.kh-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* 60fps Hardware-Accelerated Sliding Track */
+.kh-track {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.kh-slide {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Full Bleed Photographic Canvas & Dynamic Split Overlays
+   ========================================================================== */
+.kh-slide-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  z-index: 1;
+}
+
+#slide-0 .kh-slide-bg {
+  object-position: 70% center;
+  transform: none;
+}
+
+/* Slide 0 & 2: Frosted White-to-Transparent Split (Original ambient background) */
+.kh-overlay-frosted {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(255, 255, 255, 0.94) 38%, 
+    rgba(255, 255, 255, 0.82) 48%, 
+    rgba(255, 255, 255, 0) 66%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Slide 1: Solid Rich Royal Blue Split (Screenshot 3 match) */
+.kh-overlay-royal-blue {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    #003882 0%, 
+    #003882 46%, 
+    rgba(0, 56, 130, 0.9) 52%, 
+    rgba(0, 56, 130, 0) 70%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Slide 3: Deep Obsidian Heritage Split */
+.kh-overlay-obsidian {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    #001738 0%, 
+    #001738 46%, 
+    rgba(0, 23, 56, 0.88) 54%, 
+    rgba(0, 23, 56, 0) 72%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Editorial Content Column (Left ~48% of Screen)
+   ========================================================================== */
+.kh-content-container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 550px;
+  padding-left: var(--kh-gutter-left);
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Left Vertical Rotated Copyright (Exact match to Khaitan & Co) */
+.kh-vertical-copyright {
+  position: absolute;
+  left: clamp(0.75rem, 1.5vw, 1.5rem);
+  bottom: 2.25rem;
+  z-index: 10;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--kh-font);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--kh-slate-muted);
+  pointer-events: none;
+  user-select: none;
+}
+
+.kh-slide.is-dark .kh-vertical-copyright {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Eyebrow Title (e.g. Expertise, People, Thought Leadership) */
+.kh-eyebrow {
+  display: block;
+  font-size: clamp(1.2rem, 1.45vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--kh-blue-cerulean);
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.01em;
+}
+
+.kh-slide.is-blue .kh-eyebrow {
+  color: var(--kh-blue-sky);
+}
+
+.kh-slide.is-dark .kh-eyebrow {
+  color: #94A3B8;
+}
+
+/* Main Bold Headline (Exact Khaitan Scale) */
+.kh-headline {
+  font-size: clamp(1.45rem, 1.85vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--kh-navy-dark);
+  margin-bottom: 1.15rem;
+  max-width: 520px;
+}
+
+.kh-slide.is-blue .kh-headline,
+.kh-slide.is-dark .kh-headline {
+  color: #FFFFFF;
+}
+
+/* Paragraph Description (Exact Khaitan Blue & Proportion) */
+.kh-description {
+  font-size: clamp(0.8125rem, 0.9vw, 0.875rem);
+  line-height: 1.65;
+  color: var(--kh-blue-body);
+  margin-bottom: 2rem;
+  max-width: 460px;
+}
+
+.kh-slide.is-blue .kh-description {
+  color: #F0F6FF;
+}
+
+.kh-slide.is-dark .kh-description {
+  color: #CBD5E1;
+}
+
+/* Outlined Action Buttons (Exact Khaitan & Co buttons - Side by Side) */
+.kh-actions {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+.kh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 0;
+  border: 1px solid var(--kh-blue-body);
+  color: var(--kh-blue-body);
+  background: transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.kh-btn:hover {
+  background: var(--kh-blue-body);
+  color: #FFFFFF;
+}
+
+.kh-slide.is-blue .kh-btn,
+.kh-slide.is-dark .kh-btn {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.kh-slide.is-blue .kh-btn:hover,
+.kh-slide.is-dark .kh-btn:hover {
+  background: #FFFFFF;
+  color: var(--kh-navy-dark);
+}
+
+.kh-btn svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  fill: none;
+  transition: transform 0.2s ease;
+}
+
+.kh-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   HEADER: Fixed Transparent Bar
+   ========================================================================== */
+.kh-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--kh-header-height);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--kh-gutter-left);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.kh-header * {
+  pointer-events: auto;
+}
+
+/* Logo on Left */
+.kh-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.kh-logo:hover {
+  opacity: 0.85;
+}
+
+/* Monogram */
+.kh-monogram {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--kh-navy-dark);
+  transition: color 0.3s ease;
+}
+
+.kh-header.theme-dark-logo .kh-monogram {
+  color: #FFFFFF;
+}
+
+.kh-logo-divider {
+  width: 1.5px;
+  height: 2rem;
+  background-color: rgba(0, 35, 82, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.kh-header.theme-dark-logo .kh-logo-divider {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.kh-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.08;
+}
+
+.kh-wordmark span:first-child {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--kh-navy-dark);
+  transition: color 0.3s ease;
+}
+
+.kh-wordmark span:nth-child(2),
+.kh-wordmark span:last-child {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: #334155;
+  margin-top: 1px;
+  transition: color 0.3s ease;
+}
+
+.kh-header.theme-dark-logo .kh-wordmark span:first-child,
+.kh-header.theme-dark-logo .kh-wordmark span:nth-child(2),
+.kh-header.theme-dark-logo .kh-wordmark span:last-child {
+  color: #FFFFFF;
+}
+
+/* Header Icons on Right (Over the dark photograph: ALWAYS PURE WHITE) */
+.kh-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.kh-icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #FFFFFF;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+.kh-icon-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.kh-icon-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: #FFFFFF;
+  stroke-width: 2.2;
+}
+
+/* 3 Clean Vertical Bars (|||) */
+.kh-bars-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 22px;
+}
+
+.kh-bars-icon span {
+  display: block;
+  width: 2.5px;
+  height: 22px;
+  background-color: #FFFFFF;
+  border-radius: 1px;
+}
+
+/* ==========================================================================
+   VERTICAL STEPPER TRACKER (Exact match to Khaitan & Co)
+   ========================================================================== */
+.kh-stepper {
+  position: fixed;
+  right: clamp(1.5rem, 3.5vw, 4.25rem);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
+/* Continuous Vertical Hairline Passing Through Dots */
+.kh-stepper-line {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.45);
+  z-index: 1;
+}
+
+.kh-step-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.kh-step-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.65);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.kh-step-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+/* Active State: Bold White Label + Double-Ring Target Dot (◉) */
+.kh-step-item.is-active .kh-step-label {
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.kh-step-item.is-active .kh-step-dot {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  box-shadow: 0 0 0 3.5px rgba(255, 255, 255, 0.35);
+}
+
+/* ==========================================================================
+   CIRCULAR SCROLL INDICATOR (Bottom Right)
+   ========================================================================== */
+.kh-scroll-down {
+  position: fixed;
+  right: clamp(1.5rem, 3.5vw, 4.25rem);
+  bottom: 2.75rem;
+  z-index: 40;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
+.kh-scroll-down:hover {
+  border-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(2px);
+}
+
+.kh-scroll-down svg {
+  width: 18px;
+  height: 18px;
+  stroke: #FFFFFF;
+  stroke-width: 1.8;
+  animation: khGlideDown 2s infinite ease-in-out;
+}
+
+@keyframes khGlideDown {
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(3px); }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .kh-stepper {
+    display: none;
+  }
+
+  .kh-content-container {
+    max-width: 85%;
+    padding-left: clamp(2rem, 5vw, 4rem);
+  }
+
+  .kh-overlay-frosted {
+    background: linear-gradient(
+      90deg, 
+      rgba(255, 255, 255, 0.98) 0%, 
+      rgba(255, 255, 255, 0.95) 60%, 
+      rgba(255, 255, 255, 0.8) 100%
+    );
+  }
+
+  .kh-overlay-royal-blue {
+    background: linear-gradient(
+      90deg, 
+      #003882 0%, 
+      #003882 75%, 
+      rgba(0, 56, 130, 0.9) 100%
+    );
+  }
+}
+
+@media (max-width: 640px) {
+  .kh-vertical-copyright {
+    display: none;
+  }
+
+  .kh-content-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 100%;
+  }
+
+  .kh-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .kh-btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .kh-scroll-down {
+    right: 1.25rem;
+    bottom: 1.25rem;
+  }
+}
+
+/* Compact Height Viewports (Laptops with taskbars / high zoom) */
+@media (max-height: 760px) {
+  :root {
+    --kh-header-height: 68px;
+  }
+
+  .kh-eyebrow {
+    font-size: 1.15rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .kh-headline {
+    font-size: 1.4rem;
+    line-height: 1.25;
+    margin-bottom: 0.85rem;
+    max-width: 480px;
+  }
+
+  .kh-description {
+    font-size: 0.8rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+    max-width: 420px;
+  }
+
+  .kh-actions {
+    gap: 0.75rem;
+  }
+
+  .kh-btn {
+    padding: 0.6rem 1.15rem;
+    font-size: 0.68rem;
+  }
+}
+

@@ -1,0 +1,95 @@
+/**
+ * Design Tokens & Visual Architecture
+ * Pradyumna Law Associates (Pure Architectural Monochrome & Navy Palette)
+ * NOTE: Strictly no gold accents. Pure white, platinum, silver, deep navy & obsidian.
+ */
+:root {
+  /* Brand Navy & Obsidian Canvas */
+  --navy-950: #040812;      /* Deepest Obsidian */
+  --navy-900: #070E1E;      /* Primary Identity Canvas */
+  --navy-850: #0B1428;      /* Mid Navy Surface */
+  --navy-800: #101C38;      /* Elevated Dark Surface */
+  --navy-700: #1A2B52;      /* Hairline Dividers on Dark */
+  --navy-600: #253D75;
+
+  /* Architectural Platinum & Silver Palette */
+  --silver-100: #FFFFFF;
+  --silver-200: #F8FAFC;
+  --silver-300: #E2E8F0;    /* Polished Platinum */
+  --silver-400: #CBD5E1;    /* Cool Silver */
+  --silver-500: #94A3B8;    /* Muted Steel */
+  --silver-600: #64748B;    /* Architectural Slate */
+  --silver-glow: rgba(255, 255, 255, 0.12);
+  --silver-hairline: rgba(255, 255, 255, 0.22);
+
+  /* Light Editorial Canvas */
+  --light-bg: #F8F9FA;       /* Pure Architectural Off-White */
+  --light-surface: #FFFFFF;  /* Crisp Sheet White */
+  --light-surface-subtle: #F1F3F5;
+  --light-border: #E5E7EB;   /* Architectural Hairline */
+  --light-border-strong: #D1D5DB;
+
+  /* Typography Scales & Colors */
+  --charcoal-950: #0B0F19;   /* Editorial Heading Black */
+  --charcoal-800: #1F2937;   /* Secondary Headings */
+  --charcoal-600: #4B5563;   /* High-legibility Body */
+  --charcoal-400: #9CA3AF;   /* Muted Metadata */
+
+  /* Neutral Light Tokens */
+  --white-100: #FFFFFF;
+  --white-90: rgba(255, 255, 255, 0.9);
+  --white-75: rgba(255, 255, 255, 0.75);
+  --white-50: rgba(255, 255, 255, 0.5);
+  --white-20: rgba(255, 255, 255, 0.2);
+  --white-10: rgba(255, 255, 255, 0.1);
+  --white-05: rgba(255, 255, 255, 0.05);
+
+  /* Font Families */
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Typography Sizes (clamp for fluid scale across mobile & ultra-wide) */
+  --text-display: clamp(2.75rem, 6.5vw, 5.75rem);
+  --text-h1: clamp(2.25rem, 4.5vw, 4.25rem);
+  --text-h2: clamp(1.75rem, 3.25vw, 3rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --text-lead: clamp(1.125rem, 1.35vw, 1.35rem);
+  --text-body: clamp(0.975rem, 1.05vw, 1.075rem);
+  --text-caption: 0.8125rem;
+  --text-eyebrow: 0.75rem;
+
+  /* Spacing Scale */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3.5rem;
+  --space-2xl: clamp(4rem, 8vw, 7.5rem);
+  --space-3xl: clamp(5rem, 11vw, 10rem);
+
+  /* Layout Constraints */
+  --container-max: 1440px;
+  --container-pad: clamp(1.25rem, 4vw, 4rem);
+  --header-height: clamp(4.25rem, 6vw, 5.5rem);
+
+  /* Z-Index Hierarchy */
+  --z-base: 1;
+  --z-nav: 50;
+  --z-modal: 100;
+  --z-overlay: 150;
+  --z-toast: 200;
+
+  /* Transitions */
+  --transition-fast: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 650ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-smooth: 0ms;
+    --transition-slow: 0ms;
+  }
+}
