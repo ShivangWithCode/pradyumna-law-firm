@@ -5,33 +5,57 @@
 export const teamMembers = [
   {
     id: "pradyumna-tyagi",
-    name: "Advocate Pradyumna Tyagi",
+    name: "Pradyumna Tyagi",
     designation: "Founder & Managing Partner",
-    appointments: [
-      "Central Govt. Counsel (Panel), Supreme Court of India",
-      "Addl. Standing Counsel, High Court of Delhi",
-      "Panel Counsel, Municipal Corporation of Delhi (MCD)",
-      "Panel Counsel, NBCC (India) Limited (Navratna CPSE)",
-      "Panel Counsel, Punjab & Sind Bank"
+    role: "National Practice Head - Dispute Resolution (Litigation)",
+    courtAffiliation: "Hon'ble Supreme Court of India | High Courts (Delhi, Bombay, Punjab & Haryana, Lucknow) | Commercial Tribunals",
+    qualifications: "LL.M. (Indian Law Institute) | LL.B. (Campus Law Centre, DU) | B.Com (Shaheed Bhagat Singh College, DU)",
+    memberships: [
+      "Supreme Court Bar Association (SCBA)",
+      "Delhi High Court Bar Association (DHCBA)",
+      "Delhi Bar Association (DBA)"
     ],
-    courtAffiliation: "Supreme Court of India | High Court of Delhi | NCLAT",
-    qualifications: "LL.M. (Indian Law Institute) | LL.B. (Campus Law Centre, DU) | B.Com (SBSC, DU)",
+    positionsHeld: [
+      "Empaneled Advocate, Punjab and Sindh Bank (Govt. of India), Delhi",
+      "Former Member, Professional Ethics Committee, Bar Council of Delhi",
+      "Member, International Council of Jurists (ICJ), United Kingdom",
+      "Member, Editorial Board, ILI Law Review Journal, Indian Law Institute (2016-17)",
+      "Vice President, All India Law Student Association (2016)",
+      "Media President, Spokesperson & Cultural Secretary, Delhi University Student Union (DUSU)"
+    ],
     primaryPractices: [
-      "Commercial & Appellate Litigation",
-      "White-Collar Crime & PMLA Defense",
-      "Insolvency & Bankruptcy (IBC / NCLT)",
-      "Constitutional Writs & Government Advisory",
-      "Domestic & International Arbitration"
+      "Litigation Management & Dispute Resolution",
+      "Commercial Arbitration (Led Supreme Infrastructure proceedings)",
+      "Criminal Defense & Bail Advocacy (AIIMS Govt. Case, Chinese Loan App, Faridabad Liquor Scam)",
+      "Insolvency & Bankruptcy (IBC) & General Corporate",
+      "Civil Writs & Appellate Advocacy (Supreme Court SLPs, High Courts)"
     ],
-    bio: "Advocate Pradyumna Tyagi is the Founder and Managing Partner of Pradyumna Law Associates (P.L.A.). He serves as Central Government Counsel before the Supreme Court of India, Additional Standing Counsel for the High Court of Delhi, and Standing Counsel for the Municipal Corporation of Delhi (MCD). With over a decade of high-stakes courtroom advocacy, he represents leading public sector undertakings including NBCC (India) Limited and Punjab & Sind Bank across commercial litigation, arbitration, white-collar defense, and appellate writs.",
+    clientsRepresented: [
+      "Supreme Infrastructure India Limited",
+      "Weldon Infrastructure Private Limited",
+      "Punjab and Sindh Bank (Govt. of India)",
+      "Mayor Group",
+      "Color Square International (Czech Republic)",
+      "Rare You (Clothing)",
+      "Dhir and Sons",
+      "Omission Printing Solutions",
+      "Ishwar and Company",
+      "Jain Timber Private Limited",
+      "M/s Fashion Expression Textiles Private Limited",
+      "N.R.I. Clients & Private Individuals"
+    ],
+    bio: "Pradyumna Tyagi acquired extensive commercial and legal knowledge from India's top-notch educational institutions. As Founder & Managing Partner and National Practice Head (Litigation) at Pradyumna Law Associates, he has an impeccable record in securing bails in landmark matters including the AIIMS Government Case, Chinese Loan App Case, and Faridabad Liquor Scam Case. He regularly leads complex commercial arbitrations, civil Special Leave Petitions (SLPs) before the Supreme Court of India, and corporate litigation across Delhi, Bombay, Maharashtra, and Haryana.",
     initials: "PT",
-    quote: "Discipline, humility, and treating every brief with absolute devotion regardless of stakes.",
+    quote: "Discipline, leadership, and unwavering commitment to the legal profession.",
     directContact: {
-      email: "pradyumna.ptlo@gmail.com",
-      secondaryEmail: "contact@pradyumnalaw.com",
-      phone: "+91 (0) 94150 00000",
+      email: "pradyumna@pradyumnalaw.com",
+      primaryPhone: "+91-7503455000",
+      secondaryPhone: "+91-9716810000",
+      city: "Delhi",
       office: "50, First Floor, Todarmal Road, Bengali Market, Connaught Place, New Delhi 110001",
-      linkedin: "https://www.linkedin.com/in/pradyumna-tyagi-001010111/"
+      website: "https://pradyumnalaw.com",
+      linkedin: "https://www.linkedin.com/in/pradyumna-tyagi-001010111/",
+      instagram: "https://instagram.com/pradyumnatyagi"
     }
   }
 ];

@@ -5,34 +5,64 @@
 export const siteConfig = {
   firmName: "Pradyumna Law Associates",
   shortName: "PLA",
-  founder: "Advocate Pradyumna Tyagi",
-  tagline: "Strategic Courtroom Advocacy. Institutional Legal Counsel.",
-  jurisdiction: "Supreme Court of India | High Court of Delhi | NCLT / NCLAT | Appellate Tribunals",
+  founder: "Pradyumna Tyagi",
+  designation: "Founder & Managing Partner | National Practice Head - Dispute Resolution (Litigation)",
+  tagline: "Strategic Courtroom Advocacy. National Dispute Resolution.",
+  jurisdiction: "Supreme Court of India | High Courts (Delhi, Bombay, Punjab & Haryana, Lucknow) | Commercial Tribunals",
   
-  appointments: [
-    "Central Govt. Counsel (Panel), Supreme Court of India",
-    "Addl. Standing Counsel, High Court of Delhi",
-    "Panel Counsel, Municipal Corporation of Delhi (MCD)",
-    "Panel Counsel, NBCC (India) Limited (Navratna CPSE)",
-    "Panel Counsel, Punjab & Sind Bank"
-  ],
-
   education: [
-    "Master of Laws (LL.M.) – Indian Law Institute (ILI), New Delhi",
+    "Master of Laws (LL.M.) – Indian Law Institute (ILI)",
     "Bachelor of Laws (LL.B.) – Campus Law Centre (CLC), University of Delhi",
-    "B.Com – Shaheed Bhagat Singh College (SBSC), University of Delhi"
+    "Bachelor of Commerce (B.Com) – Shaheed Bhagat Singh College, University of Delhi"
   ],
 
-  experience: "10+ Years of Courtroom Litigation & Strategic Counsel",
+  memberships: [
+    "Supreme Court Bar Association (SCBA)",
+    "Delhi High Court Bar Association (DHCBA)",
+    "Delhi Bar Association (DBA)"
+  ],
+
+  positionsHeld: [
+    "Empaneled Advocate, Punjab and Sindh Bank (Govt. of India), Delhi",
+    "Former Member, Professional Ethics Committee, Bar Council of Delhi",
+    "Member, International Council of Jurists (ICJ), United Kingdom",
+    "Member, Editorial Board, ILI Law Review Journal, Indian Law Institute (2016-17)",
+    "Vice President, All India Law Student Association (2016)",
+    "Media President, Spokesperson & Cultural Secretary, Delhi University Student Union (DUSU)"
+  ],
+
+  clientsRepresented: [
+    "Supreme Infrastructure India Limited (Construction Engineering Giant)",
+    "Weldon Infrastructure Private Limited",
+    "Punjab and Sindh Bank (Govt. of India Undertaking)",
+    "Mayor Group",
+    "Color Square International (Czech Republic)",
+    "Rare You (Clothing)",
+    "Dhir and Sons",
+    "Omission Printing Solutions",
+    "Color Square Marketing Private Limited",
+    "Ishwar and Company (Dry Fruits)",
+    "Jain Timber Private Limited",
+    "M/s Fashion Expression Textiles Private Limited",
+    "N.R.I. Clients & Commercial Entities"
+  ],
+
+  landmarkLitigations: [
+    "AIIMS Government Case (Bail & Trial Advocacy)",
+    "Chinese Loan App Case",
+    "Faridabad Liquor Scam Case",
+    "Supreme Infrastructure Commercial Arbitration",
+    "Cyber Crime, PMLA & High-Stakes Financial Frauds"
+  ],
 
   contact: {
-    phone: import.meta.env.VITE_OFFICE_PHONE || "+919415000000",
-    displayPhone: import.meta.env.VITE_OFFICE_PHONE_DISPLAY || "+91 (0) 94150 00000",
-    email: "pradyumna.ptlo@gmail.com",
-    secondaryEmail: "contact@pradyumnalaw.com",
-    consultationEmail: "counsel@pradyumnalaw.com",
-    whatsAppNumber: import.meta.env.VITE_WHATSAPP_NUMBER || "919415000000",
-    whatsAppDisplay: import.meta.env.VITE_WHATSAPP_DISPLAY || "+91 94150 00000",
+    primaryPhone: "+91-7503455000",
+    secondaryPhone: "+91-9716810000",
+    displayPhone: "+91 75034 55000",
+    email: "pradyumna@pradyumnalaw.com",
+    whatsAppNumber: "917503455000",
+    whatsAppDisplay: "+91 75034 55000",
+    city: "Delhi",
     officeAddress: {
       line1: "50, First Floor, Todarmal Road",
       locality: "Bengali Market, Connaught Place",
@@ -41,12 +71,12 @@ export const siteConfig = {
       country: "India"
     },
     hours: "Monday – Saturday: 09:30 AM – 07:30 PM",
-    googleMapsUrl: "https://maps.google.com/?q=Bengali+Market+New+Delhi"
+    website: "https://pradyumnalaw.com"
   },
 
   social: {
     linkedin: "https://www.linkedin.com/in/pradyumna-tyagi-001010111/",
-    twitter: "https://twitter.com/pradyumnalaw"
+    instagram: "https://instagram.com/pradyumnatyagi"
   },
 
   disclaimer: "As per the rules of the Bar Council of India, law firms in India are not permitted to solicit work or advertise in any manner. This website is solely for the purpose of providing general information about Pradyumna Law Associates and does not constitute legal advice or create an advocate-client relationship."
