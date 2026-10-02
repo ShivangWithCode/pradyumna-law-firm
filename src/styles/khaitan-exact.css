@@ -239,6 +239,10 @@ html, body {
   will-change: transform, opacity;
 }
 
+#slide-0 .kh-eyebrow {
+  color: #003c8c;
+}
+
 .kh-slide.is-blue .kh-eyebrow {
   color: #00D8E6;
 }
@@ -1006,9 +1010,9 @@ html, body {
     opacity: 1 !important;
   }
 
-  /* Eyebrow - Neon Cyan */
+  /* Eyebrow - Matching Headline */
   #slide-0 .kh-eyebrow {
-    color: #00D8E6 !important;
+    color: #FFFFFF !important;
     font-size: 0.88rem !important;
     font-weight: 600 !important;
     margin-bottom: 0.35rem !important;
