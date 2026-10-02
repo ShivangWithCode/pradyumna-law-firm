@@ -82,11 +82,17 @@ function initActionButtons() {
   initContactLinks();
 }
 
-// Bootstrap Application on DOM Ready
-document.addEventListener('DOMContentLoaded', () => {
+// Bootstrap Application on DOM Ready or immediately if already loaded
+function startApp() {
   initKhaitanSlider();
   initFullScreenMenu();
   initSearchModal();
   initActionButtons();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startApp);
+} else {
+  startApp();
+}
 

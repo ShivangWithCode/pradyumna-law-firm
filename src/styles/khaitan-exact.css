@@ -31,9 +31,11 @@
 html, body {
   width: 100%;
   height: 100%;
+  height: 100dvh;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  overscroll-behavior-y: none;
   font-family: var(--kh-font);
   background-color: #001B40;
   -webkit-font-smoothing: antialiased;
@@ -46,6 +48,7 @@ html, body {
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
+  touch-action: pan-x pinch-zoom;
 }
 
 /* 60fps Hardware-Accelerated Sliding Track */
@@ -84,74 +87,107 @@ html, body {
   z-index: 1;
 }
 
-#slide-0 .kh-slide-bg {
-  object-position: 70% center;
+#slide-0 {
+  background-color: #FFFFFF;
+}
+
+/* Responsive Slide 0 Background Picture & Image */
+.kh-slide-bg-picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#slide-0 .kh-slide-bg,
+.kh-slide-bg-picture img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 1;
   transform: none;
 }
 
-/* Slide 0 & 2: Frosted White-to-Transparent Split (Original ambient background) */
-.kh-overlay-frosted {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg, 
-    rgba(255, 255, 255, 0.98) 0%, 
-    rgba(255, 255, 255, 0.94) 38%, 
-    rgba(255, 255, 255, 0.82) 48%, 
-    rgba(255, 255, 255, 0) 66%
-  );
+/* Slide 0 White Architectural Overlay: Sits over the left 50% (nyay taraju & chamber) */
+#slide-0 .kh-overlay-frosted {
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.88);
   z-index: 2;
-  pointer-events: none;
-}
-
-/* Slide 1: Solid Rich Royal Blue Split (Screenshot 3 match) */
-.kh-overlay-royal-blue {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg, 
-    #003882 0%, 
-    #003882 46%, 
-    rgba(0, 56, 130, 0.9) 52%, 
-    rgba(0, 56, 130, 0) 70%
-  );
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Slide 3: Deep Obsidian Heritage Split */
-.kh-overlay-obsidian {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg, 
-    #001738 0%, 
-    #001738 46%, 
-    rgba(0, 23, 56, 0.88) 54%, 
-    rgba(0, 23, 56, 0) 72%
-  );
-  z-index: 2;
-  pointer-events: none;
 }
 
 /* ==========================================================================
-   Editorial Content Column (Left ~48% of Screen)
+   OPTION 5: ARCHITECTURAL 50% SPLIT-CURTAIN PANEL (Exact Khaitan & Co Match)
+   Clean 50% architectural panel with vertical curtain sweep (Zero fuzzy blur)
+   ========================================================================== */
+.kh-overlay-frosted,
+.kh-overlay-royal-blue,
+.kh-overlay-obsidian {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* Active Slide: Architectural Split-Curtain Drops into View */
+.kh-slide.is-active .kh-overlay-frosted,
+.kh-slide.is-active .kh-overlay-royal-blue,
+.kh-slide.is-active .kh-overlay-obsidian {
+  transform: translateY(0%);
+}
+
+/* Slide 0 & 2: Crisp 88% Pure White Architectural Tint (Matches Khaitan Screenshot) */
+.kh-overlay-frosted {
+  background-color: rgba(255, 255, 255, 0.88);
+}
+
+/* Slide 1: Deep Royal Blue Tint (Matches Khaitan Slide 1) */
+.kh-overlay-royal-blue {
+  background-color: rgba(0, 56, 130, 0.94);
+}
+
+/* Slide 3: Rich Heritage Obsidian Blue Tint */
+.kh-overlay-obsidian {
+  background-color: rgba(0, 23, 56, 0.94);
+}
+
+/* ==========================================================================
+   Editorial Content Column (Exact 50% Split Left Column)
    ========================================================================== */
 .kh-content-container {
   position: relative;
   z-index: 5;
-  width: 100%;
-  max-width: 550px;
-  padding-left: var(--kh-gutter-left);
-  padding-right: 1.5rem;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: clamp(3rem, 7vw, 7.5rem);
+  padding-right: clamp(1.5rem, 3.5vw, 4rem);
   box-sizing: border-box;
+  transform: translateY(25px);
+  opacity: 0;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+  will-change: transform, opacity;
 }
+
+.kh-slide.is-active .kh-content-container {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 
 /* Left Vertical Rotated Copyright (Exact match to Khaitan & Co) */
 .kh-vertical-copyright {
@@ -174,34 +210,61 @@ html, body {
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* Eyebrow Title (e.g. Expertise, People, Thought Leadership) */
+/* ==========================================================================
+   MASKED REVEAL CONTAINERS (Option 1: Luxury Text Unmasking)
+   ========================================================================== */
+.kh-mask {
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.kh-eyebrow-mask {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+}
+
 .kh-eyebrow {
   display: block;
   font-size: clamp(1.2rem, 1.45vw, 1.35rem);
   font-weight: 500;
   line-height: 1.2;
   color: var(--kh-blue-cerulean);
-  margin-bottom: 0.85rem;
+  margin-bottom: 0;
   letter-spacing: -0.01em;
+  opacity: 0;
+  transform: translateY(115%);
+  transition: opacity 0.45s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
 .kh-slide.is-blue .kh-eyebrow {
-  color: var(--kh-blue-sky);
+  color: #00D8E6;
 }
 
 .kh-slide.is-dark .kh-eyebrow {
   color: #94A3B8;
 }
 
-/* Main Bold Headline (Exact Khaitan Scale) */
+.kh-headline-mask {
+  margin-bottom: 1.25rem;
+}
+
+/* Main Bold Headline (Exact Khaitan Scale & Royal Navy) */
 .kh-headline {
-  font-size: clamp(1.45rem, 1.85vw, 1.75rem);
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-size: clamp(1.85rem, 2.35vw, 2.5rem);
   font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  color: var(--kh-navy-dark);
-  margin-bottom: 1.15rem;
-  max-width: 520px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #003c8c;
+  margin-bottom: 0;
+  max-width: 540px;
+  opacity: 0;
+  transform: translateY(115%);
+  transition: opacity 0.5s ease, transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
 .kh-slide.is-blue .kh-headline,
@@ -209,21 +272,37 @@ html, body {
   color: #FFFFFF;
 }
 
+.kh-desc-mask {
+  margin-bottom: 2.25rem;
+}
+
 /* Paragraph Description (Exact Khaitan Blue & Proportion) */
 .kh-description {
-  font-size: clamp(0.8125rem, 0.9vw, 0.875rem);
-  line-height: 1.65;
-  color: var(--kh-blue-body);
-  margin-bottom: 2rem;
-  max-width: 460px;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-size: clamp(0.92rem, 1.02vw, 1.02rem);
+  line-height: 1.68;
+  color: #003c8c;
+  opacity: 0.92;
+  margin-bottom: 0;
+  max-width: 520px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
 .kh-slide.is-blue .kh-description {
-  color: #F0F6FF;
+  color: rgba(255, 255, 255, 0.92);
+  opacity: 0;
 }
 
 .kh-slide.is-dark .kh-description {
   color: #CBD5E1;
+  opacity: 0;
+}
+
+.kh-actions-mask {
+  overflow: visible;
 }
 
 /* Outlined Action Buttons (Exact Khaitan & Co buttons - Side by Side) */
@@ -231,53 +310,92 @@ html, body {
   display: flex;
   align-items: center;
   flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.65s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+/* Active Slide Masked Reveal: Waterfall Entrance */
+.kh-slide.is-active .kh-eyebrow-mask .kh-eyebrow {
+  opacity: 1;
+  transform: translateY(0%);
+  transition-delay: 0.12s;
+}
+
+.kh-slide.is-active .kh-headline-mask .kh-headline {
+  opacity: 1;
+  transform: translateY(0%);
+  transition-delay: 0.24s;
+}
+
+.kh-slide.is-active .kh-desc-mask .kh-description {
+  opacity: 0.92;
+  transform: translateY(0%);
+  transition-delay: 0.38s;
+}
+
+.kh-slide.is-active.is-blue .kh-desc-mask .kh-description {
+  opacity: 0.92;
+}
+
+.kh-slide.is-active .kh-actions-mask .kh-actions {
+  opacity: 1;
+  transform: translateY(0%);
+  transition-delay: 0.5s;
 }
 
 .kh-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.65rem 1.25rem;
-  font-size: 0.72rem;
+  gap: 0.75rem;
+  padding: 0.72rem 1.35rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   border-radius: 0;
-  border: 1px solid var(--kh-blue-body);
-  color: var(--kh-blue-body);
+  border: 1px solid #00a0dc;
+  color: #003c8c;
   background: transparent;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
 }
 
 .kh-btn:hover {
-  background: var(--kh-blue-body);
-  color: #FFFFFF;
+  background: rgba(0, 160, 220, 0.1);
+  border-color: #003c8c;
+  color: #003c8c;
+  transform: translateY(-2px);
 }
 
 .kh-slide.is-blue .kh-btn,
 .kh-slide.is-dark .kh-btn {
-  border-color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.65);
   color: #FFFFFF;
+  background: transparent;
 }
 
 .kh-slide.is-blue .kh-btn:hover,
 .kh-slide.is-dark .kh-btn:hover {
-  background: #FFFFFF;
-  color: var(--kh-navy-dark);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  transform: translateY(-2px);
 }
 
 .kh-btn svg {
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   stroke: currentColor;
-  stroke-width: 2.2;
+  stroke-width: 2;
   fill: none;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease;
 }
 
 .kh-btn:hover svg {
@@ -319,7 +437,39 @@ html, body {
   opacity: 0.85;
 }
 
-/* Monogram */
+/* Bespoke Crest Monogram Emblem (Exact Leather Journal Insignia Match) */
+.kh-crest-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--kh-navy-dark);
+  transition: color 0.3s ease, transform 0.25s ease;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.kh-crest-svg {
+  width: 62px;
+  height: 42px;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
+  transition: filter 0.3s ease;
+}
+
+.kh-header.theme-dark-logo .kh-crest-wrapper {
+  color: #FFFFFF;
+}
+
+.kh-header.theme-dark-logo .kh-crest-svg {
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
+}
+
+.kh-logo:hover .kh-crest-wrapper {
+  transform: translateY(-1px) scale(1.04);
+}
+
+/* Fallback Monogram */
 .kh-monogram {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 2rem;
@@ -423,208 +573,893 @@ html, body {
 }
 
 /* ==========================================================================
-   VERTICAL STEPPER TRACKER (Exact match to Khaitan & Co)
+   VERTICAL STEPPER TRACKER (Exact Match to Khaitan & Co Reference)
    ========================================================================== */
 .kh-stepper {
   position: fixed;
-  right: clamp(1.5rem, 3.5vw, 4.25rem);
+  right: clamp(1.75rem, 3.8vw, 4.5rem);
   top: 50%;
   transform: translateY(-50%);
-  z-index: 40;
+  z-index: 45;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+  gap: 3.25rem;
 }
 
-/* Continuous Vertical Hairline Passing Through Dots */
+/* Continuous Vertical Hairline Passing Centered Behind Dots */
 .kh-stepper-line {
   position: absolute;
-  right: 6px;
-  top: 6px;
-  bottom: 6px;
-  width: 1px;
-  background-color: rgba(255, 255, 255, 0.45);
+  right: 6.25px; /* Mathematically centered behind 14px dots with 1.5px stroke */
+  top: 10px;
+  bottom: 10px;
+  width: 1.5px;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   z-index: 1;
+  pointer-events: none;
+}
+
+/* Option 3: Animated Stepper Progress Fill Line */
+.kh-stepper-progress {
+  position: absolute;
+  right: 6px;
+  top: 10px;
+  width: 2px;
+  height: 0px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #00D8E6 85%, #38E1FF 100%);
+  box-shadow: 0 0 10px rgba(0, 216, 230, 0.9), 0 0 20px rgba(0, 216, 230, 0.5);
+  z-index: 1;
+  pointer-events: none;
+  transition: height 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: 1px;
+}
+
+/* Luminous Leading Particle Bead at the Tip of the Line */
+.kh-stepper-progress::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00D8E6;
+  box-shadow: 0 0 8px #00D8E6, 0 0 14px rgba(0, 216, 230, 0.85);
+  transition: opacity 0.3s ease;
 }
 
 .kh-step-item {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 1.25rem;
+  gap: 1.4rem;
   text-decoration: none;
   cursor: pointer;
   position: relative;
   z-index: 2;
+  padding: 3px 0;
+  transition: transform 0.22s ease;
+}
+
+.kh-step-item:hover {
+  transform: translateX(-3px);
 }
 
 .kh-step-label {
-  font-size: 0.8125rem;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.05rem;
   font-weight: 500;
-  letter-spacing: 0.03em;
-  color: rgba(255, 255, 255, 0.65);
-  transition: all 0.25s ease;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.25s ease, font-size 0.25s ease, font-weight 0.25s ease;
   white-space: nowrap;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9);
+  user-select: none;
 }
 
 .kh-step-dot {
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  background-color: transparent;
-  transition: all 0.25s ease;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  background-color: rgba(15, 23, 42, 0.5); /* Neutral translucent tone occludes hairline behind */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
-}
-
-/* Active State: Bold White Label + Double-Ring Target Dot (◉) */
-.kh-step-item.is-active .kh-step-label {
-  color: #FFFFFF;
-  font-weight: 700;
-  font-size: 0.875rem;
-}
-
-.kh-step-item.is-active .kh-step-dot {
-  background-color: #FFFFFF;
-  border-color: #FFFFFF;
-  box-shadow: 0 0 0 3.5px rgba(255, 255, 255, 0.35);
-}
-
-/* ==========================================================================
-   CIRCULAR SCROLL INDICATOR (Bottom Right)
-   ========================================================================== */
-.kh-scroll-down {
-  position: fixed;
-  right: clamp(1.5rem, 3.5vw, 4.25rem);
-  bottom: 2.75rem;
-  z-index: 40;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  background: rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 2;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Inner dot element for target / bullseye effect */
+.kh-step-dot::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover States */
+.kh-step-item:hover .kh-step-label {
   color: #FFFFFF;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
 }
 
-.kh-scroll-down:hover {
+.kh-step-item:hover .kh-step-dot {
   border-color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(2px);
+  transform: scale(1.1);
 }
 
-.kh-scroll-down svg {
-  width: 18px;
-  height: 18px;
-  stroke: #FFFFFF;
-  stroke-width: 1.8;
-  animation: khGlideDown 2s infinite ease-in-out;
+/* Active State: Bold White Crisp Label + Double-Ring Target Dot (◉) with Pulse Ripple */
+.kh-step-item.is-active .kh-step-label {
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 1.18rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.98), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
-@keyframes khGlideDown {
-  0%, 100% { transform: translateY(-2px); }
-  50% { transform: translateY(3px); }
+.kh-step-item.is-active .kh-step-dot {
+  border: 1.75px solid #FFFFFF;
+  background-color: rgba(15, 23, 42, 0.55);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.55), 0 2px 6px rgba(0, 0, 0, 0.6);
+  transform: scale(1.15);
+  animation: khDotPulse 2.5s infinite ease-out;
+}
+
+@keyframes khDotPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 216, 230, 0.7), 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  60% {
+    box-shadow: 0 0 0 9px rgba(0, 216, 230, 0), 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 216, 230, 0), 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.kh-step-item.is-active .kh-step-dot::after {
+  background-color: #FFFFFF;
+  width: 5.5px;
+  height: 5.5px;
 }
 
 /* ==========================================================================
-   Responsive Adaptations
+   CIRCULAR SCROLL INDICATOR (Cyan Ring with Piercing Down Arrow)
    ========================================================================== */
-@media (max-width: 1024px) {
-  .kh-stepper {
-    display: none;
-  }
+.kh-scroll-down {
+  position: fixed;
+  right: clamp(1.75rem, 3.8vw, 4.5rem);
+  bottom: clamp(1.75rem, 3.2vh, 2.75rem);
+  z-index: 45;
+  width: 48px;
+  height: 56px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
 
+.kh-scroll-down:hover {
+  transform: translateY(3px) scale(1.04);
+  filter: drop-shadow(0 4px 16px rgba(0, 216, 230, 0.55));
+}
+
+.kh-scroll-svg {
+  width: 46px;
+  height: 54px;
+  overflow: visible;
+}
+
+.kh-scroll-ring {
+  stroke: #00D8E6;
+  stroke-width: 1.6;
+  transition: stroke 0.25s ease, filter 0.25s ease;
+}
+
+.kh-scroll-down:hover .kh-scroll-ring {
+  stroke: #38E1FF;
+  filter: drop-shadow(0 0 8px #00D8E6);
+}
+
+.kh-scroll-arrow {
+  animation: khArrowGlide 2s ease-in-out infinite;
+  transform-origin: 23px 23px;
+}
+
+@keyframes khArrowGlide {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* ==========================================================================
+   Comprehensive Responsive System (Desktop, Tablet & Mobile)
+   ========================================================================== */
+
+/* --- TABLET LANDSCAPE & MEDIUM SCREENS (901px to 1180px) --- */
+@media (max-width: 1180px) and (min-width: 901px) {
   .kh-content-container {
-    max-width: 85%;
-    padding-left: clamp(2rem, 5vw, 4rem);
+    width: 58%;
+    padding-left: clamp(2.5rem, 5vw, 4.5rem);
+    padding-right: 2rem;
   }
 
-  .kh-overlay-frosted {
+  .kh-overlay-frosted,
+  #slide-0 .kh-overlay-frosted {
+    width: 58%;
     background: linear-gradient(
       90deg, 
       rgba(255, 255, 255, 0.98) 0%, 
-      rgba(255, 255, 255, 0.95) 60%, 
-      rgba(255, 255, 255, 0.8) 100%
+      rgba(255, 255, 255, 0.94) 75%, 
+      rgba(255, 255, 255, 0.82) 100%
     );
   }
 
   .kh-overlay-royal-blue {
+    width: 58%;
     background: linear-gradient(
       90deg, 
       #003882 0%, 
       #003882 75%, 
-      rgba(0, 56, 130, 0.9) 100%
+      rgba(0, 56, 130, 0.92) 100%
+    );
+  }
+
+  .kh-overlay-obsidian {
+    width: 58%;
+    background: linear-gradient(
+      90deg, 
+      #001738 0%, 
+      #001738 75%, 
+      rgba(0, 23, 56, 0.92) 100%
+    );
+  }
+
+  .kh-stepper {
+    right: 2rem;
+    gap: 2.25rem;
+  }
+
+  .kh-step-label {
+    font-size: 0.9rem;
+  }
+}
+
+/* --- TABLET PORTRAIT (769px to 900px) --- */
+@media (max-width: 900px) and (min-width: 769px) {
+  .kh-stepper {
+    right: 1.5rem;
+    gap: 2rem;
+  }
+
+  .kh-step-label {
+    display: none; /* Show sleek target dots and line on tablet portrait */
+  }
+
+  .kh-content-container {
+    width: 75%;
+    max-width: 650px;
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
+
+  .kh-overlay-frosted,
+  #slide-0 .kh-overlay-frosted {
+    width: 75%;
+    background: linear-gradient(
+      90deg, 
+      rgba(255, 255, 255, 0.98) 0%, 
+      rgba(255, 255, 255, 0.95) 75%, 
+      rgba(255, 255, 255, 0.85) 100%
+    );
+  }
+
+  .kh-overlay-royal-blue {
+    width: 75%;
+    background: linear-gradient(
+      90deg, 
+      #003882 0%, 
+      #003882 75%, 
+      rgba(0, 56, 130, 0.92) 100%
+    );
+  }
+
+  .kh-overlay-obsidian {
+    width: 75%;
+    background: linear-gradient(
+      90deg, 
+      #001738 0%, 
+      #001738 75%, 
+      rgba(0, 23, 56, 0.92) 100%
     );
   }
 }
 
-@media (max-width: 640px) {
-  .kh-vertical-copyright {
+/* --- MOBILE PHONES & PHABLETS (<= 768px) --- */
+@media (max-width: 768px) {
+  :root {
+    --kh-header-height: 64px;
+  }
+
+  .kh-header {
+    padding: 0 1.25rem;
+  }
+
+  .kh-crest-svg {
+    width: 50px;
+    height: 34px;
+  }
+
+  .kh-monogram {
+    font-size: 1.55rem;
+  }
+
+  .kh-wordmark span:first-child {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+
+  .kh-wordmark span:nth-child(2),
+  .kh-wordmark span:last-child {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+
+  .kh-header-actions {
+    gap: 0.75rem;
+  }
+
+  .kh-icon-btn {
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* ==========================================================================
+     SLIDE 0: KHAITAN & CO EXACT MOBILE ARCHITECTURE (Screenshot 2 Match)
+     - Top ~58vh: Deep Royal Blue Content Card (#003882)
+     - Bottom ~42vh: Photographic Window (Scales of Justice / Chamber)
+     ========================================================================== */
+  #slide-0 .kh-slide-bg-picture,
+  #slide-0 .kh-slide-bg {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 42vh !important;
+    height: 42dvh !important;
+    z-index: 1 !important;
+    transform: none !important;
+  }
+
+  #slide-0 .kh-slide-bg-picture img,
+  #slide-0 .kh-slide-bg {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  /* Royal Blue Architectural Top Panel */
+  #slide-0 .kh-overlay-frosted {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 58vh !important;
+    height: 58dvh !important;
+    z-index: 2 !important;
+    background: #003882 !important; /* Exact Khaitan Deep Royal Blue */
+    transform: translateY(-100%) !important;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35) !important;
+  }
+
+  #slide-0.is-active .kh-overlay-frosted {
+    transform: translateY(0%) !important;
+  }
+
+  /* Content Container at Top */
+  #slide-0 .kh-content-container {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 58vh !important;
+    height: 58dvh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    padding-top: calc(var(--kh-header-height) + 0.65rem) !important;
+    padding-left: 1.35rem !important;
+    padding-right: 1.35rem !important;
+    padding-bottom: 1.15rem !important;
+    box-sizing: border-box !important;
+    z-index: 5 !important;
+    overflow: hidden !important;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  }
+
+  #slide-0.is-active .kh-content-container {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
+  /* Eyebrow - Neon Cyan */
+  #slide-0 .kh-eyebrow {
+    color: #00D8E6 !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.35rem !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  /* Headline - Pure White */
+  #slide-0 .kh-headline {
+    color: #FFFFFF !important;
+    font-size: clamp(1.22rem, 4.8vw, 1.45rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.24 !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  /* Description - White 92% */
+  #slide-0 .kh-description {
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-size: 0.8rem !important;
+    line-height: 1.48 !important;
+    margin-bottom: 0.85rem !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Vertically Stacked Action Buttons (Exact Khaitan Style) */
+  #slide-0 .kh-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.55rem !important;
+    width: 100% !important;
+    margin-top: auto !important;
+  }
+
+  #slide-0 .kh-btn {
+    width: 100% !important;
+    min-height: 38px !important;
+    padding: 0.55rem 1rem !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    background: transparent !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+    transition: all 0.25s ease !important;
+  }
+
+  #slide-0 .kh-btn svg {
+    stroke: #FFFFFF !important;
+  }
+
+  #slide-0 .kh-btn:active {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: #FFFFFF !important;
+  }
+
+  #slide-0 .kh-vertical-copyright {
+    display: block !important;
+    writing-mode: horizontal-tb !important;
+    transform: none !important;
+    position: absolute !important;
+    left: 1.25rem !important;
+    bottom: 1.25rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 0.65rem !important;
+    z-index: 10 !important;
+  }
+
+  /* ==========================================================================
+     SLIDES 1, 2, 3: KHAITAN & CO EXACT MOBILE ARCHITECTURE
+     - Top ~58vh: Architectural Content Card
+       * Slide 1: Pure White Card (#FFFFFF) with Royal Navy Text (Screenshot 2 Match)
+       * Slide 2: Pure White Card (#FFFFFF) with Royal Navy Text
+       * Slide 3: Deep Royal Blue Card (#003882) with Pure White Text
+     - Bottom ~42vh: Photographic Window (Leather Journal, Boardroom, Pillars)
+     ========================================================================== */
+
+  /* Photographic Windows at Bottom */
+  #slide-1 .kh-slide-bg,
+  #slide-2 .kh-slide-bg,
+  #slide-3 .kh-slide-bg {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 42vh !important;
+    height: 42dvh !important;
+    z-index: 1 !important;
+    transform: none !important;
+  }
+
+  #slide-1 .kh-slide-bg {
+    object-fit: cover !important;
+    object-position: center 20% !important; /* Shows leather journal and pen clearly */
+  }
+
+  #slide-2 .kh-slide-bg {
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  #slide-3 .kh-slide-bg {
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  /* Architectural Top Panels (58vh) */
+  #slide-1 .kh-overlay-royal-blue,
+  #slide-2 .kh-overlay-frosted,
+  #slide-3 .kh-overlay-royal-blue,
+  #slide-3 .kh-overlay-obsidian {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 58vh !important;
+    height: 58dvh !important;
+    z-index: 2 !important;
+    transform: translateY(-100%) !important;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Slide 1: Pure White Card (Screenshot 2 Exact) */
+  #slide-1 .kh-overlay-royal-blue {
+    background: #FFFFFF !important;
+  }
+
+  /* Slide 2: Pure White Card */
+  #slide-2 .kh-overlay-frosted {
+    background: #FFFFFF !important;
+  }
+
+  /* Slide 3: Deep Royal Blue Card */
+  #slide-3 .kh-overlay-royal-blue,
+  #slide-3 .kh-overlay-obsidian {
+    background: #003882 !important;
+  }
+
+  #slide-1.is-active .kh-overlay-royal-blue,
+  #slide-2.is-active .kh-overlay-frosted,
+  #slide-3.is-active .kh-overlay-royal-blue,
+  #slide-3.is-active .kh-overlay-obsidian {
+    transform: translateY(0%) !important;
+  }
+
+  /* Content Containers on Slide 1, 2, 3: Inside Top 58vh Card */
+  #slide-1 .kh-content-container,
+  #slide-2 .kh-content-container,
+  #slide-3 .kh-content-container {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 58vh !important;
+    height: 58dvh !important;
+    padding-top: calc(var(--kh-header-height) + 0.65rem) !important;
+    padding-left: 1.35rem !important;
+    padding-right: 1.35rem !important;
+    padding-bottom: 1.15rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    box-sizing: border-box !important;
+    z-index: 5 !important;
+    overflow: hidden !important;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  }
+
+  #slide-1.is-active .kh-content-container,
+  #slide-2.is-active .kh-content-container,
+  #slide-3.is-active .kh-content-container {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
+  /* SLIDE 1 & SLIDE 2 (WHITE CARDS): Royal Navy Text & Blue Outline Buttons */
+  #slide-1 .kh-eyebrow,
+  #slide-2 .kh-eyebrow {
+    color: #0077C8 !important; /* Cerulean Blue */
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.35rem !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  #slide-1 .kh-headline,
+  #slide-2 .kh-headline {
+    color: #003882 !important; /* Deep Royal Navy */
+    font-size: clamp(1.22rem, 4.8vw, 1.45rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.24 !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  #slide-1 .kh-description,
+  #slide-2 .kh-description {
+    color: #003882 !important;
+    opacity: 0.92 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.48 !important;
+    margin-bottom: 0.85rem !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  #slide-1 .kh-actions,
+  #slide-2 .kh-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.55rem !important;
+    width: 100% !important;
+    margin-top: auto !important;
+  }
+
+  #slide-1 .kh-btn,
+  #slide-2 .kh-btn {
+    width: 100% !important;
+    min-height: 38px !important;
+    padding: 0.55rem 1rem !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    color: #003882 !important;
+    border: 1px solid #003882 !important;
+    background: transparent !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+    transition: all 0.25s ease !important;
+  }
+
+  #slide-1 .kh-btn svg,
+  #slide-2 .kh-btn svg {
+    stroke: #003882 !important;
+  }
+
+  #slide-1 .kh-btn:active,
+  #slide-2 .kh-btn:active {
+    background: rgba(0, 56, 130, 0.08) !important;
+  }
+
+  /* SLIDE 3 (ROYAL BLUE CARD): Pure White Text & White Outline Buttons */
+  #slide-3 .kh-eyebrow {
+    color: #00D8E6 !important; /* Neon Cyan */
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.35rem !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  #slide-3 .kh-headline {
+    color: #FFFFFF !important;
+    font-size: clamp(1.22rem, 4.8vw, 1.45rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.24 !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  #slide-3 .kh-description {
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-size: 0.8rem !important;
+    line-height: 1.48 !important;
+    margin-bottom: 0.85rem !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  #slide-3 .kh-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.55rem !important;
+    width: 100% !important;
+    margin-top: auto !important;
+  }
+
+  #slide-3 .kh-btn {
+    width: 100% !important;
+    min-height: 38px !important;
+    padding: 0.55rem 1rem !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    background: transparent !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+    transition: all 0.25s ease !important;
+  }
+
+  #slide-3 .kh-btn svg {
+    stroke: #FFFFFF !important;
+  }
+
+  /* Copyright on Bottom Left of all slides */
+  #slide-1 .kh-vertical-copyright,
+  #slide-2 .kh-vertical-copyright,
+  #slide-3 .kh-vertical-copyright {
+    display: block !important;
+    writing-mode: horizontal-tb !important;
+    transform: none !important;
+    position: absolute !important;
+    left: 1.25rem !important;
+    bottom: 1.25rem !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    font-size: 0.65rem !important;
+    z-index: 10 !important;
+  }
+
+  /* Header icons adaptation for White vs Blue cards */
+  .kh-header .kh-icon-btn svg {
+    stroke: var(--kh-navy-dark) !important;
+  }
+  .kh-header .kh-bars-icon span {
+    background-color: var(--kh-navy-dark) !important;
+  }
+  .kh-header.theme-dark-logo .kh-icon-btn svg {
+    stroke: #FFFFFF !important;
+  }
+  .kh-header.theme-dark-logo .kh-bars-icon span {
+    background-color: #FFFFFF !important;
+  }
+
+  /* Common Mobile Stepper & Scroll UI */
+  .kh-stepper {
+    right: 0.75rem;
+    gap: 1.5rem;
+    padding: 8px 4px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    z-index: 45;
+  }
+
+  .kh-step-label {
     display: none;
   }
 
-  .kh-content-container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    max-width: 100%;
+  .kh-step-item {
+    padding: 2px;
   }
 
-  .kh-actions {
-    flex-direction: column;
-    align-items: stretch;
+  .kh-step-dot {
+    width: 8px;
+    height: 8px;
+    border-width: 1.5px;
   }
 
-  .kh-btn {
-    justify-content: center;
-    width: 100%;
+  .kh-step-item.is-active .kh-step-dot {
+    transform: scale(1.3);
+  }
+
+  .kh-stepper-line,
+  .kh-stepper-progress {
+    display: none;
+  }
+
+  .kh-vertical-copyright {
+    display: none;
   }
 
   .kh-scroll-down {
     right: 1.25rem;
     bottom: 1.25rem;
+    width: 42px;
+    height: 48px;
   }
 }
 
-/* Compact Height Viewports (Laptops with taskbars / high zoom) */
-@media (max-height: 760px) {
+/* --- SMALL MOBILE (< 380px) --- */
+@media (max-width: 380px) {
+  .kh-headline {
+    font-size: 1.25rem;
+  }
+  .kh-description {
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+  .kh-btn {
+    padding: 0.65rem 1rem;
+    font-size: 0.7rem;
+  }
+  .kh-crest-svg {
+    width: 44px;
+    height: 30px;
+  }
+  .kh-wordmark {
+    display: none;
+  }
+  .kh-logo-divider {
+    display: none;
+  }
+}
+
+/* --- COMPACT HEIGHT (Mobile Landscape or Small Laptops) --- */
+@media (max-height: 700px) {
   :root {
-    --kh-header-height: 68px;
+    --kh-header-height: 58px;
   }
 
   .kh-eyebrow {
-    font-size: 1.15rem;
-    margin-bottom: 0.65rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.35rem;
   }
 
   .kh-headline {
-    font-size: 1.4rem;
-    line-height: 1.25;
-    margin-bottom: 0.85rem;
-    max-width: 480px;
+    font-size: 1.35rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
   }
 
   .kh-description {
-    font-size: 0.8rem;
-    line-height: 1.55;
-    margin-bottom: 1.5rem;
-    max-width: 420px;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    margin-bottom: 1rem;
+    max-width: 480px;
   }
 
   .kh-actions {
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 
   .kh-btn {
-    padding: 0.6rem 1.15rem;
+    padding: 0.55rem 1rem;
     font-size: 0.68rem;
+  }
+
+  .kh-stepper {
+    gap: 1.5rem;
   }
 }
 

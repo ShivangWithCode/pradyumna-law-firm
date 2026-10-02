@@ -7,7 +7,7 @@ import { teamMembers } from '../data/teamMembers.js';
 import { insights } from '../data/insights.js';
 
 export function initSearchModal() {
-  const searchBtn = document.querySelector('.header-action-btn.search-btn');
+  const searchBtn = document.querySelector('.search-btn');
   const overlay = document.querySelector('.search-modal-overlay');
   const closeBtn = document.querySelector('.search-close-trigger');
   const input = document.querySelector('.search-input-field');

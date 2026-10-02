@@ -5,37 +5,47 @@
 export const siteConfig = {
   firmName: "Pradyumna Law Associates",
   shortName: "PLA",
-  founder: "Pradyumna Tyagi",
-  tagline: "Strategic Legal Counsel. Trusted Representation.",
-  jurisdiction: "Supreme Court of India | High Court of Delhi | Allahabad & Lucknow Bench",
+  founder: "Advocate Pradyumna Tyagi",
+  tagline: "Strategic Courtroom Advocacy. Institutional Legal Counsel.",
+  jurisdiction: "Supreme Court of India | High Court of Delhi | NCLT / NCLAT | Appellate Tribunals",
   
   appointments: [
+    "Central Govt. Counsel (Panel), Supreme Court of India",
     "Addl. Standing Counsel, High Court of Delhi",
-    "Central Govt. Counsel, Supreme Court of India",
-    "Panel Counsel, NBCC (India) Limited",
-    "Panel Counsel, Punjab & Sind Bank, Delhi"
+    "Panel Counsel, Municipal Corporation of Delhi (MCD)",
+    "Panel Counsel, NBCC (India) Limited (Navratna CPSE)",
+    "Panel Counsel, Punjab & Sind Bank"
   ],
+
+  education: [
+    "Master of Laws (LL.M.) – Indian Law Institute (ILI), New Delhi",
+    "Bachelor of Laws (LL.B.) – Campus Law Centre (CLC), University of Delhi",
+    "B.Com – Shaheed Bhagat Singh College (SBSC), University of Delhi"
+  ],
+
+  experience: "10+ Years of Courtroom Litigation & Strategic Counsel",
 
   contact: {
     phone: import.meta.env.VITE_OFFICE_PHONE || "+919415000000",
     displayPhone: import.meta.env.VITE_OFFICE_PHONE_DISPLAY || "+91 (0) 94150 00000",
-    email: import.meta.env.VITE_CONTACT_EMAIL || "contact@pradyumnalaw.com",
-    consultationEmail: import.meta.env.VITE_CONSULTATION_EMAIL || "counsel@pradyumnalaw.com",
+    email: "pradyumna.ptlo@gmail.com",
+    secondaryEmail: "contact@pradyumnalaw.com",
+    consultationEmail: "counsel@pradyumnalaw.com",
     whatsAppNumber: import.meta.env.VITE_WHATSAPP_NUMBER || "919415000000",
     whatsAppDisplay: import.meta.env.VITE_WHATSAPP_DISPLAY || "+91 94150 00000",
     officeAddress: {
-      line1: "Law Chambers",
-      locality: "Delhi & Lucknow",
-      city: "New Delhi / Lucknow",
-      state: "Delhi & UP",
+      line1: "50, First Floor, Todarmal Road",
+      locality: "Bengali Market, Connaught Place",
+      city: "New Delhi",
+      pincode: "110001",
       country: "India"
     },
     hours: "Monday – Saturday: 09:30 AM – 07:30 PM",
-    googleMapsUrl: "https://maps.google.com/?q=Delhi+High+Court"
+    googleMapsUrl: "https://maps.google.com/?q=Bengali+Market+New+Delhi"
   },
 
   social: {
-    linkedin: "https://linkedin.com/in/pradyumna-tyagi",
+    linkedin: "https://www.linkedin.com/in/pradyumna-tyagi-001010111/",
     twitter: "https://twitter.com/pradyumnalaw"
   },
 
