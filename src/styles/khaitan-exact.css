@@ -441,32 +441,32 @@ html, body {
   opacity: 0.85;
 }
 
-/* Bespoke Crest Monogram Emblem (Exact Leather Journal Insignia Match) */
+/* Bespoke Interlocking Crest Monogram Emblem (Exact PLA Legal Brand Match) */
 .kh-crest-wrapper {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--kh-navy-dark);
+  color: #C59A27;
   transition: color 0.3s ease, transform 0.25s ease;
   line-height: 0;
   flex-shrink: 0;
 }
 
 .kh-crest-svg {
-  width: 62px;
-  height: 42px;
+  width: 54px;
+  height: 35px;
   display: block;
   overflow: visible;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
+  filter: drop-shadow(0 1px 2px rgba(197, 154, 39, 0.2));
   transition: filter 0.3s ease;
 }
 
 .kh-header.theme-dark-logo .kh-crest-wrapper {
-  color: #FFFFFF;
+  color: #ECC260;
 }
 
 .kh-header.theme-dark-logo .kh-crest-svg {
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
 }
 
 .kh-logo:hover .kh-crest-wrapper {
@@ -475,49 +475,52 @@ html, body {
 
 /* Fallback Monogram */
 .kh-monogram {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
   font-size: 2rem;
   font-weight: 700;
   line-height: 1;
-  color: var(--kh-navy-dark);
+  color: #C59A27;
   transition: color 0.3s ease;
 }
 
 .kh-header.theme-dark-logo .kh-monogram {
-  color: #FFFFFF;
+  color: #ECC260;
 }
 
 .kh-logo-divider {
   width: 1.5px;
-  height: 2rem;
-  background-color: rgba(0, 35, 82, 0.3);
+  height: 2.1rem;
+  background-color: rgba(0, 43, 91, 0.3);
   transition: background-color 0.3s ease;
 }
 
 .kh-header.theme-dark-logo .kh-logo-divider {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.65);
 }
 
 .kh-wordmark {
   display: flex;
   flex-direction: column;
-  line-height: 1.08;
+  line-height: 1.15;
+  font-family: 'Cinzel', Georgia, serif;
 }
 
 .kh-wordmark span:first-child {
-  font-size: 0.8rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.86rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   color: var(--kh-navy-dark);
   transition: color 0.3s ease;
 }
 
 .kh-wordmark span:nth-child(2),
 .kh-wordmark span:last-child {
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  color: #334155;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--kh-navy-dark);
   margin-top: 1px;
   transition: color 0.3s ease;
 }
@@ -525,7 +528,7 @@ html, body {
 .kh-header.theme-dark-logo .kh-wordmark span:first-child,
 .kh-header.theme-dark-logo .kh-wordmark span:nth-child(2),
 .kh-header.theme-dark-logo .kh-wordmark span:last-child {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 /* Header Icons on Right (Over the dark photograph: ALWAYS PURE WHITE) */
