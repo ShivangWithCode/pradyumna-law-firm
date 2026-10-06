@@ -118,12 +118,23 @@ export function initFullScreenMenu() {
             if (window.goToSlide) window.goToSlide(1);
             break;
 
-          case 'careers':
-            window.open(
-              `https://wa.me/${siteConfig.contact.whatsAppNumber}?text=${encodeURIComponent('Hello Chambers, I am writing regarding career and associate opportunities at Pradyumna Law Associates.')}`,
-              '_blank'
+          case 'careers': {
+            const emailTo = siteConfig.contact.email || 'pradyumna@pradyumnalaw.com';
+            const ccEmail = 'Pradyumna.ptlo@gmail.com';
+            const subject = encodeURIComponent('Career Application / CV Submission – Pradyumna Law Associates');
+            const body = encodeURIComponent(
+              'Dear Adv. Pradyumna Tyagi,\n\n' +
+              'I am writing to express my interest in joining Pradyumna Law Associates. Please find attached my Curriculum Vitae (CV) for your consideration.\n\n' +
+              'Applicant Name:\n' +
+              'Contact Number:\n' +
+              'Bar Council Enrollment No. (if applicable):\n' +
+              'Years of PQE / Experience:\n' +
+              'Primary Areas of Practice / Interest:\n\n' +
+              'Regards,\n'
             );
+            window.location.href = `mailto:${emailTo}?cc=${ccEmail}&subject=${subject}&body=${body}`;
             break;
+          }
 
           case 'blog':
           case 'dei':
