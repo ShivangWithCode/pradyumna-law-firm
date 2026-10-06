@@ -14,7 +14,7 @@ export function initSearchModal() {
   const resultsContainer = document.querySelector('.search-results-panel');
   const quickPills = document.querySelectorAll('.search-quick-pill');
 
-  if (!searchBtn || !overlay || !input || !resultsContainer) return;
+  if (!overlay || !input || !resultsContainer) return;
 
   // Flatten searchable documents
   const searchableIndex = [
@@ -25,11 +25,19 @@ export function initSearchModal() {
       target: `#expertise`,
       keywords: `${p.title} ${p.summary} ${p.subPractices.join(' ')}`
     })),
+    {
+      type: 'Official Credential',
+      title: 'Panel Counsel — Government of India (Supreme Court)',
+      snippet: 'Ministry of Law & Justice, Department of Legal Affairs order dated 21 November 2025 engaging Advocate Pradyumna Tyagi for Central Government litigation before the Supreme Court of India.',
+      target: '#credentials',
+      keywords: 'Government of India Ministry of Law Justice Supreme Court Panel Counsel Central Government Litigation 21 November 2025 Judicial Section Pradyumna Tyagi'
+    },
     ...teamMembers.map(t => ({
       type: 'Counsel / Team',
       title: `${t.name} — ${t.designation}`,
       snippet: `${t.courtAffiliation} | ${t.primaryPractices.join(', ')}`,
       target: `#people`,
+      memberId: t.id,
       keywords: `${t.name} ${t.designation} ${t.primaryPractices.join(' ')}`
     })),
     ...insights.map(i => ({
@@ -55,7 +63,7 @@ export function initSearchModal() {
     overlay.classList.remove('is-active');
     overlay.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('menu-open');
-    searchBtn.focus();
+    if (searchBtn) searchBtn.focus();
   }
 
   function renderResults(query) {
@@ -95,8 +103,20 @@ export function initSearchModal() {
         <p class="result-snippet">${escapeHtml(item.snippet)}</p>
       `;
 
-      el.addEventListener('click', () => {
-        closeSearch();
+      el.addEventListener('click', (e) => {
+        if (item.target === '#credentials') {
+          e.preventDefault();
+          closeSearch();
+          if (window.openCredentialsModal) {
+            window.openCredentialsModal();
+          }
+        } else if (item.memberId && window.openTeamModal) {
+          e.preventDefault();
+          closeSearch();
+          window.openTeamModal(item.memberId);
+        } else {
+          closeSearch();
+        }
       });
 
       resultsContainer.appendChild(el);
@@ -115,8 +135,11 @@ export function initSearchModal() {
     );
   }
 
-  searchBtn.addEventListener('click', openSearch);
+  if (searchBtn) searchBtn.addEventListener('click', openSearch);
   if (closeBtn) closeBtn.addEventListener('click', closeSearch);
+
+  window.openSearchModal = openSearch;
+  window.closeSearchModal = closeSearch;
 
   input.addEventListener('input', (e) => {
     renderResults(e.target.value.trim());

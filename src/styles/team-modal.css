@@ -1,0 +1,1137 @@
+/**
+ * Editorial Team Modal & Counsel Dossier Stylesheet
+ * Pradyumna Law Associates (Khaitan & Co Inspired Visual Architecture)
+ * 
+ * COLOR PALETTE SPECIFICATION (Derived from Khaitan & Co People Profiles):
+ * - Canvas Background: Pure White (#FFFFFF)
+ * - Hero Photo Backdrop: Soft Pastel Ice Blue (#C7DCEB / #D4E4F0)
+ * - Signature Profile Card: Deep Khaitan Royal Blue (#0C4A80 / #0A3D6B)
+ * - Brand Accent & Active Underlines: Crisp Sky Blue (#0284C7 / #0084BF)
+ * - Dark Typography: Deep Corporate Navy (#002352 / #0F172A) & Slate (#334155)
+ * - Card Subtitle on Dark Blue: Light Sky Blue (#7EB6E8)
+ */
+
+:root {
+  --team-white: #FFFFFF;
+  --team-bg: #FFFFFF;
+  --team-bg-subtle: #F8FAFC;
+  --team-bg-ice: #C7DCEB;       /* Khaitan Photo Backdrop */
+  --team-bg-ice-light: #EBF4FA; /* Soft ice pill / badge background */
+
+  /* Khaitan Signature Blues */
+  --khaitan-royal-blue: #0C4A80; /* The rich royal blue card from screenshot */
+  --khaitan-royal-dark: #083761;
+  --khaitan-sky-blue: #0284C7;   /* The sky blue link, tab underline & title color */
+  --khaitan-sky-light: #7EB6E8;  /* Light sky blue subtitle on dark card */
+  --khaitan-sky-glow: rgba(2, 132, 199, 0.22);
+  --khaitan-sky-border: rgba(2, 132, 199, 0.25);
+
+  --team-navy-dark: #002352;
+  --team-navy-text: #0F172A;
+  --team-slate-body: #334155;
+  --team-slate-muted: #64748B;
+  --team-border-light: #E2E8F0;
+}
+
+/* ==========================================================================
+   Full Modal Backdrop (Pure White Editorial Canvas)
+   ========================================================================== */
+.team-modal-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #FFFFFF;
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.team-modal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   Header Bar (Pure White with Crisp Khaitan Branding)
+   ========================================================================== */
+.team-modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 25;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--team-border-light);
+  box-shadow: 0 2px 12px rgba(0, 35, 82, 0.04);
+  padding: 1rem var(--container-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.team-modal-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.team-modal-brand .kh-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.team-modal-brand .kh-crest-img {
+  width: 52px;
+  height: 34px;
+  max-width: 52px;
+  max-height: 34px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(0, 35, 82, 0.15));
+}
+
+.team-modal-brand .kh-logo-divider {
+  width: 1.5px;
+  height: 2rem;
+  background-color: rgba(0, 35, 82, 0.3);
+}
+
+.team-modal-brand .kh-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.08;
+}
+
+.team-modal-brand .kh-wordmark span:first-child {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--kh-navy-dark, #002352);
+}
+
+.team-modal-brand .kh-wordmark span:nth-child(2),
+.team-modal-brand .kh-wordmark span:last-child {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: #334155;
+  margin-top: 1px;
+}
+
+.team-modal-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--khaitan-sky-blue);
+  background-color: var(--team-bg-ice-light);
+  border: 1px solid var(--khaitan-sky-border);
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .team-modal-pill {
+    display: none;
+  }
+}
+
+.team-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.team-modal-close-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 1.25rem;
+  border: 1.5px solid var(--khaitan-sky-blue);
+  background: #FFFFFF;
+  color: var(--khaitan-sky-blue);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.team-modal-close-btn:hover {
+  background: var(--khaitan-sky-blue);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px var(--khaitan-sky-glow);
+  transform: translateY(-1px);
+}
+
+.team-modal-close-btn svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke: currentColor;
+}
+
+/* ==========================================================================
+   Scrollable Body & Container
+   ========================================================================== */
+.team-modal-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2.5rem var(--container-pad) 6rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.team-modal-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* Breadcrumb & Intro Section (Khaitan & Co Style) */
+.team-intro-section {
+  margin-bottom: 2.25rem;
+}
+
+.team-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+  color: var(--team-slate-muted);
+  margin-bottom: 0.85rem;
+}
+
+.team-breadcrumb-home {
+  width: 17px;
+  height: 17px;
+  color: var(--khaitan-sky-blue);
+  stroke: var(--khaitan-sky-blue);
+}
+
+.team-breadcrumb-sep {
+  color: var(--team-slate-muted);
+  font-size: 0.9rem;
+}
+
+.team-breadcrumb-current {
+  color: var(--team-slate-body);
+  font-weight: 500;
+}
+
+.team-headline {
+  font-family: var(--font-sans);
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--khaitan-sky-blue);
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.015em;
+}
+
+.team-lead {
+  font-size: 1.05rem;
+  line-height: 1.68;
+  color: var(--team-slate-body);
+  max-width: 900px;
+}
+
+/* ==========================================================================
+   Khaitan & Co Horizontal Navigation Tabs
+   ========================================================================== */
+.team-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--team-border-light);
+  margin-bottom: 2.5rem;
+  padding-bottom: 0;
+  overflow-x: auto;
+  gap: 1.5rem;
+}
+
+.team-tabs-list {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.team-tabs-list::-webkit-scrollbar {
+  display: none;
+}
+
+.team-filter-btn {
+  white-space: nowrap;
+  padding: 0.85rem 0.15rem 0.95rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--team-navy-text);
+  font-size: 0.98rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-bottom: -1px;
+}
+
+.team-filter-btn:hover {
+  color: var(--khaitan-sky-blue);
+}
+
+.team-filter-btn.is-active {
+  color: var(--khaitan-sky-blue);
+  font-weight: 700;
+  border-bottom-color: var(--khaitan-sky-blue);
+}
+
+.team-tab-actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.team-download-cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--khaitan-sky-blue);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.team-download-cv-btn:hover {
+  color: #0369A1;
+  text-decoration: underline;
+}
+
+.team-download-cv-btn svg {
+  stroke: currentColor;
+}
+
+@media (max-width: 768px) {
+  .team-tab-actions {
+    display: none;
+  }
+  .team-tabs-list {
+    gap: 1.4rem;
+  }
+  .team-filter-btn {
+    font-size: 0.88rem;
+  }
+}
+
+/* ==========================================================================
+   Khaitan & Co Signature Split Profile Card: Founder Advocate Pradyumna Tyagi
+   ========================================================================== */
+.founder-spotlight-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid var(--team-border-light);
+  box-shadow: 0 10px 30px rgba(0, 35, 82, 0.07);
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  margin-bottom: 3.5rem;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+/* Left Column: Passport Photo Frame in Marked Upper Section + Professional Metadata */
+.founder-portrait-column {
+  background-color: var(--team-bg-ice);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.founder-passport-frame {
+  width: 100%;
+  height: 310px;
+  position: relative;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  border-bottom: 2px solid var(--khaitan-sky-border);
+}
+
+.founder-passport-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Sidebar credentials fully filling the space below the photo */
+.founder-credentials-sidebar {
+  padding: 1.5rem 1.6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1;
+  background: linear-gradient(180deg, var(--team-bg-ice) 0%, rgba(212, 228, 240, 0.95) 100%);
+}
+
+.sidebar-cred-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebar-cred-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--khaitan-royal-blue);
+  border-bottom: 1px solid rgba(12, 74, 128, 0.15);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.sidebar-cred-val {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--team-navy-text);
+  line-height: 1.35;
+}
+
+.sidebar-cred-sub {
+  font-size: 0.8rem;
+  color: var(--team-slate-body);
+  line-height: 1.35;
+}
+
+.sidebar-cred-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sidebar-cred-list li {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--team-slate-body);
+  position: relative;
+  padding-left: 1rem;
+}
+
+.sidebar-cred-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--khaitan-sky-blue);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Right Column: Deep Khaitan Royal Blue Box (#0C4A80) */
+.founder-info-column {
+  background-color: var(--khaitan-royal-blue);
+  color: #FFFFFF;
+  padding: clamp(2rem, 3.5vw, 3.25rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.founder-header-group {
+  margin-bottom: 1.15rem;
+}
+
+.founder-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.founder-name {
+  font-family: var(--font-sans);
+  font-size: clamp(1.65rem, 2.5vw, 2.15rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+}
+
+.founder-linkedin-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid #FFFFFF;
+  border-radius: 4px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all var(--transition-fast);
+}
+
+.founder-linkedin-badge:hover {
+  background-color: #FFFFFF;
+  color: var(--khaitan-royal-blue);
+}
+
+.founder-role-lead {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--khaitan-sky-light);
+  line-height: 1.45;
+}
+
+/* Contact Line (T: ... | E: ...) */
+.founder-contact-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.92rem;
+  color: #FFFFFF;
+  margin-bottom: 1.45rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.founder-contact-item a {
+  color: #FFFFFF;
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.founder-contact-item a:hover {
+  color: var(--khaitan-sky-light);
+}
+
+/* Education & Admissions Section */
+.founder-credentials-section {
+  margin-bottom: 1.4rem;
+}
+
+.founder-credentials-heading {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.65rem;
+  letter-spacing: 0.01em;
+}
+
+.founder-credentials-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.founder-credentials-bullets li {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #E0F2FE;
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.founder-credentials-bullets li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--khaitan-sky-light);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.founder-credentials-bullets li strong {
+  color: #FFFFFF;
+}
+
+.founder-bio-text {
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.85rem;
+}
+
+/* Actions Row inside Blue Box */
+.founder-actions-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: auto;
+}
+
+.counsel-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.4rem;
+  background: var(--khaitan-sky-blue);
+  color: #FFFFFF;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--khaitan-sky-blue);
+  border-radius: 2px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.counsel-primary-btn:hover {
+  background: #0369A1;
+  border-color: #0369A1;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px var(--khaitan-sky-glow);
+}
+
+.counsel-outline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.35rem;
+  background: transparent;
+  color: #FFFFFF;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1.5px solid #FFFFFF;
+  border-radius: 2px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.counsel-outline-btn:hover {
+  background: #FFFFFF;
+  color: var(--khaitan-royal-blue);
+}
+
+.counsel-outline-btn svg,
+.counsel-primary-btn svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+}
+
+@media (max-width: 900px) {
+  .founder-spotlight-card {
+    grid-template-columns: 1fr;
+  }
+  .founder-portrait-column {
+    min-height: 350px;
+  }
+}
+
+/* ==========================================================================
+   Counsel Roster Grid (Pure White Canvas with Khaitan Sky/Royal Styling)
+   ========================================================================== */
+.counsel-roster-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.85rem;
+  border-bottom: 2px solid var(--team-border-light);
+  padding-bottom: 0.85rem;
+}
+
+.counsel-roster-title {
+  font-family: var(--font-sans);
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: var(--khaitan-royal-blue);
+  letter-spacing: -0.01em;
+}
+
+.counsel-roster-count {
+  font-size: 0.86rem;
+  color: var(--khaitan-sky-blue);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.counsel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.85rem;
+}
+
+.counsel-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid var(--team-border-light);
+  border-radius: 3px;
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0, 35, 82, 0.04);
+}
+
+.counsel-card:hover {
+  background: #FFFFFF;
+  border-color: var(--khaitan-sky-blue);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(2, 132, 199, 0.14);
+}
+
+.counsel-card-top {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-bottom: 1.25rem;
+}
+
+.counsel-monogram {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--team-bg-ice);
+  border: 1.5px solid var(--khaitan-sky-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.counsel-monogram.has-photo {
+  padding: 0;
+  overflow: hidden;
+  border: 1.5px solid var(--khaitan-royal-blue);
+  background: #f0f4f9;
+}
+
+.counsel-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.counsel-header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.counsel-card-name {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--khaitan-royal-blue);
+  margin-bottom: 0.2rem;
+  transition: color var(--transition-fast);
+}
+
+.counsel-card:hover .counsel-card-name {
+  color: var(--khaitan-sky-blue);
+}
+
+.counsel-card-designation {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--khaitan-sky-blue);
+}
+
+.counsel-card-court {
+  font-size: 0.86rem;
+  color: var(--team-slate-body);
+  line-height: 1.45;
+  margin-bottom: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--team-border-light);
+}
+
+.counsel-practice-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+}
+
+.counsel-tag {
+  font-size: 0.74rem;
+  padding: 0.28rem 0.65rem;
+  background: var(--team-bg-ice-light);
+  border: 1px solid var(--khaitan-sky-border);
+  color: #0369A1;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+.counsel-card-quote {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--team-slate-body);
+  line-height: 1.5;
+  margin-bottom: 1.35rem;
+  flex: 1;
+}
+
+.counsel-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--team-border-light);
+}
+
+.counsel-view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--khaitan-sky-blue);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.counsel-card:hover .counsel-view-link {
+  color: #0369A1;
+}
+
+.counsel-view-link svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition-fast);
+  stroke: currentColor;
+}
+
+.counsel-card:hover .counsel-view-link svg {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Counsel Dossier Drawer (Khaitan Split Style)
+   ========================================================================== */
+.counsel-dossier-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(650px, 100vw);
+  background: #FFFFFF;
+  border-left: 2px solid var(--khaitan-royal-blue);
+  box-shadow: -15px 0 45px rgba(0, 35, 82, 0.15);
+  z-index: 100;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.counsel-dossier-drawer.is-open {
+  transform: translateX(0);
+}
+
+.dossier-header {
+  padding: 1.35rem 2rem;
+  border-bottom: 1px solid var(--team-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--khaitan-royal-blue);
+  color: #FFFFFF;
+}
+
+.dossier-header-title {
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.dossier-close-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+  padding: 0.4rem 0.85rem;
+  border-radius: 2px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dossier-close-btn:hover {
+  background: #FFFFFF;
+  color: var(--khaitan-royal-blue);
+}
+
+.dossier-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.85rem;
+}
+
+.dossier-hero {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 1.65rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #F0F6FC 0%, #FFFFFF 100%);
+  border: 1px solid #D0E1F5;
+  border-left: 4px solid var(--khaitan-royal-blue);
+  border-radius: 4px;
+  align-items: stretch;
+  box-shadow: 0 4px 16px rgba(0, 35, 82, 0.06);
+}
+
+.dossier-portrait-frame {
+  width: 100%;
+  height: 230px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #001B40;
+  border: 1px solid rgba(0, 56, 130, 0.2);
+  box-shadow: 0 4px 14px rgba(0, 27, 64, 0.15);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dossier-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+
+.dossier-fallback-initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #001B40 0%, #003882 100%);
+}
+
+.dossier-hero-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.dossier-designation {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #0077C8;
+  margin-bottom: 0.4rem;
+  display: inline-block;
+  line-height: 1.35;
+}
+
+.dossier-name {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #002352;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+  line-height: 1.22;
+}
+
+.dossier-role-text {
+  font-size: 0.9rem;
+  line-height: 1.52;
+  color: #334155;
+  margin: 0 0 0.75rem 0;
+}
+
+.dossier-court-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #003882;
+  background: #E8F2FC;
+  border: 1px solid #BFDBFE;
+  padding: 5px 10px;
+  border-radius: 3px;
+  width: fit-content;
+}
+
+.dossier-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dossier-block-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--khaitan-royal-blue);
+  border-bottom: 1px solid var(--team-border-light);
+  padding-bottom: 0.35rem;
+}
+
+.dossier-block-content {
+  font-size: 0.94rem;
+  line-height: 1.62;
+  color: var(--team-slate-body);
+}
+
+.dossier-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.dossier-list li {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--team-navy-text);
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.dossier-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--khaitan-sky-blue);
+  font-size: 1.1rem;
+}
+
+.dossier-footer {
+  padding: 1.25rem 2rem;
+  border-top: 1px solid var(--team-border-light);
+  background: var(--team-bg-subtle);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dossier-footer .counsel-outline-btn {
+  color: var(--khaitan-royal-blue);
+  border-color: var(--khaitan-royal-blue);
+}
+
+.dossier-footer .counsel-outline-btn:hover {
+  background: var(--khaitan-royal-blue);
+  color: #FFFFFF;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .team-modal-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .team-modal-brand .kh-wordmark,
+  .team-modal-brand .kh-logo-divider {
+    display: none;
+  }
+
+  .team-modal-scroll-area {
+    padding: 1.25rem 0.85rem 4rem;
+  }
+
+  .team-headline {
+    font-size: 1.65rem;
+    line-height: 1.2;
+  }
+
+  .founder-spotlight-card {
+    margin-bottom: 2.25rem;
+  }
+
+  .founder-info-column {
+    padding: 1.35rem 1.15rem;
+  }
+
+  .counsel-grid {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .counsel-card {
+    padding: 1.35rem;
+  }
+
+  .counsel-dossier-drawer {
+    width: 100vw;
+  }
+
+  .dossier-body {
+    padding: 1.25rem;
+  }
+
+  .dossier-hero {
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .dossier-portrait-frame {
+    height: 160px;
+  }
+
+  .dossier-name {
+    font-size: 1.25rem;
+  }
+
+  .dossier-role-text {
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+}

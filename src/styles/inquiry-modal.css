@@ -1,0 +1,252 @@
+/**
+ * Inquiry & Direct Chambers Consultation Modal
+ * Pradyumna Law Associates
+ */
+
+.inquiry-modal-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10001;
+  background-color: rgba(0, 27, 64, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+}
+
+.inquiry-modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.inquiry-modal-card {
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 580px;
+  box-shadow: 0 24px 64px rgba(0, 27, 64, 0.35);
+  overflow: hidden;
+  position: relative;
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inquiry-modal-overlay.is-open .inquiry-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.inquiry-modal-header {
+  background: linear-gradient(135deg, #002B66 0%, #003882 100%);
+  color: #FFFFFF;
+  padding: 2rem 2.25rem 1.75rem;
+  position: relative;
+}
+
+.inquiry-modal-tag {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #38BDF8;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.inquiry-modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.inquiry-modal-subtitle {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.inquiry-modal-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  color: #FFFFFF;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.inquiry-modal-close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.08);
+}
+
+.inquiry-modal-close-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: #FFFFFF;
+}
+
+.inquiry-modal-body {
+  padding: 2rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inquiry-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.inquiry-info-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #F1F5F9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #003882;
+  flex-shrink: 0;
+}
+
+.inquiry-info-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.inquiry-info-content {
+  flex: 1;
+}
+
+.inquiry-info-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  margin-bottom: 2px;
+}
+
+.inquiry-info-val {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #0F172A;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.inquiry-info-val a {
+  color: #003882;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.inquiry-info-val a:hover {
+  color: #0077C8;
+  text-decoration: underline;
+}
+
+.inquiry-actions-group {
+  display: flex;
+  gap: 12px;
+  padding-top: 0.5rem;
+}
+
+.inquiry-btn-whatsapp {
+  flex: 1;
+  background-color: #003882;
+  color: #FFFFFF;
+  padding: 13px 20px;
+  border-radius: 3px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.inquiry-btn-whatsapp:hover {
+  background-color: #002557;
+}
+
+.inquiry-btn-call {
+  background-color: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  color: #0F172A;
+  padding: 13px 20px;
+  border-radius: 3px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.inquiry-btn-call:hover {
+  border-color: #003882;
+  color: #003882;
+  background-color: #FFFFFF;
+}
+
+@media (max-width: 600px) {
+  .inquiry-modal-overlay {
+    padding: 1rem;
+  }
+
+  .inquiry-modal-card {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .inquiry-modal-header,
+  .inquiry-modal-body {
+    padding: 1.35rem 1.15rem;
+  }
+
+  .inquiry-modal-title {
+    font-size: 1.35rem;
+  }
+
+  .inquiry-actions-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .inquiry-btn-whatsapp,
+  .inquiry-btn-call {
+    width: 100%;
+    min-height: 46px;
+    justify-content: center;
+  }
+}

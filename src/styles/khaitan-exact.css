@@ -76,15 +76,30 @@ html, body {
 /* ==========================================================================
    Full Bleed Photographic Canvas & Dynamic Split Overlays
    ========================================================================== */
+.kh-slide-bg-window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .kh-slide-bg {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center right;
   z-index: 1;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
 
 #slide-0 {
@@ -99,6 +114,7 @@ html, body {
   width: 100%;
   height: 100%;
   z-index: 1;
+  overflow: hidden;
 }
 
 #slide-0 .kh-slide-bg,
@@ -111,7 +127,65 @@ html, body {
   object-fit: cover;
   object-position: center center;
   z-index: 1;
-  transform: none;
+  transform: scale(1);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   CINEMATIC KEN BURNS MOTION (Silky-Smooth Slow Drift & Zoom on Active Slides)
+   ========================================================================== */
+#slide-0.is-active .kh-slide-bg,
+#slide-0.is-active .kh-slide-bg-picture img {
+  animation: kenBurnsSlide0 16s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
+}
+
+#slide-1.is-active .kh-slide-bg {
+  animation: kenBurnsSlide1 16s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
+}
+
+#slide-2.is-active .kh-slide-bg {
+  animation: kenBurnsSlide2 16s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
+}
+
+#slide-3.is-active .kh-slide-bg {
+  animation: kenBurnsSlide3 16s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
+}
+
+@keyframes kenBurnsSlide0 {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.06) translate3d(-1%, -1%, 0);
+  }
+}
+
+@keyframes kenBurnsSlide1 {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.07) translate3d(1%, -1%, 0);
+  }
+}
+
+@keyframes kenBurnsSlide2 {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.06) translate3d(-1%, 0.8%, 0);
+  }
+}
+
+@keyframes kenBurnsSlide3 {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.07) translate3d(0, -1.2%, 0);
+  }
 }
 
 /* Slide 0 White Architectural Overlay: Sits over the left 50% (nyay taraju & chamber) */
@@ -217,7 +291,8 @@ html, body {
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 2px;
+  padding-top: 2px;
+  padding-bottom: 4px;
 }
 
 .kh-eyebrow-mask {
@@ -227,12 +302,12 @@ html, body {
 
 .kh-eyebrow {
   display: block;
-  font-size: clamp(1.2rem, 1.45vw, 1.35rem);
-  font-weight: 500;
-  line-height: 1.2;
+  font-size: clamp(1.25rem, 1.55vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.25;
   color: var(--kh-blue-cerulean);
   margin-bottom: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
   opacity: 0;
   transform: translateY(115%);
   transition: opacity 0.45s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
@@ -252,19 +327,19 @@ html, body {
 }
 
 .kh-headline-mask {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.35rem;
 }
 
-/* Main Bold Headline (Exact Khaitan Scale & Royal Navy) */
+/* Main Bold Headline (Exact Khaitan Scale & Royal Navy - Prominent & Crisp) */
 .kh-headline {
   font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-  font-size: clamp(1.85rem, 2.35vw, 2.5rem);
+  font-size: clamp(2.35rem, 3.1vw, 3.35rem);
   font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
   color: #003c8c;
   margin-bottom: 0;
-  max-width: 540px;
+  max-width: 680px;
   opacity: 0;
   transform: translateY(115%);
   transition: opacity 0.5s ease, transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
@@ -280,15 +355,16 @@ html, body {
   margin-bottom: 2.25rem;
 }
 
-/* Paragraph Description (Exact Khaitan Blue & Proportion) */
+/* Paragraph Description (Clear, High-Legibility Font Size & Proportion) */
 .kh-description {
   font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-  font-size: clamp(0.92rem, 1.02vw, 1.02rem);
+  font-size: clamp(1.12rem, 1.25vw, 1.28rem);
   line-height: 1.68;
   color: #003c8c;
-  opacity: 0.92;
+  font-weight: 450;
+  opacity: 0.95;
   margin-bottom: 0;
-  max-width: 520px;
+  max-width: 650px;
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.6s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
@@ -354,15 +430,15 @@ html, body {
 .kh-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.72rem 1.35rem;
+  gap: 0.85rem;
+  padding: 0.82rem 1.6rem;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border-radius: 0;
-  border: 1px solid #00a0dc;
+  border: 1.5px solid #00a0dc;
   color: #003c8c;
   background: transparent;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -394,10 +470,10 @@ html, body {
 }
 
 .kh-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
   stroke: currentColor;
-  stroke-width: 2;
+  stroke-width: 2.2;
   fill: none;
   transition: transform 0.25s ease;
 }
@@ -452,17 +528,33 @@ html, body {
   flex-shrink: 0;
 }
 
+.kh-crest-img {
+  width: 52px;
+  height: 34px;
+  max-width: 52px;
+  max-height: 34px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(0, 35, 82, 0.15));
+  transition: filter 0.3s ease, transform 0.25s ease;
+}
+
 .kh-crest-svg {
-  width: 54px;
-  height: 35px;
+  width: 52px;
+  height: 34px;
   display: block;
   overflow: visible;
   filter: drop-shadow(0 1px 2px rgba(197, 154, 39, 0.2));
-  transition: filter 0.3s ease;
+  transition: filter 0.3s ease, transform 0.25s ease;
 }
 
 .kh-header.theme-dark-logo .kh-crest-wrapper {
   color: #ECC260;
+}
+
+.kh-header.theme-dark-logo .kh-crest-img {
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.65));
 }
 
 .kh-header.theme-dark-logo .kh-crest-svg {
@@ -473,9 +565,9 @@ html, body {
   transform: translateY(-1px) scale(1.04);
 }
 
-/* Fallback Monogram */
+/* Monogram Fallback */
 .kh-monogram {
-  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 2rem;
   font-weight: 700;
   line-height: 1;
@@ -489,38 +581,35 @@ html, body {
 
 .kh-logo-divider {
   width: 1.5px;
-  height: 2.1rem;
-  background-color: rgba(0, 43, 91, 0.3);
+  height: 2rem;
+  background-color: rgba(0, 35, 82, 0.3);
   transition: background-color 0.3s ease;
 }
 
 .kh-header.theme-dark-logo .kh-logo-divider {
-  background-color: rgba(255, 255, 255, 0.65);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .kh-wordmark {
   display: flex;
   flex-direction: column;
-  line-height: 1.15;
-  font-family: 'Cinzel', Georgia, serif;
+  line-height: 1.08;
 }
 
 .kh-wordmark span:first-child {
-  font-family: 'Cinzel', Georgia, serif;
-  font-size: 0.86rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   color: var(--kh-navy-dark);
   transition: color 0.3s ease;
 }
 
 .kh-wordmark span:nth-child(2),
 .kh-wordmark span:last-child {
-  font-family: 'Cinzel', Georgia, serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: var(--kh-navy-dark);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: #334155;
   margin-top: 1px;
   transition: color 0.3s ease;
 }
@@ -528,7 +617,7 @@ html, body {
 .kh-header.theme-dark-logo .kh-wordmark span:first-child,
 .kh-header.theme-dark-logo .kh-wordmark span:nth-child(2),
 .kh-header.theme-dark-logo .kh-wordmark span:last-child {
-  color: #FFFFFF !important;
+  color: #FFFFFF;
 }
 
 /* Header Icons on Right (Over the dark photograph: ALWAYS PURE WHITE) */
@@ -899,454 +988,46 @@ html, body {
 /* --- MOBILE PHONES & PHABLETS (<= 768px) --- */
 @media (max-width: 768px) {
   :root {
-    --kh-header-height: 64px;
+    --kh-header-height: 56px;
   }
 
   .kh-header {
-    padding: 0 1.25rem;
+    padding: 0 1rem;
+    height: var(--kh-header-height);
   }
 
+  .kh-crest-img,
   .kh-crest-svg {
-    width: 50px;
-    height: 34px;
+    width: 42px;
+    height: 26px;
   }
 
   .kh-monogram {
-    font-size: 1.55rem;
+    font-size: 1.5rem;
   }
 
   .kh-wordmark span:first-child {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     letter-spacing: 0.12em;
   }
 
   .kh-wordmark span:nth-child(2),
   .kh-wordmark span:last-child {
-    font-size: 0.58rem;
+    font-size: 0.56rem;
     letter-spacing: 0.12em;
   }
 
   .kh-header-actions {
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 
   .kh-icon-btn {
-    padding: 0.5rem;
-    min-width: 44px;
-    min-height: 44px;
+    padding: 0.4rem;
+    min-width: 40px;
+    min-height: 40px;
   }
 
-  /* ==========================================================================
-     SLIDE 0: KHAITAN & CO EXACT MOBILE ARCHITECTURE (Screenshot 2 Match)
-     - Top ~58vh: Deep Royal Blue Content Card (#003882)
-     - Bottom ~42vh: Photographic Window (Scales of Justice / Chamber)
-     ========================================================================== */
-  #slide-0 .kh-slide-bg-picture,
-  #slide-0 .kh-slide-bg {
-    position: absolute !important;
-    top: auto !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 42vh !important;
-    height: 42dvh !important;
-    z-index: 1 !important;
-    transform: none !important;
-  }
-
-  #slide-0 .kh-slide-bg-picture img,
-  #slide-0 .kh-slide-bg {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center center !important;
-  }
-
-  /* Royal Blue Architectural Top Panel */
-  #slide-0 .kh-overlay-frosted {
-    position: absolute !important;
-    top: 0 !important;
-    bottom: auto !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 58vh !important;
-    height: 58dvh !important;
-    z-index: 2 !important;
-    background: #003882 !important; /* Exact Khaitan Deep Royal Blue */
-    transform: translateY(-100%) !important;
-    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35) !important;
-  }
-
-  #slide-0.is-active .kh-overlay-frosted {
-    transform: translateY(0%) !important;
-  }
-
-  /* Content Container at Top */
-  #slide-0 .kh-content-container {
-    position: absolute !important;
-    top: 0 !important;
-    bottom: auto !important;
-    left: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 58vh !important;
-    height: 58dvh !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-    padding-top: calc(var(--kh-header-height) + 0.65rem) !important;
-    padding-left: 1.35rem !important;
-    padding-right: 1.35rem !important;
-    padding-bottom: 1.15rem !important;
-    box-sizing: border-box !important;
-    z-index: 5 !important;
-    overflow: hidden !important;
-    transform: translateY(-20px);
-    opacity: 0;
-    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-  }
-
-  #slide-0.is-active .kh-content-container {
-    transform: translateY(0) !important;
-    opacity: 1 !important;
-  }
-
-  /* Eyebrow - Matching Headline */
-  #slide-0 .kh-eyebrow {
-    color: #FFFFFF !important;
-    font-size: 0.88rem !important;
-    font-weight: 600 !important;
-    margin-bottom: 0.35rem !important;
-    letter-spacing: 0.02em !important;
-  }
-
-  /* Headline - Pure White */
-  #slide-0 .kh-headline {
-    color: #FFFFFF !important;
-    font-size: clamp(1.22rem, 4.8vw, 1.45rem) !important;
-    font-weight: 700 !important;
-    line-height: 1.24 !important;
-    margin-bottom: 0.45rem !important;
-  }
-
-  /* Description - White 92% */
-  #slide-0 .kh-description {
-    color: rgba(255, 255, 255, 0.92) !important;
-    font-size: 0.8rem !important;
-    line-height: 1.48 !important;
-    margin-bottom: 0.85rem !important;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* Vertically Stacked Action Buttons (Exact Khaitan Style) */
-  #slide-0 .kh-actions {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 0.55rem !important;
-    width: 100% !important;
-    margin-top: auto !important;
-  }
-
-  #slide-0 .kh-btn {
-    width: 100% !important;
-    min-height: 38px !important;
-    padding: 0.55rem 1rem !important;
-    font-size: 0.72rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.08em !important;
-    color: #FFFFFF !important;
-    border: 1px solid rgba(255, 255, 255, 0.7) !important;
-    background: transparent !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
-    border-radius: 0 !important;
-    transition: all 0.25s ease !important;
-  }
-
-  #slide-0 .kh-btn svg {
-    stroke: #FFFFFF !important;
-  }
-
-  #slide-0 .kh-btn:active {
-    background: rgba(255, 255, 255, 0.15) !important;
-    border-color: #FFFFFF !important;
-  }
-
-  #slide-0 .kh-vertical-copyright {
-    display: block !important;
-    writing-mode: horizontal-tb !important;
-    transform: none !important;
-    position: absolute !important;
-    left: 1.25rem !important;
-    bottom: 1.25rem !important;
-    color: rgba(255, 255, 255, 0.7) !important;
-    font-size: 0.65rem !important;
-    z-index: 10 !important;
-  }
-
-  /* ==========================================================================
-     SLIDES 1, 2, 3: KHAITAN & CO EXACT MOBILE ARCHITECTURE
-     - Top ~58vh: Architectural Content Card
-       * Slide 1: Pure White Card (#FFFFFF) with Royal Navy Text (Screenshot 2 Match)
-       * Slide 2: Pure White Card (#FFFFFF) with Royal Navy Text
-       * Slide 3: Deep Royal Blue Card (#003882) with Pure White Text
-     - Bottom ~42vh: Photographic Window (Leather Journal, Boardroom, Pillars)
-     ========================================================================== */
-
-  /* Photographic Windows at Bottom */
-  #slide-1 .kh-slide-bg,
-  #slide-2 .kh-slide-bg,
-  #slide-3 .kh-slide-bg {
-    position: absolute !important;
-    top: auto !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 42vh !important;
-    height: 42dvh !important;
-    z-index: 1 !important;
-    transform: none !important;
-  }
-
-  #slide-1 .kh-slide-bg {
-    object-fit: cover !important;
-    object-position: center 20% !important; /* Shows leather journal and pen clearly */
-  }
-
-  #slide-2 .kh-slide-bg {
-    object-fit: cover !important;
-    object-position: center center !important;
-  }
-
-  #slide-3 .kh-slide-bg {
-    object-fit: cover !important;
-    object-position: center center !important;
-  }
-
-  /* Architectural Top Panels (58vh) */
-  #slide-1 .kh-overlay-royal-blue,
-  #slide-2 .kh-overlay-frosted,
-  #slide-3 .kh-overlay-royal-blue,
-  #slide-3 .kh-overlay-obsidian {
-    position: absolute !important;
-    top: 0 !important;
-    bottom: auto !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 58vh !important;
-    height: 58dvh !important;
-    z-index: 2 !important;
-    transform: translateY(-100%) !important;
-    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3) !important;
-  }
-
-  /* Slide 1: Pure White Card (Screenshot 2 Exact) */
-  #slide-1 .kh-overlay-royal-blue {
-    background: #FFFFFF !important;
-  }
-
-  /* Slide 2: Pure White Card */
-  #slide-2 .kh-overlay-frosted {
-    background: #FFFFFF !important;
-  }
-
-  /* Slide 3: Deep Royal Blue Card */
-  #slide-3 .kh-overlay-royal-blue,
-  #slide-3 .kh-overlay-obsidian {
-    background: #003882 !important;
-  }
-
-  #slide-1.is-active .kh-overlay-royal-blue,
-  #slide-2.is-active .kh-overlay-frosted,
-  #slide-3.is-active .kh-overlay-royal-blue,
-  #slide-3.is-active .kh-overlay-obsidian {
-    transform: translateY(0%) !important;
-  }
-
-  /* Content Containers on Slide 1, 2, 3: Inside Top 58vh Card */
-  #slide-1 .kh-content-container,
-  #slide-2 .kh-content-container,
-  #slide-3 .kh-content-container {
-    position: absolute !important;
-    top: 0 !important;
-    bottom: auto !important;
-    left: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 58vh !important;
-    height: 58dvh !important;
-    padding-top: calc(var(--kh-header-height) + 0.65rem) !important;
-    padding-left: 1.35rem !important;
-    padding-right: 1.35rem !important;
-    padding-bottom: 1.15rem !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-    box-sizing: border-box !important;
-    z-index: 5 !important;
-    overflow: hidden !important;
-    transform: translateY(-20px);
-    opacity: 0;
-    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-  }
-
-  #slide-1.is-active .kh-content-container,
-  #slide-2.is-active .kh-content-container,
-  #slide-3.is-active .kh-content-container {
-    transform: translateY(0) !important;
-    opacity: 1 !important;
-  }
-
-  /* SLIDE 1 & SLIDE 2 (WHITE CARDS): Royal Navy Text & Blue Outline Buttons */
-  #slide-1 .kh-eyebrow,
-  #slide-2 .kh-eyebrow {
-    color: #0077C8 !important; /* Cerulean Blue */
-    font-size: 0.88rem !important;
-    font-weight: 600 !important;
-    margin-bottom: 0.35rem !important;
-    letter-spacing: 0.02em !important;
-  }
-
-  #slide-1 .kh-headline,
-  #slide-2 .kh-headline {
-    color: #003882 !important; /* Deep Royal Navy */
-    font-size: clamp(1.22rem, 4.8vw, 1.45rem) !important;
-    font-weight: 700 !important;
-    line-height: 1.24 !important;
-    margin-bottom: 0.45rem !important;
-  }
-
-  #slide-1 .kh-description,
-  #slide-2 .kh-description {
-    color: #003882 !important;
-    opacity: 0.92 !important;
-    font-size: 0.8rem !important;
-    line-height: 1.48 !important;
-    margin-bottom: 0.85rem !important;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  #slide-1 .kh-actions,
-  #slide-2 .kh-actions {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 0.55rem !important;
-    width: 100% !important;
-    margin-top: auto !important;
-  }
-
-  #slide-1 .kh-btn,
-  #slide-2 .kh-btn {
-    width: 100% !important;
-    min-height: 38px !important;
-    padding: 0.55rem 1rem !important;
-    font-size: 0.72rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.08em !important;
-    color: #003882 !important;
-    border: 1px solid #003882 !important;
-    background: transparent !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
-    border-radius: 0 !important;
-    transition: all 0.25s ease !important;
-  }
-
-  #slide-1 .kh-btn svg,
-  #slide-2 .kh-btn svg {
-    stroke: #003882 !important;
-  }
-
-  #slide-1 .kh-btn:active,
-  #slide-2 .kh-btn:active {
-    background: rgba(0, 56, 130, 0.08) !important;
-  }
-
-  /* SLIDE 3 (ROYAL BLUE CARD): Pure White Text & White Outline Buttons */
-  #slide-3 .kh-eyebrow {
-    color: #00D8E6 !important; /* Neon Cyan */
-    font-size: 0.88rem !important;
-    font-weight: 600 !important;
-    margin-bottom: 0.35rem !important;
-    letter-spacing: 0.02em !important;
-  }
-
-  #slide-3 .kh-headline {
-    color: #FFFFFF !important;
-    font-size: clamp(1.22rem, 4.8vw, 1.45rem) !important;
-    font-weight: 700 !important;
-    line-height: 1.24 !important;
-    margin-bottom: 0.45rem !important;
-  }
-
-  #slide-3 .kh-description {
-    color: rgba(255, 255, 255, 0.92) !important;
-    font-size: 0.8rem !important;
-    line-height: 1.48 !important;
-    margin-bottom: 0.85rem !important;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  #slide-3 .kh-actions {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 0.55rem !important;
-    width: 100% !important;
-    margin-top: auto !important;
-  }
-
-  #slide-3 .kh-btn {
-    width: 100% !important;
-    min-height: 38px !important;
-    padding: 0.55rem 1rem !important;
-    font-size: 0.72rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.08em !important;
-    color: #FFFFFF !important;
-    border: 1px solid rgba(255, 255, 255, 0.7) !important;
-    background: transparent !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
-    border-radius: 0 !important;
-    transition: all 0.25s ease !important;
-  }
-
-  #slide-3 .kh-btn svg {
-    stroke: #FFFFFF !important;
-  }
-
-  /* Copyright on Bottom Left of all slides */
-  #slide-1 .kh-vertical-copyright,
-  #slide-2 .kh-vertical-copyright,
-  #slide-3 .kh-vertical-copyright {
-    display: block !important;
-    writing-mode: horizontal-tb !important;
-    transform: none !important;
-    position: absolute !important;
-    left: 1.25rem !important;
-    bottom: 1.25rem !important;
-    color: rgba(255, 255, 255, 0.75) !important;
-    font-size: 0.65rem !important;
-    z-index: 10 !important;
-  }
-
-  /* Header icons adaptation for White vs Blue cards */
+  /* Header icon colors: Dark blue cards (Slide 0 & 3) vs White cards (Slide 1 & 2) */
   .kh-header .kh-icon-btn svg {
     stroke: var(--kh-navy-dark) !important;
   }
@@ -1360,109 +1041,528 @@ html, body {
     background-color: #FFFFFF !important;
   }
 
-  /* Common Mobile Stepper & Scroll UI */
+  /* ==========================================================================
+     UNIFIED ARCHITECTURAL MOBILE SPLIT (Exact Match to Slide 0 Reference):
+     - Top 65dvh: Architectural Editorial Content Card across ALL slides
+     - Bottom 35dvh: Photographic Canvas Window across ALL slides
+     - Anchored Actions: 2 buttons anchored at bottom of card, eliminating empty gap
+     ========================================================================== */
+
+  /* Photographic Windows at Bottom (Uniform 35dvh across all slides with overflow: hidden) */
+  .kh-slide-bg-window,
+  #slide-0 .kh-slide-bg-picture,
+  #slide-1 .kh-slide-bg-window,
+  #slide-2 .kh-slide-bg-window,
+  #slide-3 .kh-slide-bg-window {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 35vh !important;
+    height: 35dvh !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    transform: none !important;
+  }
+
+  #slide-0 .kh-slide-bg-picture img,
+  #slide-0 .kh-slide-bg,
+  #slide-1 .kh-slide-bg,
+  #slide-2 .kh-slide-bg,
+  #slide-3 .kh-slide-bg {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  #slide-0 .kh-slide-bg-picture img,
+  #slide-0 .kh-slide-bg {
+    object-position: center 15% !important;
+  }
+
+  #slide-1 .kh-slide-bg {
+    object-position: center 25% !important;
+  }
+
+  #slide-2 .kh-slide-bg {
+    object-position: center center !important;
+  }
+
+  #slide-3 .kh-slide-bg {
+    object-position: center 30% !important;
+  }
+
+  /* Architectural Top Panels (Uniform 65dvh across all slides) */
+  #slide-0 .kh-overlay-frosted,
+  #slide-1 .kh-overlay-royal-blue,
+  #slide-2 .kh-overlay-frosted,
+  #slide-3 .kh-overlay-royal-blue,
+  #slide-3 .kh-overlay-obsidian {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 65vh !important;
+    height: 65dvh !important;
+    z-index: 2 !important;
+    transform: translateY(-100%) !important;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35) !important;
+  }
+
+  /* Slide 0: Deep Royal Blue */
+  #slide-0 .kh-overlay-frosted {
+    background: #003882 !important;
+  }
+
+  /* Slide 1: Crisp Architectural White */
+  #slide-1 .kh-overlay-royal-blue {
+    background: #FFFFFF !important;
+  }
+
+  /* Slide 2: Crisp Architectural White */
+  #slide-2 .kh-overlay-frosted {
+    background: #FFFFFF !important;
+  }
+
+  /* Slide 3: Deep Royal Blue */
+  #slide-3 .kh-overlay-royal-blue,
+  #slide-3 .kh-overlay-obsidian {
+    background: #003882 !important;
+  }
+
+  #slide-0.is-active .kh-overlay-frosted,
+  #slide-1.is-active .kh-overlay-royal-blue,
+  #slide-2.is-active .kh-overlay-frosted,
+  #slide-3.is-active .kh-overlay-royal-blue,
+  #slide-3.is-active .kh-overlay-obsidian {
+    transform: translateY(0%) !important;
+  }
+
+  /* ==========================================================================
+     CONTENT CONTAINERS (Uniform 65dvh Top Panel on all slides)
+     ========================================================================== */
+  #slide-0 .kh-content-container,
+  #slide-1 .kh-content-container,
+  #slide-2 .kh-content-container,
+  #slide-3 .kh-content-container {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 65vh !important;
+    height: 65dvh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    padding-top: calc(var(--kh-header-height) + 0.35rem) !important;
+    padding-left: 1.25rem !important;
+    padding-right: clamp(2.85rem, 8.5vw, 3.4rem) !important; /* Preserves clear gutter from stepper */
+    padding-bottom: 1.15rem !important; /* Clean margin above photo seam */
+    box-sizing: border-box !important;
+    z-index: 5 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: contain !important;
+    scrollbar-width: none !important;
+    transform: translateY(-16px);
+    opacity: 0;
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  }
+
+  #slide-0 .kh-content-container::-webkit-scrollbar,
+  #slide-1 .kh-content-container::-webkit-scrollbar,
+  #slide-2 .kh-content-container::-webkit-scrollbar,
+  #slide-3 .kh-content-container::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  #slide-0.is-active .kh-content-container,
+  #slide-1.is-active .kh-content-container,
+  #slide-2.is-active .kh-content-container,
+  #slide-3.is-active .kh-content-container {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
+  /* CRITICAL ANTI-CLIPPING ENGINE: Zero text slicing or flexbox crushing on mobile */
+  .kh-mask,
+  .kh-eyebrow-mask,
+  .kh-headline-mask,
+  .kh-desc-mask {
+    overflow: visible !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-shrink: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Anchors action buttons at the bottom of the card, exactly like Slide 0 */
+  .kh-actions-mask {
+    overflow: visible !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-shrink: 0 !important;
+    margin-top: auto !important;
+    padding: 0 !important;
+  }
+
+  /* ==========================================================================
+     TYPOGRAPHY & ACTIONS: SLIDE 0 & SLIDE 3 (ROYAL BLUE CARDS)
+     ========================================================================== */
+  #slide-0 .kh-eyebrow,
+  #slide-3 .kh-eyebrow {
+    color: #38E1FF !important; /* Luminous Cyan Accent */
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    margin: 0 0 0.3rem 0 !important;
+    letter-spacing: 0.02em !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  #slide-0 .kh-headline,
+  #slide-3 .kh-headline {
+    color: #FFFFFF !important;
+    font-size: clamp(1.26rem, 4.8vw, 1.54rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.22 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 0 0.45rem 0 !important;
+    opacity: 1 !important;
+    transform: none !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  #slide-0 .kh-description,
+  #slide-3 .kh-description {
+    color: rgba(255, 255, 255, 0.94) !important;
+    font-size: 0.86rem !important;
+    line-height: 1.48 !important;
+    font-weight: 450 !important;
+    margin: 0 0 0.5rem 0 !important;
+    opacity: 0.96 !important;
+    transform: none !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+  }
+
+  #slide-0 .kh-actions,
+  #slide-3 .kh-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    margin: 0.5rem 0 0 0 !important;
+    opacity: 1 !important;
+    transform: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  #slide-0 .kh-btn,
+  #slide-3 .kh-btn {
+    width: 100% !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    padding: 0 1rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+    color: #FFFFFF !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+    background: transparent !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+    white-space: nowrap !important;
+    transition: all 0.2s ease !important;
+  }
+
+  #slide-0 .kh-btn svg,
+  #slide-3 .kh-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+    stroke: #FFFFFF !important;
+    stroke-width: 2.2 !important;
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  #slide-0 .kh-btn:active,
+  #slide-3 .kh-btn:active {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: #FFFFFF !important;
+  }
+
+  /* ==========================================================================
+     TYPOGRAPHY & ACTIONS: SLIDE 1 & SLIDE 2 (WHITE CARDS)
+     Harmonious spacing matching Slide 0 reference exactly
+     ========================================================================== */
+  #slide-1 .kh-eyebrow,
+  #slide-2 .kh-eyebrow {
+    color: #0077C8 !important; /* Cerulean Blue */
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    margin: 0 0 0.3rem 0 !important;
+    letter-spacing: 0.02em !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  #slide-1 .kh-headline,
+  #slide-2 .kh-headline {
+    color: #003882 !important; /* Deep Royal Navy */
+    font-size: clamp(1.26rem, 4.8vw, 1.54rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.22 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 0 0.45rem 0 !important;
+    opacity: 1 !important;
+    transform: none !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  #slide-1 .kh-description,
+  #slide-2 .kh-description {
+    color: #003882 !important;
+    opacity: 0.94 !important;
+    font-size: 0.86rem !important;
+    line-height: 1.48 !important;
+    font-weight: 450 !important;
+    margin: 0 0 0.5rem 0 !important;
+    transform: none !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+  }
+
+  #slide-1 .kh-actions,
+  #slide-2 .kh-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    margin: 0.5rem 0 0 0 !important;
+    opacity: 1 !important;
+    transform: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  #slide-1 .kh-btn,
+  #slide-2 .kh-btn {
+    width: 100% !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    padding: 0 1rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+    color: #003882 !important;
+    border: 1.5px solid #003882 !important;
+    background: transparent !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+    white-space: nowrap !important;
+    transition: all 0.2s ease !important;
+  }
+
+  #slide-1 .kh-btn svg,
+  #slide-2 .kh-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+    stroke: #003882 !important;
+    stroke-width: 2.2 !important;
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  #slide-1 .kh-btn:active,
+  #slide-2 .kh-btn:active {
+    background: rgba(0, 56, 130, 0.08) !important;
+  }
+
+  /* ==========================================================================
+     MOBILE STEPPER CAPSULE (Cleanly Guttered on Right Edge - Never Overlaps Content)
+     ========================================================================== */
   .kh-stepper {
-    right: 0.75rem;
-    gap: 1.5rem;
-    padding: 8px 4px;
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 20px;
-    z-index: 45;
+    position: fixed !important;
+    right: 0.45rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    gap: 0.55rem !important;
+    padding: 6px 3px !important;
+    background: rgba(0, 15, 35, 0.6) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-radius: 20px !important;
+    z-index: 45 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
   }
 
   .kh-step-label {
-    display: none;
+    display: none !important;
   }
 
   .kh-step-item {
-    padding: 2px;
+    padding: 3px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    margin: 0 !important;
   }
 
   .kh-step-dot {
-    width: 8px;
-    height: 8px;
-    border-width: 1.5px;
+    width: 9px !important;
+    height: 9px !important;
+    border-width: 1.5px !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    background-color: transparent !important;
+    border-radius: 50% !important;
+    box-sizing: border-box !important;
+  }
+
+  .kh-step-dot::after {
+    display: none !important;
   }
 
   .kh-step-item.is-active .kh-step-dot {
-    transform: scale(1.3);
+    transform: scale(1.3) !important;
+    background: #00D8E6 !important;
+    border-color: #00D8E6 !important;
+    box-shadow: 0 0 8px rgba(0, 216, 230, 0.9) !important;
+    animation: none !important;
   }
 
   .kh-stepper-line,
   .kh-stepper-progress {
-    display: none;
+    display: none !important;
   }
 
-  .kh-vertical-copyright {
-    display: none;
+  /* ==========================================================================
+     MOBILE FOOTER CONTROLS & COPYRIGHT
+     ========================================================================== */
+  #slide-0 .kh-vertical-copyright,
+  #slide-1 .kh-vertical-copyright,
+  #slide-2 .kh-vertical-copyright,
+  #slide-3 .kh-vertical-copyright {
+    display: block !important;
+    writing-mode: horizontal-tb !important;
+    transform: none !important;
+    position: absolute !important;
+    left: 1rem !important;
+    bottom: 1rem !important;
+    color: rgba(255, 255, 255, 0.72) !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.05em !important;
+    z-index: 10 !important;
+    pointer-events: none !important;
   }
 
   .kh-scroll-down {
-    right: 1.25rem;
-    bottom: 1.25rem;
-    width: 42px;
-    height: 48px;
+    right: 1rem !important;
+    bottom: 1rem !important;
+    width: 42px !important;
+    height: 46px !important;
   }
 }
 
 /* --- SMALL MOBILE (< 380px) --- */
 @media (max-width: 380px) {
-  .kh-headline {
-    font-size: 1.25rem;
+  #slide-0 .kh-headline,
+  #slide-1 .kh-headline,
+  #slide-2 .kh-headline,
+  #slide-3 .kh-headline {
+    font-size: 1.22rem !important;
   }
-  .kh-description {
-    font-size: 0.78rem;
-    line-height: 1.5;
+  #slide-0 .kh-description,
+  #slide-1 .kh-description,
+  #slide-2 .kh-description,
+  #slide-3 .kh-description {
+    font-size: 0.81rem !important;
+    line-height: 1.4 !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    overflow: visible !important;
   }
-  .kh-btn {
-    padding: 0.65rem 1rem;
-    font-size: 0.7rem;
-  }
-  .kh-crest-svg {
-    width: 44px;
-    height: 30px;
+  #slide-0 .kh-btn,
+  #slide-1 .kh-btn,
+  #slide-2 .kh-btn,
+  #slide-3 .kh-btn {
+    min-height: 38px !important;
+    height: 38px !important;
+    padding: 0 0.85rem !important;
+    font-size: 0.76rem !important;
   }
   .kh-wordmark {
-    display: none;
+    display: none !important;
   }
   .kh-logo-divider {
-    display: none;
+    display: none !important;
   }
 }
 
-/* --- COMPACT HEIGHT (Mobile Landscape or Small Laptops) --- */
-@media (max-height: 700px) {
+/* --- COMPACT HEIGHT (Desktop / Small Laptops Only) --- */
+@media (max-height: 750px) and (min-width: 769px) {
   :root {
     --kh-header-height: 58px;
   }
 
   .kh-eyebrow {
-    font-size: 0.85rem;
-    margin-bottom: 0.35rem;
+    font-size: 1.15rem;
+    margin-bottom: 0.45rem;
   }
 
   .kh-headline {
-    font-size: 1.35rem;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+    font-size: clamp(1.85rem, 2.6vw, 2.25rem);
+    line-height: 1.18;
+    margin-bottom: 0.75rem;
   }
 
   .kh-description {
-    font-size: 0.78rem;
-    line-height: 1.45;
-    margin-bottom: 1rem;
-    max-width: 480px;
+    font-size: clamp(1.02rem, 1.18vw, 1.15rem);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    max-width: 620px;
   }
 
   .kh-actions {
-    gap: 0.5rem;
+    gap: 0.85rem;
   }
 
   .kh-btn {
-    padding: 0.55rem 1rem;
-    font-size: 0.68rem;
+    padding: 0.7rem 1.35rem;
+    font-size: 0.84rem;
   }
 
   .kh-stepper {

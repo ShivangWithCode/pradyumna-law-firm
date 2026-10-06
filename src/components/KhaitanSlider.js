@@ -75,19 +75,15 @@ export function initKhaitanSlider() {
     // Animate the Option 3 stepper progress filling line
     updateStepperProgress(currentIndex);
 
-    // Check if the current slide requires white logo on left
+    // Check if the current slide requires white logo and white menu icons
     const currentSlide = slides[currentIndex];
     const isMobile = window.innerWidth <= 768;
-    let isDarkLeft;
-    if (isMobile) {
-      // Mobile architecture: Slide 0 & 3 are Blue cards (White header), Slide 1 & 2 are White cards (Navy header)
-      isDarkLeft = (currentIndex === 0 || currentIndex === 3);
-    } else {
-      isDarkLeft = currentSlide.classList.contains('is-blue') || currentSlide.classList.contains('is-dark');
-    }
+    const isDarkHeader = isMobile
+      ? (currentIndex === 0 || currentIndex === 3)
+      : (currentSlide.classList.contains('is-blue') || currentSlide.classList.contains('is-dark'));
 
     if (header) {
-      if (isDarkLeft) {
+      if (isDarkHeader) {
         header.classList.add('theme-dark-logo');
       } else {
         header.classList.remove('theme-dark-logo');
@@ -99,6 +95,9 @@ export function initKhaitanSlider() {
       isAnimating = false;
     }, 850);
   }
+
+  // Expose global navigation method
+  window.goToSlide = updateSlide;
 
   // Wheel listener with threshold & debounce lock
   let wheelAccumulator = 0;
@@ -122,16 +121,18 @@ export function initKhaitanSlider() {
     }
   }, { passive: true });
 
-  // Advanced Touch Swipe Engine for Mobile & Tablet
+  // Advanced Multi-Directional Touch Swipe Engine for Mobile & Tablet
   let touchStartX = 0;
   let touchStartY = 0;
   let touchStartTime = 0;
+  let touchTarget = null;
 
   window.addEventListener('touchstart', (e) => {
     if (e.touches.length !== 1) return;
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
     touchStartTime = Date.now();
+    touchTarget = e.target;
   }, { passive: true });
 
   window.addEventListener('touchmove', (e) => {
@@ -148,10 +149,48 @@ export function initKhaitanSlider() {
     const diffY = touchStartY - touchEndY;
     const elapsedTime = Date.now() - touchStartTime;
 
-    // Verify vertical swipe intent over horizontal drift
-    if (Math.abs(diffY) > Math.abs(diffX) * 1.15) {
-      const isFlick = elapsedTime < 320 && Math.abs(diffY) > 28;
-      const isDrag = Math.abs(diffY) > 45;
+    const absX = Math.abs(diffX);
+    const absY = Math.abs(diffY);
+
+    // If tap without significant swipe movement, do nothing
+    if (absX < 20 && absY < 20) return;
+
+    // Check if touch originated inside an internal scrollable container on mobile
+    const scrollContainer = touchTarget ? touchTarget.closest('.kh-content-container') : null;
+    let allowVerticalSwipe = true;
+
+    if (scrollContainer && scrollContainer.scrollHeight > scrollContainer.clientHeight + 8) {
+      const isAtTop = scrollContainer.scrollTop <= 6;
+      const isAtBottom = scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - 6;
+
+      if (diffY > 0 && !isAtBottom) {
+        // User is scrolling DOWN inside the text card, don't flip the slide
+        allowVerticalSwipe = false;
+      } else if (diffY < 0 && !isAtTop) {
+        // User is scrolling UP inside the text card, don't flip the slide
+        allowVerticalSwipe = false;
+      }
+    }
+
+    // 1. HORIZONTAL SWIPE (Swipe Left = Next, Swipe Right = Prev) - intuitive mobile UX
+    if (absX > absY * 1.05) {
+      const isFlick = elapsedTime < 360 && absX > 26;
+      const isDrag = absX > 45;
+
+      if (isFlick || isDrag) {
+        if (diffX > 0 && currentIndex < totalSlides - 1) {
+          updateSlide(currentIndex + 1);
+        } else if (diffX < 0 && currentIndex > 0) {
+          updateSlide(currentIndex - 1);
+        }
+      }
+      return;
+    }
+
+    // 2. VERTICAL SWIPE (Swipe Up = Next, Swipe Down = Prev)
+    if (allowVerticalSwipe && absY > absX * 1.05) {
+      const isFlick = elapsedTime < 360 && absY > 26;
+      const isDrag = absY > 45;
 
       if (isFlick || isDrag) {
         if (diffY > 0 && currentIndex < totalSlides - 1) {
@@ -167,12 +206,12 @@ export function initKhaitanSlider() {
   window.addEventListener('keydown', (e) => {
     if (document.body.classList.contains('menu-open') || isAnimating) return;
 
-    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'ArrowRight') {
       if (currentIndex < totalSlides - 1) {
         e.preventDefault();
         updateSlide(currentIndex + 1);
       }
-    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'ArrowLeft') {
       if (currentIndex > 0) {
         e.preventDefault();
         updateSlide(currentIndex - 1);
@@ -200,11 +239,29 @@ export function initKhaitanSlider() {
     });
   }
 
+  // Logo home click to smoothly go to Slide 0
+  const logoLink = document.querySelector('.kh-header .kh-logo');
+  if (logoLink) {
+    logoLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (currentIndex !== 0 && !isAnimating) {
+        updateSlide(0);
+      }
+    });
+  }
+
   // Window resize handler to recalculate stepper progress line geometry & track position
   window.addEventListener('resize', () => {
     const unit = (window.CSS && CSS.supports && CSS.supports('height', '100dvh')) ? 'dvh' : 'vh';
     track.style.transform = `translate3d(0, -${currentIndex * 100}${unit}, 0)`;
     updateStepperProgress(currentIndex);
+    const isMobile = window.innerWidth <= 768;
+    const isDarkHeader = isMobile
+      ? (currentIndex === 0 || currentIndex === 3)
+      : (slides[currentIndex]?.classList.contains('is-blue') || slides[currentIndex]?.classList.contains('is-dark'));
+    if (header) {
+      header.classList.toggle('theme-dark-logo', Boolean(isDarkHeader));
+    }
   });
 
   // Initialize first slide

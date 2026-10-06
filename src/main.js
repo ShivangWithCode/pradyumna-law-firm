@@ -1,47 +1,63 @@
 /**
  * Main Application Orchestrator
- * Pradyumna Law Associates (Khaitan & Co Exact Visual Experience)
+ * Pradyumna Law Associates
  */
 import { initKhaitanSlider } from './components/KhaitanSlider.js';
 import { initFullScreenMenu } from './components/FullScreenMenu.js';
-import { initSearchModal } from './components/SearchModal.js';
+import { initTeamModal } from './components/TeamModal.js';
+import { initExpertiseModal } from './components/ExpertiseModal.js';
+import { initInquiryModal } from './components/InquiryModal.js';
+import { initCredentialsModal } from './components/CredentialsModal.js';
 import { siteConfig } from './data/siteConfig.js';
 
 function initActionButtons() {
-  const searchBtn = document.querySelector('.search-btn');
-
-  // Trigger search modal with prefilled query when clicking explore buttons
-  function triggerSearch(keyword) {
-    if (searchBtn) searchBtn.click();
-    setTimeout(() => {
-      const input = document.querySelector('.search-input-field');
-      if (input) {
-        input.value = keyword;
-        input.dispatchEvent(new Event('input'));
+  const practicesBtn = document.querySelector('.explore-practices-btn');
+  if (practicesBtn) {
+    practicesBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.openExpertiseModal) {
+        window.openExpertiseModal();
       }
-    }, 150);
+    });
   }
 
-  const practicesBtn = document.querySelector('.explore-practices-btn');
-  if (practicesBtn) practicesBtn.addEventListener('click', () => triggerSearch('Commercial Litigation'));
+  const credentialsBtn = document.querySelector('.explore-credentials-btn');
+  if (credentialsBtn) {
+    credentialsBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.openCredentialsModal) {
+        window.openCredentialsModal();
+      }
+    });
+  }
 
   const focusBtn = document.querySelector('.explore-focus-btn');
-  if (focusBtn) focusBtn.addEventListener('click', () => triggerSearch('Corporate'));
-
-  const pubBtn = document.querySelector('.explore-publications-btn');
-  if (pubBtn) pubBtn.addEventListener('click', () => triggerSearch('Briefing'));
-
-  const eventsBtn = document.querySelector('.explore-events-btn');
-  if (eventsBtn) eventsBtn.addEventListener('click', () => triggerSearch('Regulatory'));
+  if (focusBtn) {
+    focusBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.openExpertiseModal) {
+        window.openExpertiseModal();
+      }
+    });
+  }
 
   const teamBtn = document.querySelector('.explore-team-btn');
-  if (teamBtn) teamBtn.addEventListener('click', () => triggerSearch('Advocate'));
+  if (teamBtn) {
+    teamBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.openTeamModal) {
+        window.openTeamModal();
+      }
+    });
+  }
 
   const chambersBtn = document.querySelector('.explore-chambers-btn');
   if (chambersBtn) {
-    chambersBtn.addEventListener('click', () => {
-      const menuBtn = document.querySelector('.menu-toggle-btn');
-      if (menuBtn) menuBtn.click();
+    chambersBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.openCredentialsModal) {
+        window.openCredentialsModal();
+      }
     });
   }
 
@@ -75,7 +91,7 @@ function initActionButtons() {
 
     const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
     phoneLinks.forEach(link => {
-      link.href = `tel:${siteConfig.contact.phone}`;
+      link.href = `tel:${siteConfig.contact.primaryPhone}`;
       link.textContent = siteConfig.contact.displayPhone;
     });
   }
@@ -86,7 +102,10 @@ function initActionButtons() {
 function startApp() {
   initKhaitanSlider();
   initFullScreenMenu();
-  initSearchModal();
+  initTeamModal();
+  initExpertiseModal();
+  initInquiryModal();
+  initCredentialsModal();
   initActionButtons();
 }
 
