@@ -41,7 +41,7 @@ export function initTeamModal() {
     });
   }
 
-  // Render Founder Spotlight (Khaitan & Co Signature Split Profile Card)
+  // Render Founder Spotlight (Executive Editorial Profile Card)
   function renderFounderCard() {
     const founder = teamMembers.find(m => m.isFounder);
     const container = modalOverlay.querySelector('.founder-spotlight-mount');
@@ -91,26 +91,45 @@ export function initTeamModal() {
 
         <div class="founder-info-column">
           <div class="founder-header-group">
+            <div class="founder-badges-row">
+              <span class="founder-badge-pill">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 10v11M9 10v11M15 10v11M19 10v11M12 2L2 7h20L12 2z"/></svg>
+                Panel Counsel (Govt. of India) &bull; Supreme Court
+              </span>
+              <span class="founder-badge-pill">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 9l9-6 9 6M6 13l-3 6h6l-3-6zM18 13l-3 6h6l-3-6z"/></svg>
+                Addl. Standing Counsel &bull; High Court of Delhi
+              </span>
+              <span class="founder-badge-pill">
+                Panel Counsel &bull; N.B.C.C. &amp; Punjab &amp; Sind Bank
+              </span>
+            </div>
+
             <div class="founder-title-row">
-              <h3 class="founder-name">${founder.name}, New Delhi</h3>
-              <a href="${founder.directContact.linkedin}" target="_blank" rel="noopener" class="founder-linkedin-badge" aria-label="LinkedIn Profile">
-                <span class="linkedin-in">in</span>
+              <div class="founder-title-main">
+                <h3 class="founder-name">${founder.name}</h3>
+                <span class="founder-city-badge">Founder &amp; Managing Partner &bull; New Delhi</span>
+              </div>
+              <a href="${founder.directContact.linkedin}" target="_blank" rel="noopener" class="founder-linkedin-btn" aria-label="LinkedIn Profile">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.5a1.64 1.64 0 0 0-1.64 1.64c0 .91.73 1.64 1.64 1.64.91 0 1.64-.73 1.64-1.64 0-.91-.73-1.64-1.64-1.64z"/></svg>
+                <span>LinkedIn</span>
               </a>
             </div>
-            <p class="founder-role-lead">${founder.role}</p>
           </div>
 
           <div class="founder-contact-strip">
             <span class="founder-contact-item">
-              <strong>T:</strong> <a href="tel:+919811000000">+91 98110 00000</a>
+              <span class="contact-lbl">T:</span>
+              <a href="tel:+917503455000">+91 75034 55000</a>
             </span>
             <span class="founder-contact-item">
-              <strong>E:</strong> <a href="${mailUrl}">Write To Me</a>
+              <span class="contact-lbl">E:</span>
+              <a href="${mailUrl}">Write To Me</a>
             </span>
           </div>
 
           <div class="founder-credentials-section">
-            <h4 class="founder-credentials-heading">Designation &amp; Standing Institutional Empanelment</h4>
+            <h4 class="founder-credentials-heading">Standing Institutional Empanelments &amp; Designations</h4>
             <ul class="founder-credentials-bullets">
               <li><strong>Panel Counsel (Govt. of India):</strong> Supreme Court of India (Central Government Litigation, Order dtd. 21.11.2025)</li>
               <li><strong>Addl. Standing Counsel:</strong> High Court of Delhi</li>
@@ -119,7 +138,7 @@ export function initTeamModal() {
               <li><strong>Bar Council Enrolment:</strong> D/4782/2016 &bull; ${founder.courtAffiliation}</li>
               <li><strong>Academic Pedigree:</strong> ${founder.qualifications}</li>
             </ul>
-            <div style="margin-top: 1rem;">
+            <div style="margin-top: 0.9rem;">
               <button type="button" class="gov-view-order-btn view-official-order-trigger" style="display:inline-flex; width:auto; padding: 0.65rem 1.25rem; font-size: 0.78rem;" aria-label="View official Government of India order">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px; height:15px; margin-right: 6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
                 <span>VIEW OFFICIAL ORDER (GOVT. OF INDIA)</span>
@@ -182,37 +201,73 @@ export function initTeamModal() {
       return;
     }
 
-    grid.innerHTML = filtered.map(member => `
-      <div class="counsel-card" data-counsel-id="${member.id}">
-        <div class="counsel-card-top">
-          <div class="counsel-monogram ${member.portrait ? 'has-photo' : ''}">
-            ${member.portrait ? `<img src="${member.portrait}" alt="${member.name}" class="counsel-avatar-img" />` : member.initials}
+    grid.innerHTML = filtered.map(member => {
+      let badge = { icon: '🏛️', label: 'Supreme Court & High Court' };
+      if (member.id === 'surjeet-singh') {
+        badge = { icon: '⚖️', label: 'Govt. Pleader • Union of India' };
+      } else if (member.id === 'gaurav-singh') {
+        badge = { icon: '🏛️', label: 'Supreme Court AOR' };
+      } else if (member.id === 'vrinda-khanna') {
+        badge = { icon: '🔬', label: 'Forensic & Cyber Law' };
+      }
+
+      const courtShort = member.courtAffiliation ? member.courtAffiliation.split('|')[0].trim() : 'Supreme Court & High Court';
+      const phoneNum = member.directContact?.primaryPhone || '+91-7503455000';
+      const emailAddr = member.directContact?.email || 'plaoffices@gmail.com';
+
+      return `
+        <div class="counsel-card" data-counsel-id="${member.id}">
+          <div class="counsel-card-media">
+            ${member.portrait 
+              ? `<img src="${member.portrait}" alt="${member.name}" class="counsel-media-img" loading="lazy" />` 
+              : `<div class="counsel-media-fallback">${member.initials}</div>`
+            }
+            <div class="counsel-card-badge-overlay">
+              <span class="counsel-prestige-chip">
+                <span class="chip-icon">${badge.icon}</span>
+                <span>${badge.label}</span>
+              </span>
+            </div>
           </div>
-          <div class="counsel-header-info">
-            <h4 class="counsel-card-name">${member.name}</h4>
-            <span class="counsel-card-designation">${member.designation}</span>
+
+          <div class="counsel-card-content">
+            <div class="counsel-card-title-group">
+              <h4 class="counsel-card-name">${member.name}</h4>
+              <span class="counsel-card-designation">${member.designation}</span>
+            </div>
+
+            <p class="counsel-card-court">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" class="court-icon"><path d="M3 21h18M3 10h18M5 10v11M9 10v11M15 10v11M19 10v11M12 2L2 7h20L12 2z"/></svg>
+              <span>${courtShort}</span>
+            </p>
+
+            <div class="counsel-practice-tags">
+              ${member.primaryPractices.slice(0, 3).map(p => `<span class="counsel-tag">${p}</span>`).join('')}
+            </div>
+
+            <p class="counsel-card-quote">&ldquo;${member.quote}&rdquo;</p>
+
+            <div class="counsel-card-footer">
+              <div class="counsel-quick-contacts">
+                <a href="tel:${phoneNum}" class="counsel-quick-btn" title="Call Counsel" onclick="event.stopPropagation()">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+                <a href="mailto:${emailAddr}" class="counsel-quick-btn" title="Email Counsel" onclick="event.stopPropagation()">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </a>
+              </div>
+              <span class="counsel-view-link">
+                <span>View Dossier</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </div>
           </div>
         </div>
-
-        <p class="counsel-card-court">${member.courtAffiliation}</p>
-
-        <div class="counsel-practice-tags">
-          ${member.primaryPractices.slice(0, 3).map(p => `<span class="counsel-tag">${p}</span>`).join('')}
-        </div>
-
-        <p class="counsel-card-quote">&ldquo;${member.quote}&rdquo;</p>
-
-        <div class="counsel-card-footer">
-          <span class="counsel-view-link">
-            <span>View Full Dossier</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
 
     // Attach click events on cards
     grid.querySelectorAll('.counsel-card').forEach(card => {

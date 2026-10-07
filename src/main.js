@@ -77,22 +77,27 @@ function initActionButtons() {
   });
   // Dynamically wire WhatsApp, Email, and Phone from siteConfig/env
   function initContactLinks() {
-    const waLinks = document.querySelectorAll('a[href*="wa.me"]');
+    const waLinks = document.querySelectorAll('a[href*="wa.me"]:not(.developer-credit-link)');
     const waUrl = `https://wa.me/${siteConfig.contact.whatsAppNumber}?text=${encodeURIComponent('Hello, I would like to consult regarding legal counsel at Pradyumna Law Associates.')}`;
     waLinks.forEach(link => {
       link.href = waUrl;
+    });
+
+    // Developer Direct WhatsApp (Shivang Pandey)
+    const devLinks = document.querySelectorAll('.developer-credit-link');
+    const devNumber = siteConfig.developer?.whatsAppNumber || '919026399211';
+    const devMsg = encodeURIComponent(
+      siteConfig.developer?.whatsAppMessage || 'Hello Shivang, I saw your work on Pradyumna Law Associates website and would like to connect.'
+    );
+    const devUrl = `https://wa.me/${devNumber}?text=${devMsg}`;
+    devLinks.forEach(link => {
+      link.href = devUrl;
     });
 
     const mailLinks = document.querySelectorAll('a[href^="mailto:"]');
     const mailUrl = `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent('Legal Consultation Inquiry — Pradyumna Law Associates')}`;
     mailLinks.forEach(link => {
       link.href = mailUrl;
-    });
-
-    const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
-    phoneLinks.forEach(link => {
-      link.href = `tel:${siteConfig.contact.primaryPhone}`;
-      link.textContent = siteConfig.contact.displayPhone;
     });
   }
   initContactLinks();

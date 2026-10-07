@@ -135,9 +135,9 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--khaitan-sky-blue);
+  color: #003C8C;
   background-color: var(--team-bg-ice-light);
-  border: 1px solid var(--khaitan-sky-border);
+  border: 1px solid rgba(0, 60, 140, 0.25);
   padding: 0.3rem 0.8rem;
   border-radius: 9999px;
   margin-left: 0.5rem;
@@ -235,9 +235,9 @@
 .team-headline {
   font-family: var(--font-sans);
   font-size: clamp(2.2rem, 4vw, 3.1rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.15;
-  color: var(--khaitan-sky-blue);
+  color: #003C8C;
   margin-bottom: 0.85rem;
   letter-spacing: -0.015em;
 }
@@ -344,81 +344,86 @@
 .founder-spotlight-card {
   position: relative;
   background: #FFFFFF;
-  border: 1px solid var(--team-border-light);
-  box-shadow: 0 10px 30px rgba(0, 35, 82, 0.07);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 25px rgba(15, 23, 42, 0.06);
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: 350px 1fr;
   margin-bottom: 3.5rem;
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
-/* Left Column: Passport Photo Frame in Marked Upper Section + Professional Metadata */
+/* Left Column: Executive Portrait & Academic/Bar Metadata */
 .founder-portrait-column {
-  background-color: var(--team-bg-ice);
+  background-color: #F8FAFC;
   display: flex;
   flex-direction: column;
-  padding: 0;
-  overflow: hidden;
+  padding: 1.5rem;
+  gap: 1.25rem;
   position: relative;
-  height: 100%;
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid #E2E8F0;
 }
 
 .founder-passport-frame {
   width: 100%;
-  height: 310px;
+  aspect-ratio: 3 / 3.8;
+  max-height: 380px;
   position: relative;
   overflow: hidden;
   background-color: #FFFFFF;
-  border-bottom: 2px solid var(--khaitan-sky-border);
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .founder-passport-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center 5%;
   display: block;
 }
 
-/* Sidebar credentials fully filling the space below the photo */
+/* Sidebar credentials filling space below photo */
 .founder-credentials-sidebar {
-  padding: 1.5rem 1.6rem 2rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  flex: 1;
-  background: linear-gradient(180deg, var(--team-bg-ice) 0%, rgba(212, 228, 240, 0.95) 100%);
+  gap: 0.85rem;
+  background: transparent;
 }
 
 .sidebar-cred-block {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 6px;
 }
 
 .sidebar-cred-label {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--khaitan-royal-blue);
-  border-bottom: 1px solid rgba(12, 74, 128, 0.15);
+  color: #003C8C;
+  border-bottom: 1px solid #F1F5F9;
   padding-bottom: 0.25rem;
   margin-bottom: 0.2rem;
 }
 
 .sidebar-cred-val {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: var(--team-navy-text);
+  color: #0F172A;
   line-height: 1.35;
 }
 
 .sidebar-cred-sub {
-  font-size: 0.8rem;
-  color: var(--team-slate-body);
+  font-size: 0.78rem;
+  color: #64748B;
   line-height: 1.35;
 }
 
@@ -428,38 +433,65 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
 
 .sidebar-cred-list li {
-  font-size: 0.82rem;
-  line-height: 1.4;
-  color: var(--team-slate-body);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: #334155;
   position: relative;
-  padding-left: 1rem;
+  padding-left: 0.85rem;
 }
 
 .sidebar-cred-list li::before {
   content: '•';
   position: absolute;
   left: 0;
-  color: var(--khaitan-sky-blue);
-  font-size: 1rem;
+  color: #003C8C;
+  font-size: 0.9rem;
   line-height: 1;
 }
 
-/* Right Column: Deep Khaitan Royal Blue Box (#0C4A80) */
+/* Right Column: Clean Executive White Canvas */
 .founder-info-column {
-  background-color: var(--khaitan-royal-blue);
-  color: #FFFFFF;
-  padding: clamp(2rem, 3.5vw, 3.25rem);
+  background-color: #FFFFFF;
+  color: #0F172A;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .founder-header-group {
-  margin-bottom: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+/* Badges Row */
+.founder-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.founder-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.32rem 0.75rem;
+  background: #F0F7FF;
+  border: 1px solid rgba(0, 60, 140, 0.22);
+  border-radius: 9999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #003C8C;
+  letter-spacing: 0.01em;
+}
+
+.founder-badge-pill svg {
+  color: #003C8C;
+  flex-shrink: 0;
 }
 
 .founder-title-row {
@@ -467,79 +499,110 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.5rem;
   flex-wrap: wrap;
+}
+
+.founder-title-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .founder-name {
   font-family: var(--font-sans);
-  font-size: clamp(1.65rem, 2.5vw, 2.15rem);
+  font-size: clamp(1.65rem, 2.4vw, 2.2rem);
   font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: -0.01em;
+  color: #0F172A;
+  letter-spacing: -0.015em;
+  margin: 0;
 }
 
-.founder-linkedin-badge {
+.founder-city-badge {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #003C8C;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.founder-linkedin-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border: 1.5px solid #FFFFFF;
-  border-radius: 4px;
-  color: #FFFFFF;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  color: #0A66C2;
+  background: #FFFFFF;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 0.85rem;
-  transition: all var(--transition-fast);
+  font-weight: 600;
+  font-size: 0.78rem;
+  transition: all 0.2s ease;
 }
 
-.founder-linkedin-badge:hover {
-  background-color: #FFFFFF;
-  color: var(--khaitan-royal-blue);
+.founder-linkedin-btn:hover {
+  background-color: #F0F7FF;
+  border-color: #0A66C2;
 }
 
-.founder-role-lead {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--khaitan-sky-light);
-  line-height: 1.45;
-}
-
-/* Contact Line (T: ... | E: ...) */
+/* Contact Line */
 .founder-contact-strip {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  font-size: 0.92rem;
-  color: #FFFFFF;
-  margin-bottom: 1.45rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  gap: 1.25rem;
+  font-size: 0.88rem;
+  color: #334155;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+}
+
+.founder-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.contact-lbl {
+  font-weight: 700;
+  color: #64748B;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .founder-contact-item a {
-  color: #FFFFFF;
-  text-decoration: underline;
+  color: #003C8C;
+  text-decoration: none;
+  font-weight: 600;
   transition: color var(--transition-fast);
 }
 
 .founder-contact-item a:hover {
-  color: var(--khaitan-sky-light);
+  text-decoration: underline;
 }
 
-/* Education & Admissions Section */
+/* Credentials Section */
 .founder-credentials-section {
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.25rem;
+  padding: 1.1rem 1.25rem;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-left: 3.5px solid #003C8C;
+  border-radius: 6px;
 }
 
 .founder-credentials-heading {
-  font-size: 1.02rem;
-  font-weight: 600;
-  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0F172A;
   margin-bottom: 0.65rem;
   letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 
 .founder-credentials-bullets {
@@ -554,38 +617,56 @@
 .founder-credentials-bullets li {
   font-size: 0.88rem;
   line-height: 1.45;
-  color: #E0F2FE;
+  color: #334155;
   position: relative;
-  padding-left: 1.1rem;
+  padding-left: 1rem;
 }
 
 .founder-credentials-bullets li::before {
-  content: '•';
+  content: '▸';
   position: absolute;
   left: 0;
-  color: var(--khaitan-sky-light);
-  font-size: 1.1rem;
-  line-height: 1;
+  color: #003C8C;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
 .founder-credentials-bullets li strong {
-  color: #FFFFFF;
+  color: #0F172A;
 }
 
+.gov-view-order-btn {
+  background: #F0F7FF;
+  border: 1px solid rgba(0, 60, 140, 0.3);
+  color: #003C8C;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gov-view-order-btn:hover {
+  background: #E0EFFF;
+  border-color: #003C8C;
+}
+
+/* Bio Text */
 .founder-bio-text {
-  font-size: 0.94rem;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 1.85rem;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 1.5rem;
 }
 
-/* Actions Row inside Blue Box */
+/* Actions Row */
 .founder-actions-row {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.85rem;
   margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #E2E8F0;
 }
 
 .counsel-primary-btn {
@@ -593,24 +674,24 @@
   align-items: center;
   gap: 0.65rem;
   padding: 0.75rem 1.4rem;
-  background: var(--khaitan-sky-blue);
+  background: #003C8C;
   color: #FFFFFF;
   font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  border: 1.5px solid var(--khaitan-sky-blue);
-  border-radius: 2px;
+  border: 1.5px solid #003C8C;
+  border-radius: 4px;
   text-decoration: none;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .counsel-primary-btn:hover {
-  background: #0369A1;
-  border-color: #0369A1;
+  background: #002860;
+  border-color: #002860;
   color: #FFFFFF;
-  box-shadow: 0 4px 14px var(--khaitan-sky-glow);
+  box-shadow: 0 4px 14px rgba(0, 60, 140, 0.25);
 }
 
 .counsel-outline-btn {
@@ -618,22 +699,22 @@
   align-items: center;
   gap: 0.65rem;
   padding: 0.75rem 1.35rem;
-  background: transparent;
-  color: #FFFFFF;
+  background: #FFFFFF;
+  color: #003C8C;
   font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  border: 1.5px solid #FFFFFF;
-  border-radius: 2px;
+  border: 1.5px solid #003C8C;
+  border-radius: 4px;
   text-decoration: none;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .counsel-outline-btn:hover {
-  background: #FFFFFF;
-  color: var(--khaitan-royal-blue);
+  background: #F0F7FF;
+  color: #003C8C;
 }
 
 .counsel-outline-btn svg,
@@ -648,158 +729,229 @@
     grid-template-columns: 1fr;
   }
   .founder-portrait-column {
-    min-height: 350px;
+    border-right: none;
+    border-bottom: 1px solid #E2E8F0;
+  }
+  .founder-passport-frame {
+    max-height: 380px;
   }
 }
 
 /* ==========================================================================
-   Counsel Roster Grid (Pure White Canvas with Khaitan Sky/Royal Styling)
+   Counsel Roster Grid (Idea 2: Apex Court Chamber Style)
    ========================================================================== */
 .counsel-roster-header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   margin-bottom: 1.85rem;
-  border-bottom: 2px solid var(--team-border-light);
+  border-bottom: 1px solid #E2E8F0;
   padding-bottom: 0.85rem;
 }
 
 .counsel-roster-title {
   font-family: var(--font-sans);
-  font-size: 1.55rem;
-  font-weight: 600;
-  color: var(--khaitan-royal-blue);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #0F172A;
   letter-spacing: -0.01em;
 }
 
 .counsel-roster-count {
-  font-size: 0.86rem;
-  color: var(--khaitan-sky-blue);
+  font-size: 0.8rem;
+  color: #003C8C;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
+  background: #F0F7FF;
+  border: 1px solid rgba(0, 60, 140, 0.2);
+  padding: 0.28rem 0.75rem;
+  border-radius: 9999px;
 }
 
 .counsel-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
   gap: 1.85rem;
+  margin-bottom: 3rem;
 }
 
 .counsel-card {
   position: relative;
   background: #FFFFFF;
-  border: 1px solid var(--team-border-light);
-  border-radius: 3px;
-  padding: 1.85rem;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  box-shadow: 0 3px 12px rgba(0, 35, 82, 0.04);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
 }
 
 .counsel-card:hover {
   background: #FFFFFF;
-  border-color: var(--khaitan-sky-blue);
+  border-color: #003C8C;
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(2, 132, 199, 0.14);
+  box-shadow: 0 12px 28px rgba(0, 60, 140, 0.12);
 }
 
-.counsel-card-top {
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  margin-bottom: 1.25rem;
-}
-
-.counsel-monogram {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--team-bg-ice);
-  border: 1.5px solid var(--khaitan-sky-blue);
+.counsel-card-media {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-sans);
-  font-size: 1.1rem;
-  font-weight: 700;
-  flex-shrink: 0;
 }
 
-.counsel-monogram.has-photo {
-  padding: 0;
-  overflow: hidden;
-  border: 1.5px solid var(--khaitan-royal-blue);
-  background: #f0f4f9;
-}
-
-.counsel-avatar-img {
+.counsel-media-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
   display: block;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.counsel-header-info {
+.counsel-card:hover .counsel-media-img {
+  transform: scale(1.03);
+}
+
+/* Individual Framing per Advocate */
+.counsel-card[data-counsel-id="surjeet-singh"] .counsel-media-img {
+  object-position: center 12%;
+}
+
+.counsel-card[data-counsel-id="gaurav-singh"] .counsel-media-img {
+  object-position: center 20%;
+}
+
+.counsel-card[data-counsel-id="vrinda-khanna"] .counsel-card-media {
+  background: #FFFFFF;
+  align-items: flex-end;
+}
+
+.counsel-card[data-counsel-id="vrinda-khanna"] .counsel-media-img {
+  height: 87%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  padding: 0;
+  background: #FFFFFF;
+}
+
+.counsel-media-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #003C8C;
+  background: #F0F7FF;
+}
+
+.counsel-card-badge-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.counsel-prestige-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 60, 140, 0.22);
+  color: #003C8C;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  white-space: nowrap;
+}
+
+.counsel-card-content {
+  padding: 1.35rem 1.45rem;
   display: flex;
   flex-direction: column;
+  flex: 1;
+}
+
+.counsel-card-title-group {
+  margin-bottom: 0.65rem;
 }
 
 .counsel-card-name {
   font-family: var(--font-sans);
   font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--khaitan-royal-blue);
-  margin-bottom: 0.2rem;
-  transition: color var(--transition-fast);
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 0.25rem 0;
+  transition: color 0.2s ease;
 }
 
 .counsel-card:hover .counsel-card-name {
-  color: var(--khaitan-sky-blue);
+  color: #003C8C;
 }
 
 .counsel-card-designation {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #003C8C;
   text-transform: uppercase;
-  color: var(--khaitan-sky-blue);
+  letter-spacing: 0.04em;
+  display: block;
 }
 
 .counsel-card-court {
-  font-size: 0.86rem;
-  color: var(--team-slate-body);
-  line-height: 1.45;
-  margin-bottom: 1rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid var(--team-border-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #64748B;
+  margin: 0 0 0.9rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.counsel-card-court .court-icon {
+  color: #003C8C;
+  flex-shrink: 0;
 }
 
 .counsel-practice-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-bottom: 1.25rem;
+  gap: 0.38rem;
+  margin-bottom: 1rem;
 }
 
 .counsel-tag {
-  font-size: 0.74rem;
-  padding: 0.28rem 0.65rem;
-  background: var(--team-bg-ice-light);
-  border: 1px solid var(--khaitan-sky-border);
-  color: #0369A1;
-  border-radius: 2px;
-  font-weight: 600;
+  font-size: 0.72rem;
+  padding: 0.24rem 0.55rem;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  color: #334155;
+  border-radius: 4px;
+  font-weight: 500;
 }
 
 .counsel-card-quote {
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-style: italic;
-  color: var(--team-slate-body);
+  color: #475569;
   line-height: 1.5;
-  margin-bottom: 1.35rem;
+  margin: 0 0 1.25rem 0;
   flex: 1;
 }
 
@@ -808,31 +960,51 @@
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid var(--team-border-light);
+  padding-top: 0.85rem;
+  border-top: 1px solid #E2E8F0;
+}
+
+.counsel-quick-contacts {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.counsel-quick-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  color: #003C8C;
+  transition: all 0.2s ease;
+}
+
+.counsel-quick-btn:hover {
+  background: #003C8C;
+  color: #FFFFFF;
+  border-color: #003C8C;
 }
 
 .counsel-view-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
+  gap: 0.4rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--khaitan-sky-blue);
+  letter-spacing: 0.08em;
+  color: #003C8C;
   text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.counsel-card:hover .counsel-view-link {
-  color: #0369A1;
 }
 
 .counsel-view-link svg {
   width: 14px;
   height: 14px;
-  transition: transform var(--transition-fast);
+  transition: transform 0.2s ease;
   stroke: currentColor;
 }
 
@@ -850,8 +1022,8 @@
   bottom: 0;
   width: min(650px, 100vw);
   background: #FFFFFF;
-  border-left: 2px solid var(--khaitan-royal-blue);
-  box-shadow: -15px 0 45px rgba(0, 35, 82, 0.15);
+  border-left: 3px solid #003C8C;
+  box-shadow: -15px 0 45px rgba(15, 23, 42, 0.12);
   z-index: 100;
   transform: translateX(100%);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1101,11 +1273,19 @@
 
   .counsel-grid {
     grid-template-columns: 1fr;
-    gap: 1.15rem;
+    gap: 1.35rem;
   }
 
   .counsel-card {
-    padding: 1.35rem;
+    padding: 0;
+  }
+
+  .counsel-card-media {
+    height: 230px;
+  }
+
+  .counsel-card-content {
+    padding: 1.15rem;
   }
 
   .counsel-dossier-drawer {

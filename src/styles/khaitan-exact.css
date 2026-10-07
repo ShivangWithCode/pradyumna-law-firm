@@ -1599,3 +1599,109 @@ html, body {
   }
 }
 
+/* ==========================================================================
+   DEVELOPER & DESIGNER SIGNATURE BADGE (Shivang Pandey Direct WhatsApp)
+   ========================================================================== */
+.site-credit-badge {
+  position: fixed;
+  bottom: 1.3rem;
+  left: clamp(3.2rem, 5.5vw, 5.25rem);
+  z-index: 85;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.78rem 0.3rem 0.82rem;
+  background: rgba(0, 27, 64, 0.76);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  font-family: var(--kh-font);
+  font-size: 0.68rem;
+  letter-spacing: 0.025em;
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 18px rgba(0, 15, 40, 0.32);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.site-credit-badge:hover {
+  background: rgba(0, 35, 82, 0.92);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 6px 26px rgba(0, 56, 130, 0.4);
+  transform: translateY(-2px);
+}
+
+.site-credit-prefix {
+  color: rgba(226, 232, 240, 0.78);
+  font-weight: 400;
+}
+
+.site-credit-badge .developer-credit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.site-credit-badge .developer-credit-link .developer-name {
+  color: #38BDF8;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.site-credit-badge .developer-credit-link .developer-name::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0;
+  height: 1px;
+  background: #38BDF8;
+  transition: width 0.25s ease;
+}
+
+.site-credit-badge:hover .developer-credit-link .developer-name::after,
+.site-credit-badge .developer-credit-link:hover .developer-name::after {
+  width: 100%;
+}
+
+.site-credit-badge .developer-credit-link:hover .developer-name {
+  color: #7DD3FC;
+}
+
+.developer-wa-icon {
+  color: #25D366;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+}
+
+.site-credit-badge:hover .developer-wa-icon,
+.site-credit-badge .developer-credit-link:hover .developer-wa-icon {
+  transform: scale(1.22);
+  filter: drop-shadow(0 0 6px rgba(37, 211, 102, 0.65));
+}
+
+/* Hide automatically when any modal or the full-screen menu is open */
+body.menu-open .site-credit-badge,
+.fullscreen-menu-overlay.is-active ~ .site-credit-badge,
+.inquiry-modal-overlay.is-open ~ .site-credit-badge,
+.team-modal-overlay.is-open ~ .site-credit-badge,
+.expertise-modal-overlay.is-open ~ .site-credit-badge,
+.credentials-modal-overlay.is-open ~ .site-credit-badge {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateY(8px);
+}
+
+@media (max-width: 850px) {
+  .site-credit-badge {
+    display: none !important;
+  }
+}
+

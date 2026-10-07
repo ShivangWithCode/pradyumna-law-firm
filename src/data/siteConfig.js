@@ -79,5 +79,11 @@ export const siteConfig = {
     instagram: "https://instagram.com/pradyumnatyagi"
   },
 
+  developer: {
+    name: "Shivang Pandey",
+    whatsAppNumber: import.meta.env.VITE_DEV_WHATSAPP_NUMBER || "919026399211",
+    whatsAppMessage: "Hello Shivang, I saw your work on Pradyumna Law Associates website and would like to connect."
+  },
+
   disclaimer: "As per the rules of the Bar Council of India, law firms in India are not permitted to solicit work or advertise in any manner. This website is solely for the purpose of providing general information about Pradyumna Law Associates and does not constitute legal advice or create an advocate-client relationship."
 };

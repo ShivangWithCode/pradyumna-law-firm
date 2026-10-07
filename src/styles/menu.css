@@ -254,3 +254,95 @@
     padding: 4px 0;
   }
 }
+
+/* ==========================================================================
+   Menu Footer Credits & Signature (Shivang Pandey Direct WhatsApp)
+   ========================================================================== */
+.kh-menu-footer {
+  margin-top: clamp(1.5rem, 3.5vh, 2.75rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  text-align: right;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.35s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+}
+
+.fullscreen-menu-overlay.is-active .kh-menu-footer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.kh-menu-credit-line {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  font-size: clamp(0.82rem, 1vw, 0.92rem);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.kh-menu-credit-label {
+  font-weight: 400;
+  color: rgba(203, 213, 225, 0.78);
+}
+
+.kh-menu-developer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kh-menu-developer-link .developer-name {
+  color: #38BDF8;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+}
+
+.kh-menu-developer-link:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(56, 189, 248, 0.55);
+  transform: translateX(-4px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+
+.kh-menu-developer-link:hover .developer-name {
+  color: #7DD3FC;
+}
+
+.kh-menu-developer-link .developer-wa-icon {
+  color: #25D366;
+  transition: transform 0.22s ease, filter 0.22s ease;
+}
+
+.kh-menu-developer-link:hover .developer-wa-icon {
+  transform: scale(1.22);
+  filter: drop-shadow(0 0 6px rgba(37, 211, 102, 0.75));
+}
+
+.kh-menu-subtext {
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+  .kh-menu-footer {
+    align-items: flex-end;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+}
