@@ -290,6 +290,11 @@
 .kh-menu-credit-label {
   font-weight: 400;
   color: rgba(203, 213, 225, 0.78);
+  transition: color 0.2s ease;
+}
+
+.kh-menu-developer-link:hover .kh-menu-credit-label {
+  color: #FFFFFF;
 }
 
 .kh-menu-developer-link {
