@@ -308,22 +308,30 @@
 .team-download-cv-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  color: var(--khaitan-sky-blue);
-  font-size: 0.92rem;
-  font-weight: 600;
+  gap: 0.45rem;
+  padding: 0.42rem 0.95rem;
+  background: #F0F7FF;
+  border: 1.5px solid rgba(0, 60, 140, 0.28);
+  border-radius: 9999px;
+  color: #003C8C;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .team-download-cv-btn:hover {
-  color: #0369A1;
-  text-decoration: underline;
+  background: #003C8C;
+  color: #FFFFFF;
+  border-color: #003C8C;
+  box-shadow: 0 3px 10px rgba(0, 60, 140, 0.2);
 }
 
 .team-download-cv-btn svg {
   stroke: currentColor;
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
@@ -526,11 +534,46 @@
   text-transform: uppercase;
 }
 
+.founder-title-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.founder-cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.85rem;
+  border: 1.5px solid rgba(0, 60, 140, 0.28);
+  border-radius: 6px;
+  color: #003C8C;
+  background: #F0F7FF;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+}
+
+.founder-cv-btn:hover {
+  background: #003C8C;
+  color: #FFFFFF;
+  border-color: #003C8C;
+  box-shadow: 0 3px 10px rgba(0, 60, 140, 0.2);
+}
+
+.founder-cv-btn svg {
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
 .founder-linkedin-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.35rem 0.75rem;
+  padding: 0.38rem 0.85rem;
   border: 1px solid #CBD5E1;
   border-radius: 6px;
   color: #0A66C2;
@@ -717,6 +760,32 @@
   color: #003C8C;
 }
 
+.counsel-cv-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.35rem;
+  background: #F0F7FF;
+  color: #003C8C;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1.5px solid rgba(0, 60, 140, 0.35);
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.counsel-cv-download-btn:hover {
+  background: #003C8C;
+  color: #FFFFFF;
+  border-color: #003C8C;
+  box-shadow: 0 4px 14px rgba(0, 60, 140, 0.22);
+}
+
+.counsel-cv-download-btn svg,
 .counsel-outline-btn svg,
 .counsel-primary-btn svg {
   width: 15px;
@@ -1269,6 +1338,17 @@
 
   .founder-info-column {
     padding: 1.35rem 1.15rem;
+  }
+
+  .founder-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .founder-actions-row > * {
+    justify-content: center;
+    width: 100%;
+    text-align: center;
   }
 
   .counsel-grid {
