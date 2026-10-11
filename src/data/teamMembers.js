@@ -77,6 +77,75 @@ export const teamMembers = [
     }
   },
   {
+    id: "ashok-kumar-tripathi",
+    name: "Mr. Ashok Kumar Tripathi",
+    designation: "Senior Counsel & Arbitrator | Former Principal District & Sessions Judge",
+    role: "Senior Counsel & Arbitrator | Former Principal District & Sessions Judge | Ex-Member (Judicial), Company Law Board (Western Region) | Former Presiding Officer, DRT",
+    category: "litigation",
+    isFounder: false,
+    portrait: "/assets/images/ashok_kumar_tripathi.jpg",
+    courtAffiliation: "Hon'ble Supreme Court of India | High Court of Delhi | National Company Law Tribunal (NCLT) | Debt Recovery Tribunals (DRT) | Arbitration Tribunals",
+    qualifications: "LL.M. (Indian Law Institute) | LL.B. (Campus Law Centre, Faculty of Law, University of Delhi) | Bar Council of Uttar Pradesh (Enrolled 1975)",
+    barCouncil: "Bar Council of Uttar Pradesh (Enrolment 1975) | Delhi Bar Association",
+    institutionalDesignations: [
+      "Former Member (Judicial), Company Law Board (Western Region, 2011–2015, Equivalent to Addl. Secretary, Govt. of India)",
+      "Former Presiding Officer, Debt Recovery Tribunal (DRT Delhi & Chandigarh, 2006–2011)",
+      "Former Principal District & Sessions Judge (Judicial Service 1979 onwards)",
+      "Chairman, Permanent Lok Adalat (PLA), Meerut, U.P. (Appointed by U.P. State Legal Services Authority, 2015)",
+      "Independent External Monitor (IEM), National Textile Corporation (Appointed on behalf of Central Vigilance Commission)",
+      "Former Legal Adviser, Indian Ports Association (Ministry of Shipping, Govt. of India, 2016–2018)",
+      "Former Legal Advisor, National Highways Authority of India (NHAI, 2018–2021)"
+    ],
+    memberships: [
+      "Indian Law Institute (ILI)",
+      "Delhi High Court Bar Association (DHCBA)",
+      "Bar Council of Uttar Pradesh"
+    ],
+    positionsHeld: [
+      "Principal District and Sessions Judge (Commenced judicial career as Civil Judge / 1st Class Magistrate in 1979)",
+      "Presiding Officer, Debt Recovery Tribunal (Delhi and Chandigarh, 2006–2011)",
+      "Member (Judicial), Company Law Board (Western Region, 2011–2015, now part of NCLT)",
+      "Legal Advisor, National Highways Authority of India (NHAI, 2018–2021) handling infrastructure contract disputes",
+      "Legal Adviser, Indian Ports Association (appointed by Ministry of Shipping, 2016–2018)",
+      "Legal Advisor, PICUP & Ministry of Heavy Industry, U.P.",
+      "Independent External Monitor (IEM), National Textile Corporation (5-year tenure on behalf of CVC)",
+      "Chairman, Permanent Lok Adalat (PLA), Meerut, U.P. leading statutory dispute conciliation & mediation",
+      "Sole Arbitrator & Tribunal Member in over 24 complex commercial arbitrations"
+    ],
+    primaryPractices: [
+      "Commercial & Infrastructure Arbitration",
+      "Corporate Law & IBC (CLB / NCLT)",
+      "Banking & Debt Recovery (DRT / DRAT / SARFAESI)",
+      "Economic Offenses & White-Collar Crime (PMLA)",
+      "Infrastructure & Concessionaire Advisory (NHAI)",
+      "Civil, Criminal & Appellate Dispute Resolution"
+    ],
+    landmarkMatters: [
+      "Conducted over 24 high-profile commercial arbitrations resolving multi-crore public sector and private disputes",
+      "Adjudicated major corporate disputes as Member (Judicial), Company Law Board across western region",
+      "Presided over recovery and banking adjudications as Presiding Officer at Delhi and Chandigarh DRTs",
+      "Advised NHAI in high-stakes infrastructure, concessionaire, and EPC contract disputes"
+    ],
+    clientsRepresented: [
+      "National Highways Authority of India (NHAI)",
+      "Indian Ports Association (Ministry of Shipping, Govt. of India)",
+      "PICUP (Premier Financial Institution of U.P.)",
+      "Ministry of Heavy Industry, Government of U.P.",
+      "National Textile Corporation (Chief Vigilance Commission)",
+      "Public Sector Undertakings & Corporate Enterprises"
+    ],
+    bio: "Mr. Ashok Kumar Tripathi began his legal career in 1975 as an Advocate with the Bar Council of Uttar Pradesh. With a distinguished academic background holding an LL.B. from Campus Law Centre (University of Delhi) and LL.M. from the Indian Law Institute, he joined the judiciary in 1979 and rose to become Principal District and Sessions Judge. He has served on prestigious statutory and quasi-judicial posts including Presiding Officer of the Debt Recovery Tribunal (DRT Delhi & Chandigarh), and Member (Judicial) of the Company Law Board (holding a position equivalent to Additional Secretary, Government of India). As Senior Counsel and Arbitrator at Pradyumna Law Associates, he brings over five decades of consummate judicial and advisory experience, having served as Legal Adviser to NHAI, Indian Ports Association, and PICUP, and conducted more than 24 arbitrations.",
+    initials: "AKT",
+    quote: "Decades of judicial stewardship and arbitration mastery provide the highest standard of legal precision.",
+    directContact: {
+      email: "plaoffices@gmail.com",
+      primaryPhone: "+91-7503455000",
+      secondaryPhone: "+91-9716810000",
+      city: "New Delhi / Meerut / Lucknow",
+      office: "50, Todarmal Road (Lutyens’ Bungalow Zone (LBZs)), near Supreme Court of India/Bengali Market, Delhi-110001."
+    }
+  },
+  {
     id: "surjeet-singh",
     name: "Mr. Surjeet Singh",
     designation: "Advocate — Supreme Court | Government Pleader (UOI)",
@@ -187,6 +256,59 @@ export const teamMembers = [
     }
   },
   {
+    id: "abhijit-bhatnagar",
+    name: "Mr. Abhijit Bhatnagar",
+    designation: "Advocate-on-Record (AOR) — Supreme Court",
+    role: "Advocate-on-Record (AOR), Hon'ble Supreme Court of India",
+    category: "litigation",
+    isFounder: false,
+    portrait: "/assets/images/abhijit_bhatnagar_aor.jpg",
+    courtAffiliation: "Hon'ble Supreme Court of India | High Court of Delhi",
+    qualifications: "Advocate-on-Record (AOR), Supreme Court of India | LL.M. (Faculty of Law, Delhi University) | LL.B. (Campus Law Centre, Faculty of Law, DU) | B.Sc. Physics (Hons., Ramjas College, DU)",
+    barCouncil: "Supreme Court Bar Association (SCBA) | Supreme Court Advocates-on-Record Association (SCAORA) | Bar Council of Delhi",
+    institutionalDesignations: [
+      "Advocate-on-Record (AOR), Supreme Court of India",
+      "Member, Supreme Court Advocates-on-Record Association (SCAORA)"
+    ],
+    memberships: [
+      "Supreme Court Advocates-on-Record Association (SCAORA)",
+      "Supreme Court Bar Association (SCBA)",
+      "Delhi High Court Bar Association (DHCBA)"
+    ],
+    positionsHeld: [
+      "Advocate-on-Record (AOR) authorized to act and plead before the Supreme Court of India",
+      "Lead Counsel for Supreme Court Special Leave Petitions (SLPs) and Transfer Petitions",
+      "Apex Court Constitutional & Appellate Practice Counsel"
+    ],
+    primaryPractices: [
+      "Supreme Court Special Leave Petitions (SLP Civil & Criminal)",
+      "Constitutional & Writ Jurisdiction (Article 32 & 136)",
+      "High-Stakes Appellate Advocacy & Transfer Petitions",
+      "Review & Curative Petitions before Supreme Court",
+      "Complex Commercial Disputes & Appellate Litigation"
+    ],
+    landmarkMatters: [
+      "Spearheaded filing and advocacy in landmark Special Leave Petitions (SLPs) and Transfer Petitions before the Supreme Court of India",
+      "Represented institutional clients and corporate entities in constitutional, commercial, and appellate proceedings",
+      "Secured critical judicial interim protections and stay orders before Apex Court benches"
+    ],
+    clientsRepresented: [
+      "Institutional Litigants & Corporate Entities",
+      "Leading Commercial Enterprises",
+      "Appellants & High-Net-Worth Litigants"
+    ],
+    bio: "Mr. Abhijit Bhatnagar is an esteemed Advocate-on-Record (AOR) at the Hon'ble Supreme Court of India. Backed by a distinguished academic foundation—comprising B.Sc. (Physics Hons.) from Ramjas College, LL.B. from Campus Law Centre (Faculty of Law, Delhi University), and LL.M. from the Faculty of Law, Delhi University—he combines acute scientific rigor and analytical precision with profound jurisprudential depth. Entitled to act, file, and plead before the highest court of the country, Mr. Bhatnagar leads high-stakes appellate advocacy, Special Leave Petitions (SLPs), transfer petitions, and complex commercial disputes.",
+    initials: "AB",
+    quote: "Apex court advocacy demands acute scientific rigor, profound constitutional insight, and meticulous preparation.",
+    directContact: {
+      email: "plaoffices@gmail.com",
+      primaryPhone: "+91-9217563550",
+      secondaryPhone: "+91-7503455000",
+      city: "Delhi",
+      office: "50, Todarmal Road (Lutyens’ Bungalow Zone (LBZs)), near Supreme Court of India/Bengali Market, Delhi-110001."
+    }
+  },
+  {
     id: "vrinda-khanna",
     name: "Advocate Vrinda Khanna",
     designation: "Associate — Dispute Resolution & Forensic Practice",
@@ -236,6 +358,41 @@ export const teamMembers = [
       primaryPhone: "+91-7503455000",
       city: "New Delhi",
       office: "50, First Floor, Todarmal Road, Bengali Market, Connaught Place, New Delhi 110001"
+    }
+  },
+  {
+    id: "ashwani-kumar",
+    name: "Mr. Ashwani Kumar",
+    designation: "Advocate — Trial Courts Practice",
+    role: "Advocate | Trial Courts Practice (Delhi, Gurugram & Noida)",
+    category: "litigation",
+    isFounder: false,
+    portrait: "/assets/images/ashwani_kumar.jpg",
+    courtAffiliation: "Delhi District Courts | Gurugram Courts (Haryana) | Noida Courts (Uttar Pradesh)",
+    qualifications: "B.A., LL.B.",
+    barCouncil: "",
+    institutionalDesignations: [],
+    memberships: [],
+    positionsHeld: [
+      "Trial Courts Practice — Delhi District Courts, Gurugram Courts (Haryana) and Noida Courts (Uttar Pradesh)"
+    ],
+    primaryPractices: [
+      "Trial Courts Practice",
+      "Delhi District Courts",
+      "Gurugram Courts (Haryana)",
+      "Noida Courts (Uttar Pradesh)"
+    ],
+    landmarkMatters: [],
+    clientsRepresented: [],
+    bio: "Mr. Ashwani Kumar holds B.A. and LL.B. degrees and specializes in Trial Courts practice across Delhi District Courts, Gurugram Courts (Haryana), and Noida Courts (Uttar Pradesh).",
+    initials: "AK",
+    quote: "Trial courts practice across Delhi District Courts, Gurugram Courts, and Noida Courts.",
+    directContact: {
+      email: "plaoffices@gmail.com",
+      primaryPhone: "+91-7503455000",
+      secondaryPhone: "+91-9716810000",
+      city: "Delhi / NCR",
+      office: "50, Todarmal Road (Lutyens’ Bungalow Zone (LBZs)), near Supreme Court of India/Bengali Market, Delhi-110001."
     }
   }
 ];

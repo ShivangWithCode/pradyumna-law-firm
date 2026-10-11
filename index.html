@@ -15,6 +15,54 @@
   <link rel="canonical" href="https://pradyumnalaw.com/" />
   <link rel="icon" type="image/svg+xml" href="/assets/images/pla_crest_logo.svg" />
 
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pradyumnalaw.com/" />
+  <meta property="og:title" content="Pradyumna Law Associates | Advocates &amp; Legal Consultants" />
+  <meta property="og:description" content="Premier Indian legal practice offering strategic courtroom advocacy and institutional counsel across the Supreme Court of India, Delhi High Court, and Commercial Tribunals." />
+  <meta property="og:image" content="https://pradyumnalaw.com/assets/images/slide0_merged_hero.jpg" />
+  <meta property="og:site_name" content="Pradyumna Law Associates" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://pradyumnalaw.com/" />
+  <meta property="twitter:title" content="Pradyumna Law Associates | Advocates &amp; Legal Consultants" />
+  <meta property="twitter:description" content="Strategic Courtroom Advocacy &amp; Institutional Legal Counsel before Supreme Court of India &amp; High Courts." />
+  <meta property="twitter:image" content="https://pradyumnalaw.com/assets/images/slide0_merged_hero.jpg" />
+
+  <!-- Schema.org LegalService JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Pradyumna Law Associates",
+    "alternateName": "PLA Chambers",
+    "url": "https://pradyumnalaw.com",
+    "logo": "https://pradyumnalaw.com/assets/images/pla_monogram_gold_hd.png",
+    "image": "https://pradyumnalaw.com/assets/images/slide0_merged_hero.jpg",
+    "description": "Premier Indian legal practice offering strategic courtroom advocacy and institutional counsel across Commercial Litigation, Corporate Governance, Arbitration, IBC, and High Court Writs.",
+    "founder": {
+      "@type": "Person",
+      "name": "Pradyumna Tyagi",
+      "jobTitle": "Founder & Managing Partner | Panel Counsel Govt. of India (Supreme Court)",
+      "sameAs": "https://www.linkedin.com/in/pradyumna-tyagi-001010111/"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "50, First Floor, Todarmal Road, Bengali Market, Connaught Place",
+      "addressLocality": "New Delhi",
+      "postalCode": "110001",
+      "addressCountry": "IN"
+    },
+    "telephone": "+91-7503455000",
+    "email": "pradyumna@pradyumnalaw.com",
+    "openingHours": "Mo-Sa 09:30-19:30",
+    "areaServed": "India",
+    "priceRange": "$$$$"
+  }
+  </script>
+
   <!-- Google Fonts Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,6 +73,7 @@
   <link rel="stylesheet" href="/src/styles/reset.css" />
   <link rel="stylesheet" href="/src/styles/khaitan-exact.css" />
   <link rel="stylesheet" href="/src/styles/menu.css" />
+  <link rel="stylesheet" href="/src/styles/search.css" />
   <link rel="stylesheet" href="/src/styles/team-modal.css" />
   <link rel="stylesheet" href="/src/styles/expertise-modal.css" />
   <link rel="stylesheet" href="/src/styles/inquiry-modal.css" />
@@ -128,7 +177,7 @@
                 <span>EXPLORE PUBLICATIONS</span>
                 <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
-              <button type="button" class="kh-btn explore-credentials-btn" onclick="window.openCredentialsModal ? window.openCredentialsModal() : (document.getElementById('credentials-modal').classList.add('is-active', 'is-open'), document.body.classList.add('menu-open'))">
+              <button type="button" class="kh-btn explore-credentials-btn">
                 <span>CHAMBERS CREDENTIALS</span>
                 <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </button>
@@ -190,7 +239,7 @@
           </div>
           <div class="kh-mask kh-actions-mask">
             <div class="kh-actions">
-              <button type="button" class="kh-btn explore-chambers-btn" onclick="window.openCredentialsModal ? window.openCredentialsModal() : (document.getElementById('credentials-modal').classList.add('is-active', 'is-open'), document.body.classList.add('menu-open'))">
+              <button type="button" class="kh-btn explore-chambers-btn">
                 <span>ABOUT OUR CHAMBERS</span>
                 <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </button>
@@ -775,6 +824,37 @@
 
       </div>
     </main>
+  </div>
+
+  <!-- ======================================================================
+       LIVE SEARCH MODAL OVERLAY (Universal Chambers Search Engine)
+       ====================================================================== -->
+  <div class="search-modal-overlay" id="search-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Chambers Live Search">
+    <div class="search-modal-container">
+      <div class="search-input-wrapper">
+        <input type="search" class="search-input-field" placeholder="Search practice areas, counsel, rulings..." aria-label="Search practice areas, counsel, rulings" autocomplete="off" />
+        <button type="button" class="search-close-trigger" aria-label="Close Search">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="search-quick-tags">
+        <span>Popular:</span>
+        <button type="button" class="search-quick-pill" data-term="Supreme Court">Supreme Court</button>
+        <button type="button" class="search-quick-pill" data-term="Arbitration">Arbitration</button>
+        <button type="button" class="search-quick-pill" data-term="Government of India">Panel Counsel</button>
+        <button type="button" class="search-quick-pill" data-term="Sessions Judge">Judicial Counsel</button>
+        <button type="button" class="search-quick-pill" data-term="Corporate">Corporate &amp; NCLT</button>
+        <button type="button" class="search-quick-pill" data-term="Forensic">Forensics &amp; Cyber</button>
+      </div>
+
+      <div class="search-results-panel" role="region" aria-live="polite">
+        <!-- Dynamically populated by SearchModal.js -->
+      </div>
+    </div>
   </div>
 
   <!-- Core Application Script -->

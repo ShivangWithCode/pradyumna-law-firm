@@ -8,6 +8,7 @@ import { initTeamModal } from './components/TeamModal.js';
 import { initExpertiseModal } from './components/ExpertiseModal.js';
 import { initInquiryModal } from './components/InquiryModal.js';
 import { initCredentialsModal } from './components/CredentialsModal.js';
+import { initSearchModal } from './components/SearchModal.js';
 import { siteConfig } from './data/siteConfig.js';
 
 function initActionButtons() {
@@ -111,6 +112,7 @@ function startApp() {
   initExpertiseModal();
   initInquiryModal();
   initCredentialsModal();
+  initSearchModal();
   initActionButtons();
 }
 

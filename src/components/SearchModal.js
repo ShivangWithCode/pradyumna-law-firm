@@ -7,7 +7,7 @@ import { teamMembers } from '../data/teamMembers.js';
 import { insights } from '../data/insights.js';
 
 export function initSearchModal() {
-  const searchBtn = document.querySelector('.search-btn');
+  const searchBtns = document.querySelectorAll('.search-btn, .search-toggle-btn, .kh-search-btn, .kh-menu-search-trigger, .expertise-search-trigger');
   const overlay = document.querySelector('.search-modal-overlay');
   const closeBtn = document.querySelector('.search-close-trigger');
   const input = document.querySelector('.search-input-field');
@@ -38,7 +38,7 @@ export function initSearchModal() {
       snippet: `${t.courtAffiliation} | ${t.primaryPractices.join(', ')}`,
       target: `#people`,
       memberId: t.id,
-      keywords: `${t.name} ${t.designation} ${t.primaryPractices.join(' ')}`
+      keywords: `${t.name} ${t.designation} ${t.role || ''} ${t.courtAffiliation || ''} ${t.qualifications || ''} ${t.primaryPractices.join(' ')} ${t.positionsHeld ? t.positionsHeld.join(' ') : ''} ${t.landmarkMatters ? t.landmarkMatters.join(' ') : ''}`
     })),
     ...insights.map(i => ({
       type: 'Legal Briefing',
@@ -62,8 +62,13 @@ export function initSearchModal() {
   function closeSearch() {
     overlay.classList.remove('is-active');
     overlay.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('menu-open');
-    if (searchBtn) searchBtn.focus();
+    const otherModalOpen = document.querySelector(
+      '.fullscreen-menu-overlay.is-active, .team-modal-overlay.is-active, .expertise-modal-overlay.is-active, .credentials-modal-overlay.is-active, .inquiry-modal-overlay.is-open'
+    );
+    if (!otherModalOpen) {
+      document.body.classList.remove('menu-open');
+    }
+    if (searchBtns.length > 0) searchBtns[0].focus();
   }
 
   function renderResults(query) {
@@ -135,8 +140,14 @@ export function initSearchModal() {
     );
   }
 
-  if (searchBtn) searchBtn.addEventListener('click', openSearch);
+  searchBtns.forEach(btn => btn.addEventListener('click', openSearch));
   if (closeBtn) closeBtn.addEventListener('click', closeSearch);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      closeSearch();
+    }
+  });
 
   window.openSearchModal = openSearch;
   window.closeSearchModal = closeSearch;

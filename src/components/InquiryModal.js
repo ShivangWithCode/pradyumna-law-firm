@@ -15,6 +15,7 @@ export function initInquiryModal() {
   function openModal() {
     modalOverlay.classList.add('is-open');
     modalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('menu-open');
     isInquiryModalOpen = true;
     if (closeBtn) closeBtn.focus();
   }
@@ -22,6 +23,7 @@ export function initInquiryModal() {
   function closeModal() {
     modalOverlay.classList.remove('is-open');
     modalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('menu-open');
     isInquiryModalOpen = false;
   }
 

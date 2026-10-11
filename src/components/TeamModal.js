@@ -206,7 +206,7 @@ export function initTeamModal() {
     }
 
     if (countEl) {
-      countEl.textContent = `${filtered.length} Associated Practices`;
+      countEl.textContent = `${filtered.length} Senior Counsel & Associates`;
     }
 
     if (filtered.length === 0) {
@@ -231,10 +231,14 @@ export function initTeamModal() {
 
     grid.innerHTML = filtered.map(member => {
       let badge = { icon: '🏛️', label: 'Supreme Court & High Court' };
-      if (member.id === 'surjeet-singh') {
+      if (member.id === 'ashok-kumar-tripathi') {
+        badge = { icon: '⚖️', label: 'Former Sessions Judge • Ex-Member CLB' };
+      } else if (member.id === 'surjeet-singh') {
         badge = { icon: '⚖️', label: 'Govt. Pleader • Union of India' };
-      } else if (member.id === 'gaurav-singh') {
+      } else if (member.id === 'gaurav-singh' || member.id === 'abhijit-bhatnagar') {
         badge = { icon: '🏛️', label: 'Supreme Court AOR' };
+      } else if (member.id === 'ashwani-kumar') {
+        badge = { icon: '⚖️', label: 'Trial Courts Practice' };
       } else if (member.id === 'vrinda-khanna') {
         badge = { icon: '🔬', label: 'Forensic & Cyber Law' };
       }
@@ -317,7 +321,7 @@ export function initTeamModal() {
     if (!drawerBody) return;
 
     drawerBody.innerHTML = `
-      <div class="dossier-hero">
+      <div class="dossier-hero" data-counsel-id="${member.id}">
         <div class="dossier-portrait-frame ${member.portrait ? 'has-photo' : ''}">
           ${member.portrait 
             ? `<img src="${member.portrait}" alt="${member.name}" class="dossier-portrait-img" loading="eager" />` 
@@ -354,7 +358,7 @@ export function initTeamModal() {
       <div class="dossier-block">
         <span class="dossier-block-label">Academic Credentials &amp; Bar Admission</span>
         <p class="dossier-block-content">${member.qualifications}</p>
-        <p class="dossier-block-content" style="font-size: 0.86rem; color: var(--team-sky-tint); margin-top: 0.25rem;">${member.barCouncil || 'Bar Council of Delhi'}</p>
+        ${member.barCouncil ? `<p class="dossier-block-content" style="font-size: 0.86rem; color: var(--team-sky-tint); margin-top: 0.25rem;">${member.barCouncil}</p>` : ''}
       </div>
 
       <div class="dossier-block">

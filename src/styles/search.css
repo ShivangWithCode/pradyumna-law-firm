@@ -12,7 +12,7 @@
   background-color: rgba(4, 8, 18, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  z-index: var(--z-modal);
+  z-index: 10000;
   display: flex;
   flex-direction: column;
   align-items: center;

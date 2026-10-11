@@ -23,7 +23,10 @@ export const siteConfig = {
   ],
 
   positionsHeld: [
-    "Empaneled Advocate, Punjab and Sindh Bank (Govt. of India), Delhi",
+    "Panel Counsel, Government of India (Supreme Court Litigation, Order dated 21 Nov 2025)",
+    "Addl. Standing Counsel, High Court of Delhi",
+    "Panel Counsel, N.B.C.C. (National Buildings Construction Corporation)",
+    "Panel Counsel, Punjab & Sind Bank, Delhi",
     "Former Member, Professional Ethics Committee, Bar Council of Delhi",
     "Member, International Council of Jurists (ICJ), United Kingdom",
     "Member, Editorial Board, ILI Law Review Journal, Indian Law Institute (2016-17)",

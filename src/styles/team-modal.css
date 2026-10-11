@@ -889,12 +889,24 @@
 }
 
 /* Individual Framing per Advocate */
+.counsel-card[data-counsel-id="ashok-kumar-tripathi"] .counsel-media-img {
+  object-position: center 10%;
+}
+
 .counsel-card[data-counsel-id="surjeet-singh"] .counsel-media-img {
   object-position: center 12%;
 }
 
 .counsel-card[data-counsel-id="gaurav-singh"] .counsel-media-img {
   object-position: center 20%;
+}
+
+.counsel-card[data-counsel-id="abhijit-bhatnagar"] .counsel-media-img {
+  object-position: center 10%;
+}
+
+.counsel-card[data-counsel-id="ashwani-kumar"] .counsel-media-img {
+  object-position: center 12%;
 }
 
 .counsel-card[data-counsel-id="vrinda-khanna"] .counsel-card-media {
@@ -1184,6 +1196,40 @@
   object-fit: cover;
   object-position: center 18%;
   display: block;
+}
+
+/* Individual Framing per Advocate in Dossier Drawer */
+.dossier-hero[data-counsel-id="ashok-kumar-tripathi"] .dossier-portrait-img {
+  object-position: center 10%;
+}
+
+.dossier-hero[data-counsel-id="surjeet-singh"] .dossier-portrait-img {
+  object-position: center 12%;
+}
+
+.dossier-hero[data-counsel-id="gaurav-singh"] .dossier-portrait-img {
+  object-position: center 18%;
+}
+
+.dossier-hero[data-counsel-id="abhijit-bhatnagar"] .dossier-portrait-img {
+  object-position: center 10%;
+}
+
+.dossier-hero[data-counsel-id="ashwani-kumar"] .dossier-portrait-img {
+  object-position: center 12%;
+}
+
+.dossier-hero[data-counsel-id="vrinda-khanna"] .dossier-portrait-frame {
+  background: #FFFFFF;
+}
+
+.dossier-hero[data-counsel-id="vrinda-khanna"] .dossier-portrait-img {
+  height: 94%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  background: #FFFFFF;
 }
 
 .dossier-fallback-initials {
