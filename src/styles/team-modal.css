@@ -185,6 +185,175 @@
   stroke: currentColor;
 }
 
+/* Responsive Desktop vs Mobile Views */
+.mobile-only {
+  display: none !important;
+}
+
+.desktop-only {
+  display: block;
+}
+
+.team-filter-bar.desktop-only {
+  display: flex !important;
+}
+
+/* ==========================================================================
+   Khaitan & Co Exact "Our Leaders" Royal Blue Hero Banner (Mobile)
+   ========================================================================== */
+.kh-team-hero-banner {
+  display: none !important;
+  background: #003882;
+  color: #FFFFFF;
+  padding: clamp(2rem, 4.5vh, 3.25rem) var(--container-pad, 1.5rem);
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.kh-team-hero-inner {
+  max-width: var(--container-max, 1200px);
+  margin: 0 auto;
+}
+
+.kh-team-hero-title {
+  font-family: var(--kh-font, 'Montserrat', sans-serif);
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.18;
+  margin: 0 0 clamp(0.65rem, 1.5vh, 0.95rem) 0;
+  letter-spacing: -0.018em;
+}
+
+.kh-team-hero-desc {
+  font-family: var(--kh-font, 'Montserrat', sans-serif);
+  font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+  line-height: 1.58;
+  color: rgba(255, 255, 255, 0.94);
+  margin: 0 0 1.65rem 0;
+  max-width: 680px;
+  font-weight: 400;
+}
+
+/* Category Filter Pills (Exact Khaitan Pill Style) */
+.kh-team-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.65rem;
+}
+
+.kh-pill-btn {
+  font-family: var(--kh-font, 'Montserrat', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 0.45rem 1.25rem;
+  border-radius: 9999px;
+  border: 1.5px solid #00A3E0;
+  background: transparent;
+  color: #00A3E0;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.kh-pill-btn:hover {
+  background: rgba(0, 163, 224, 0.16);
+  color: #FFFFFF;
+}
+
+.kh-pill-btn.is-active {
+  background: #00A3E0;
+  border-color: #00A3E0;
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0, 163, 224, 0.35);
+}
+
+/* OR Divider */
+.kh-team-or-label {
+  font-family: var(--kh-font, 'Montserrat', sans-serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin-bottom: 1.35rem;
+}
+
+/* Filter Fields Container */
+.kh-team-filter-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 680px;
+}
+
+.kh-filter-field {
+  position: relative;
+  width: 100%;
+}
+
+.kh-underline-input,
+.kh-underline-select {
+  width: 100%;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0;
+  color: #FFFFFF;
+  font-family: var(--kh-font, 'Montserrat', sans-serif);
+  font-size: 1.05rem;
+  padding: 0.75rem 2.2rem 0.75rem 0;
+  outline: none;
+  transition: border-color 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.kh-underline-input::placeholder {
+  color: #00A3E0;
+  opacity: 1;
+  font-weight: 500;
+}
+
+.kh-underline-select {
+  cursor: pointer;
+  color: #00A3E0;
+}
+
+.kh-underline-select option {
+  background: #003882;
+  color: #FFFFFF;
+  padding: 10px;
+}
+
+.kh-underline-input:focus,
+.kh-underline-select:focus {
+  border-bottom-color: #00D8E6;
+}
+
+.kh-field-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #00A3E0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kh-select-caret svg {
+  fill: #00A3E0;
+}
+
 /* ==========================================================================
    Scrollable Body & Container
    ========================================================================== */
@@ -193,6 +362,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding: 2.5rem var(--container-pad) 6rem;
+  background-color: #FFFFFF;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -211,33 +381,33 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.92rem;
-  color: var(--team-slate-muted);
+  color: var(--team-slate-muted, #64748B);
   margin-bottom: 0.85rem;
 }
 
 .team-breadcrumb-home {
   width: 17px;
   height: 17px;
-  color: var(--khaitan-sky-blue);
-  stroke: var(--khaitan-sky-blue);
+  color: var(--khaitan-sky-blue, #0284C7);
+  stroke: var(--khaitan-sky-blue, #0284C7);
 }
 
 .team-breadcrumb-sep {
-  color: var(--team-slate-muted);
+  color: var(--team-slate-muted, #64748B);
   font-size: 0.9rem;
 }
 
 .team-breadcrumb-current {
-  color: var(--team-slate-body);
+  color: var(--team-slate-body, #334155);
   font-weight: 500;
 }
 
 .team-headline {
-  font-family: var(--font-sans);
+  font-family: var(--font-sans, inherit);
   font-size: clamp(2.2rem, 4vw, 3.1rem);
   font-weight: 700;
   line-height: 1.15;
-  color: #003C8C;
+  color: #003C8C !important;
   margin-bottom: 0.85rem;
   letter-spacing: -0.015em;
 }
@@ -245,7 +415,7 @@
 .team-lead {
   font-size: 1.05rem;
   line-height: 1.68;
-  color: var(--team-slate-body);
+  color: var(--team-slate-body, #334155) !important;
   max-width: 900px;
 }
 
@@ -697,7 +867,7 @@
 .founder-bio-text {
   font-size: 0.92rem;
   line-height: 1.7;
-  color: #475569;
+  color: #1E293B;
   margin-bottom: 1.5rem;
 }
 
@@ -847,30 +1017,29 @@
 .counsel-card {
   position: relative;
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
+  border: 1px solid #D0E1F2;
+  border-radius: 4px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s ease;
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 4px 16px rgba(0, 35, 82, 0.08);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .counsel-card:hover {
-  background: #FFFFFF;
-  border-color: #003C8C;
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 60, 140, 0.12);
+  border-color: #0077C8;
+  box-shadow: 0 12px 28px rgba(0, 35, 82, 0.16);
 }
 
 .counsel-card-media {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 275px;
   overflow: hidden;
-  background: #FFFFFF;
-  border-bottom: 1px solid #E2E8F0;
+  background: #C7DCEB; /* Khaitan signature soft studio ice-blue backdrop */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -880,6 +1049,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 10%;
   display: block;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -889,39 +1059,42 @@
 }
 
 /* Individual Framing per Advocate */
+.counsel-card[data-counsel-id="pradyumna-tyagi"] .counsel-media-img {
+  object-position: center 8%;
+}
+
 .counsel-card[data-counsel-id="ashok-kumar-tripathi"] .counsel-media-img {
-  object-position: center 10%;
+  object-position: center 8%;
 }
 
 .counsel-card[data-counsel-id="surjeet-singh"] .counsel-media-img {
-  object-position: center 12%;
-}
-
-.counsel-card[data-counsel-id="gaurav-singh"] .counsel-media-img {
-  object-position: center 20%;
-}
-
-.counsel-card[data-counsel-id="abhijit-bhatnagar"] .counsel-media-img {
   object-position: center 10%;
 }
 
+.counsel-card[data-counsel-id="gaurav-singh"] .counsel-media-img {
+  object-position: center 14%;
+}
+
+.counsel-card[data-counsel-id="abhijit-bhatnagar"] .counsel-media-img {
+  object-position: center 8%;
+}
+
 .counsel-card[data-counsel-id="ashwani-kumar"] .counsel-media-img {
-  object-position: center 12%;
+  object-position: center 10%;
 }
 
 .counsel-card[data-counsel-id="vrinda-khanna"] .counsel-card-media {
-  background: #FFFFFF;
+  background: #C7DCEB;
   align-items: flex-end;
 }
 
 .counsel-card[data-counsel-id="vrinda-khanna"] .counsel-media-img {
-  height: 87%;
+  height: 92%;
   width: auto;
   max-width: 100%;
   object-fit: contain;
   object-position: center bottom;
-  padding: 0;
-  background: #FFFFFF;
+  background: transparent;
 }
 
 .counsel-media-fallback {
@@ -933,9 +1106,10 @@
   font-size: 2.2rem;
   font-weight: 700;
   color: #003C8C;
-  background: #F0F7FF;
+  background: #C7DCEB;
 }
 
+/* Card Prestige Chip on Desktop */
 .counsel-card-badge-overlay {
   position: absolute;
   top: 10px;
@@ -961,11 +1135,13 @@
   white-space: nowrap;
 }
 
+/* Card Content on Desktop (Pure White Editorial Design as in Screenshot) */
 .counsel-card-content {
   padding: 1.35rem 1.45rem;
   display: flex;
   flex-direction: column;
   flex: 1;
+  background: #FFFFFF;
 }
 
 .counsel-card-title-group {
@@ -999,7 +1175,8 @@
   align-items: center;
   gap: 0.4rem;
   font-size: 0.8rem;
-  color: #64748B;
+  font-weight: 500;
+  color: #334155;
   margin: 0 0 0.9rem 0;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid #F1F5F9;
@@ -1020,17 +1197,17 @@
 .counsel-tag {
   font-size: 0.72rem;
   padding: 0.24rem 0.55rem;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  color: #334155;
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  color: #0F172A;
   border-radius: 4px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .counsel-card-quote {
   font-size: 0.84rem;
   font-style: italic;
-  color: #475569;
+  color: #1E293B;
   line-height: 1.5;
   margin: 0 0 1.25rem 0;
   flex: 1;
@@ -1091,6 +1268,10 @@
 
 .counsel-card:hover .counsel-view-link svg {
   transform: translateX(4px);
+}
+
+.counsel-card-arrow-btn {
+  display: none;
 }
 
 /* ==========================================================================
@@ -1157,7 +1338,7 @@
 .dossier-body {
   flex: 1;
   overflow-y: auto;
-  padding: 2.25rem;
+  padding: 2.25rem 2.25rem 4.5rem 2.25rem;
   display: flex;
   flex-direction: column;
   gap: 1.85rem;
@@ -1292,6 +1473,16 @@
   width: fit-content;
 }
 
+.dossier-cv-badge-btn {
+  transition: all 0.2s ease;
+}
+
+.dossier-cv-badge-btn:hover {
+  background: #003C8C !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 3px 10px rgba(0, 60, 140, 0.22);
+}
+
 .dossier-block {
   display: flex;
   flex-direction: column;
@@ -1311,7 +1502,8 @@
 .dossier-block-content {
   font-size: 0.94rem;
   line-height: 1.62;
-  color: var(--team-slate-body);
+  color: #1E293B !important;
+  font-weight: 450;
 }
 
 .dossier-list {
@@ -1320,23 +1512,24 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .dossier-list li {
   font-size: 0.92rem;
-  line-height: 1.5;
-  color: var(--team-navy-text);
+  line-height: 1.55;
+  color: #0F172A !important;
+  font-weight: 500;
   position: relative;
-  padding-left: 1.1rem;
+  padding-left: 1.15rem;
 }
 
 .dossier-list li::before {
   content: '•';
   position: absolute;
   left: 0;
-  color: var(--khaitan-sky-blue);
-  font-size: 1.1rem;
+  color: #0077C8;
+  font-size: 1.15rem;
 }
 
 .dossier-footer {
@@ -1358,86 +1551,852 @@
   color: #FFFFFF;
 }
 
-/* Responsive adjustments */
-@media (max-width: 640px) {
+/* ==========================================================================
+   Executive Law Firm Mobile Experience (<= 768px)
+   Strictly Preserves Desktop View while Delivering Top-Tier Phone UX
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Sticky Modal Header Bar */
   .team-modal-header {
-    padding: 0.75rem 1rem;
+    background: #002B66 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    padding: 0.65rem 1rem !important;
+    padding-top: max(0.65rem, env(safe-area-inset-top)) !important;
+    height: auto !important;
+    min-height: 56px !important;
+    box-shadow: 0 2px 10px rgba(0, 20, 50, 0.15) !important;
   }
 
-  .team-modal-brand .kh-wordmark,
+  .team-modal-brand .kh-crest-img {
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45)) !important;
+    width: 38px !important;
+    height: 24px !important;
+  }
+
   .team-modal-brand .kh-logo-divider {
-    display: none;
+    background-color: rgba(255, 255, 255, 0.35) !important;
+    height: 1.3rem !important;
+    display: block !important;
+  }
+
+  .team-modal-brand .kh-wordmark {
+    display: flex !important;
+  }
+
+  .team-modal-brand .kh-wordmark span:first-child {
+    color: #FFFFFF !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .team-modal-brand .kh-wordmark span:nth-child(2),
+  .team-modal-brand .kh-wordmark span:last-child {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .team-modal-pill {
+    display: none !important;
+  }
+
+  .team-modal-close-btn {
+    background: rgba(255, 255, 255, 0.14) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    color: #FFFFFF !important;
+    padding: 0.4rem 0.85rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    border-radius: 9999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    transition: all 0.2s ease !important;
+    min-height: 34px !important;
+  }
+
+  .team-modal-close-btn:active {
+    background: rgba(255, 255, 255, 0.25) !important;
+    transform: scale(0.97) !important;
+  }
+
+  .team-modal-close-btn span {
+    display: inline !important;
+  }
+
+  .team-modal-close-btn svg {
+    stroke: #FFFFFF !important;
+    width: 14px !important;
+    height: 14px !important;
   }
 
   .team-modal-scroll-area {
-    padding: 1.25rem 0.85rem 4rem;
+    padding: 0 !important;
+    background: #F8FAFC !important;
   }
 
-  .team-headline {
-    font-size: 1.65rem;
-    line-height: 1.2;
+  .mobile-only {
+    display: block !important;
   }
 
-  .founder-spotlight-card {
-    margin-bottom: 2.25rem;
+  .desktop-only,
+  .team-intro-section,
+  .founder-spotlight-mount,
+  .team-filter-bar {
+    display: none !important;
   }
 
-  .founder-info-column {
-    padding: 1.35rem 1.15rem;
+  /* --------------------------------------------------------------------------
+     Mobile Hero Banner (Royal Navy Prestige Header)
+     -------------------------------------------------------------------------- */
+  .kh-team-hero-banner {
+    display: block !important;
+    background: linear-gradient(180deg, #002B66 0%, #003882 100%) !important;
+    padding: 1.35rem 1rem 1.45rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  .founder-actions-row {
-    flex-direction: column;
-    align-items: stretch;
+  .kh-team-hero-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #C7DCEB;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
 
-  .founder-actions-row > * {
-    justify-content: center;
+  .kh-team-hero-title {
+    font-size: 1.65rem !important;
+    font-weight: 700 !important;
+    line-height: 1.22 !important;
+    margin: 0 0 0.45rem 0 !important;
+    color: #FFFFFF !important;
+    letter-spacing: -0.015em !important;
+  }
+
+  .kh-team-hero-desc {
+    font-size: 0.86rem !important;
+    line-height: 1.52 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin: 0 0 1rem 0 !important;
+  }
+
+  /* Mobile Search Bar */
+  .kh-team-search-box {
+    position: relative;
     width: 100%;
+    margin-bottom: 0.9rem;
+  }
+
+  .kh-team-search-box .kh-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7EB6E8;
+    pointer-events: none;
+    width: 16px;
+    height: 16px;
+  }
+
+  .kh-mobile-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    border-radius: 9999px;
+    color: #FFFFFF;
+    font-size: 0.88rem;
+    padding: 0.55rem 1rem 0.55rem 2.35rem;
+    outline: none;
+    transition: all 0.2s ease;
+    -webkit-appearance: none;
+  }
+
+  .kh-mobile-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.85rem;
+  }
+
+  .kh-mobile-search-input:focus {
+    background: #FFFFFF;
+    color: #0F172A;
+    border-color: #00A3E0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  }
+
+  .kh-mobile-search-input:focus + .kh-search-icon,
+  .kh-team-search-box:focus-within .kh-search-icon {
+    color: #003C8C;
+  }
+
+  /* Mobile Filter Pills Row */
+  .kh-team-pills-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    overflow-x: auto !important;
+    margin: 0 !important;
+    padding-bottom: 0.2rem !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .kh-team-pills-row::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .kh-pill-btn {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    padding: 0.38rem 0.85rem !important;
+    border-radius: 9999px !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #FFFFFF !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    transition: all 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .kh-pill-btn.is-active {
+    background: #00A3E0 !important;
+    border-color: #00A3E0 !important;
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 10px rgba(0, 163, 224, 0.35) !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     Container & Content Flow on Mobile
+     -------------------------------------------------------------------------- */
+  .team-modal-container {
+    padding: 1.15rem 0.95rem 4.5rem !important;
+    max-width: 100% !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     Dedicated Mobile Founder Card (Advocate Pradyumna Tyagi)
+     -------------------------------------------------------------------------- */
+  .founder-mobile-card {
+    background: #FFFFFF;
+    border: 1.5px solid #003C8C;
+    border-top: 4px solid #003C8C;
+    border-radius: 12px;
+    box-shadow: 0 6px 22px rgba(0, 35, 82, 0.09);
+    padding: 1.15rem 1.05rem;
+    margin-bottom: 1.65rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .founder-mobile-badge-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.45rem;
+    margin-bottom: 0.95rem;
+    flex-wrap: wrap;
+  }
+
+  .founder-mobile-crest-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #F0F7FF;
+    border: 1px solid rgba(0, 60, 140, 0.25);
+    padding: 0.28rem 0.65rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #003C8C;
+    letter-spacing: 0.05em;
+  }
+
+  .founder-crest-mini {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  .founder-mobile-location-pill {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #64748B;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .founder-mobile-profile-row {
+    display: flex;
+    align-items: center;
+    gap: 0.95rem;
+    margin-bottom: 0.95rem;
+  }
+
+  .founder-mobile-portrait-wrapper {
+    width: 88px;
+    height: 108px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #C7DCEB;
+    border: 1.5px solid #003C8C;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(0, 35, 82, 0.12);
+  }
+
+  .founder-mobile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 8%;
+    display: block;
+  }
+
+  .founder-mobile-titles {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .founder-mobile-name {
+    font-size: 1.32rem;
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.2;
+    margin: 0 0 0.25rem 0;
+    letter-spacing: -0.015em;
+  }
+
+  .founder-mobile-role {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #003C8C;
+    margin: 0 0 0.35rem 0;
+    line-height: 1.35;
+  }
+
+  .founder-mobile-court {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #334155;
+  }
+
+  .founder-mobile-court svg {
+    color: #003C8C;
+    flex-shrink: 0;
+  }
+
+  /* Empanelments Block */
+  .founder-mobile-empanelments {
+    background: #F0F7FF;
+    border: 1px solid rgba(0, 60, 140, 0.2);
+    border-left: 3.5px solid #003C8C;
+    border-radius: 8px;
+    padding: 0.75rem 0.85rem;
+    margin-bottom: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .founder-empanelment-badge {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    line-height: 1.38;
+  }
+
+  .founder-empanelment-badge .empanel-icon {
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .founder-empanelment-badge .empanel-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .founder-empanelment-badge .empanel-text strong {
+    color: #0F172A;
+    font-weight: 700;
+    font-size: 0.78rem;
+  }
+
+  .founder-empanelment-badge .empanel-text span {
+    color: #475569;
+    font-size: 0.74rem;
+  }
+
+  /* Academic & Bar Credentials Tags */
+  .founder-mobile-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .founder-cred-pill {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #1E293B;
+    background: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    padding: 0.22rem 0.55rem;
+    border-radius: 4px;
+  }
+
+  /* Direct 1-Tap Action Buttons */
+  .founder-mobile-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .founder-m-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.42rem;
+    padding: 0.72rem 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-radius: 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
     text-align: center;
   }
 
+  .founder-m-cv-btn {
+    background: #003C8C;
+    color: #FFFFFF !important;
+    border: 1.5px solid #003C8C;
+    box-shadow: 0 3px 10px rgba(0, 60, 140, 0.25);
+  }
+
+  .founder-m-cv-btn:active {
+    background: #002860;
+    transform: scale(0.98);
+  }
+
+  .founder-m-wa-btn {
+    background: #128C7E;
+    color: #FFFFFF !important;
+    border: 1.5px solid #128C7E;
+    box-shadow: 0 3px 10px rgba(18, 140, 126, 0.25);
+  }
+
+  .founder-m-wa-btn:active {
+    background: #075E54;
+    transform: scale(0.98);
+  }
+
+  .founder-mobile-subactions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem;
+  }
+
+  .founder-sub-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.52rem 0.65rem;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    color: #003C8C;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .founder-sub-btn:active {
+    background: #F1F5F9;
+  }
+
+  /* --------------------------------------------------------------------------
+     Counsel Roster Section on Mobile
+     -------------------------------------------------------------------------- */
+  .counsel-roster-section {
+    margin-top: 0.5rem !important;
+  }
+
+  .counsel-roster-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 0.85rem !important;
+    padding: 0 0.15rem 0.45rem !important;
+    border-bottom: 1.5px solid #E2E8F0 !important;
+  }
+
+  .counsel-roster-title-mobile {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #0F172A !important;
+    margin: 0 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  .counsel-roster-count {
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    color: #003C8C !important;
+    background: #F0F7FF !important;
+    border: 1px solid rgba(0, 60, 140, 0.2) !important;
+    padding: 0.2rem 0.6rem !important;
+    border-radius: 9999px !important;
+  }
+
   .counsel-grid {
-    grid-template-columns: 1fr;
-    gap: 1.35rem;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    margin-bottom: 2rem !important;
   }
 
-  .counsel-card {
-    padding: 0;
+  /* --------------------------------------------------------------------------
+     Mobile Counsel Card Design (Clean Executive Architecture)
+     -------------------------------------------------------------------------- */
+  .counsel-card.mobile-counsel-card {
+    background: #FFFFFF !important;
+    border: 1px solid #D0E1F2 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 18px rgba(0, 35, 82, 0.07) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
 
-  .counsel-card-media {
-    height: 230px;
+  .counsel-card.mobile-counsel-card:active {
+    transform: scale(0.99) !important;
   }
 
-  .counsel-card-content {
-    padding: 1.15rem;
+  .counsel-card.mobile-counsel-card .counsel-card-media {
+    position: relative !important;
+    width: 100% !important;
+    height: 215px !important;
+    background: #C7DCEB !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
+  .counsel-card.mobile-counsel-card .counsel-media-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 10% !important;
+    display: block !important;
+  }
+
+  .counsel-card.mobile-counsel-card[data-counsel-id="vrinda-khanna"] .counsel-card-media {
+    align-items: flex-end !important;
+  }
+
+  .counsel-card.mobile-counsel-card[data-counsel-id="vrinda-khanna"] .counsel-media-img {
+    height: 94% !important;
+    width: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-card-badge-overlay {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
+    display: block !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-prestige-chip {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(0, 60, 140, 0.22) !important;
+    color: #003C8C !important;
+    font-weight: 700 !important;
+    font-size: 0.72rem !important;
+    padding: 0.26rem 0.65rem !important;
+    border-radius: 9999px !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+    white-space: nowrap !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-card-content {
+    background: #FFFFFF !important;
+    padding: 1.1rem 1.05rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-card-title-group {
+    margin-bottom: 0.4rem !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-card-name {
+    font-family: var(--font-sans) !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: #0F172A !important;
+    margin: 0 0 0.2rem 0 !important;
+    line-height: 1.25 !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-card-designation {
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    color: #003C8C !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    display: block !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-card-court {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+    color: #334155 !important;
+    margin: 0 0 0.65rem 0 !important;
+  }
+
+  .counsel-card.mobile-counsel-card .court-icon {
+    color: #003C8C !important;
+    flex-shrink: 0 !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-practice-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.32rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-tag {
+    font-size: 0.72rem !important;
+    padding: 0.2rem 0.5rem !important;
+    background: #F1F5F9 !important;
+    border: 1px solid #CBD5E1 !important;
+    color: #0F172A !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-card-footer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-top: 0.75rem !important;
+    border-top: 1px solid #E2E8F0 !important;
+    margin-top: auto !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-quick-contacts {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.55rem !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-quick-btn {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+  }
+
+  .counsel-quick-call {
+    background: #F0F7FF !important;
+    border: 1.5px solid rgba(0, 60, 140, 0.28) !important;
+    color: #003C8C !important;
+  }
+
+  .counsel-quick-call:active {
+    background: #003C8C !important;
+    color: #FFFFFF !important;
+  }
+
+  .counsel-quick-wa {
+    background: #F0FDF4 !important;
+    border: 1.5px solid rgba(22, 163, 74, 0.32) !important;
+    color: #16A34A !important;
+  }
+
+  .counsel-quick-wa:active {
+    background: #16A34A !important;
+    color: #FFFFFF !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-view-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    color: #003C8C !important;
+  }
+
+  .counsel-card.mobile-counsel-card .counsel-view-link svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke: currentColor !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     Mobile Slide-in Dossier Drawer
+     -------------------------------------------------------------------------- */
   .counsel-dossier-drawer {
-    width: 100vw;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 2500 !important;
+    border-left: none !important;
+  }
+
+  .dossier-header {
+    background: #002B66 !important;
+    padding: 0.85rem 1rem !important;
+    padding-top: max(0.85rem, env(safe-area-inset-top)) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .dossier-header-title {
+    font-size: 0.8rem !important;
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .dossier-close-btn {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    color: #FFFFFF !important;
+    padding: 0.35rem 0.85rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    border-radius: 9999px !important;
+    min-height: 32px !important;
   }
 
   .dossier-body {
-    padding: 1.25rem;
+    padding: 1.15rem 1rem 5.5rem 1rem !important;
+    gap: 1.25rem !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
   .dossier-hero {
-    grid-template-columns: 120px 1fr;
-    gap: 1rem;
-    padding: 1rem;
+    grid-template-columns: 95px 1fr !important;
+    gap: 0.95rem !important;
+    padding: 0.95rem !important;
+    background: #F0F6FC !important;
+    border: 1px solid #D0E1F5 !important;
+    border-left: 4px solid #003882 !important;
+    border-radius: 8px !important;
   }
 
   .dossier-portrait-frame {
-    height: 160px;
+    height: 125px !important;
+    border-radius: 6px !important;
   }
 
   .dossier-name {
-    font-size: 1.25rem;
+    font-size: 1.25rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .dossier-designation {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .dossier-role-text {
-    font-size: 0.82rem;
-    line-height: 1.4;
+    font-size: 0.82rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  .dossier-footer {
+    position: sticky !important;
+    bottom: 0 !important;
+    background: #FFFFFF !important;
+    border-top: 1px solid #E2E8F0 !important;
+    padding: 0.75rem 1rem !important;
+    padding-bottom: max(0.85rem, env(safe-area-inset-bottom)) !important;
+    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08) !important;
+    z-index: 10 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
   }
 }
+
+/* Specific micro-tuning for narrow mobile screens (<= 380px) */
+@media (max-width: 380px) {
+  .kh-team-hero-title {
+    font-size: 1.45rem !important;
+  }
+
+  .founder-mobile-profile-row {
+    gap: 0.75rem !important;
+  }
+
+  .founder-mobile-portrait-wrapper {
+    width: 78px !important;
+    height: 98px !important;
+  }
+
+  .founder-mobile-name {
+    font-size: 1.18rem !important;
+  }
+
+  .founder-m-btn {
+    font-size: 0.72rem !important;
+    padding: 0.65rem 0.45rem !important;
+  }
+}
+

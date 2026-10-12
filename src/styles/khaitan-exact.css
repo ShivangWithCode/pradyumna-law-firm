@@ -384,7 +384,7 @@ html, body {
 }
 
 .kh-slide.is-dark .kh-description {
-  color: #CBD5E1;
+  color: rgba(255, 255, 255, 0.95);
   opacity: 0;
 }
 
@@ -1034,28 +1034,55 @@ html, body {
     min-height: 40px;
   }
 
-  /* Header icon colors: Dark blue cards (Slide 0 & 3) vs White cards (Slide 1 & 2) */
+  /* Header logo & icon colors on Mobile: Dynamic Per Alternating Slide Theme */
+  /* Default for White Slides (Slide 1, Slide 3): Sharp Royal Navy */
   .kh-header .kh-icon-btn svg {
-    stroke: var(--kh-navy-dark) !important;
+    stroke: #002352 !important;
   }
   .kh-header .kh-bars-icon span {
-    background-color: var(--kh-navy-dark) !important;
+    background-color: #002352 !important;
   }
+  .kh-header .kh-logo-divider {
+    background-color: rgba(0, 35, 82, 0.35) !important;
+  }
+  .kh-header .kh-wordmark span:first-child {
+    color: #002352 !important;
+  }
+  .kh-header .kh-wordmark span:nth-child(2),
+  .kh-header .kh-wordmark span:last-child {
+    color: #334155 !important;
+  }
+  .kh-header .kh-crest-img {
+    filter: drop-shadow(0 1px 2px rgba(0, 35, 82, 0.2)) !important;
+  }
+
+  /* When on Blue Slides (Slide 0, Slide 2): Pure Luminous White */
   .kh-header.theme-dark-logo .kh-icon-btn svg {
     stroke: #FFFFFF !important;
   }
   .kh-header.theme-dark-logo .kh-bars-icon span {
     background-color: #FFFFFF !important;
   }
+  .kh-header.theme-dark-logo .kh-logo-divider {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+  }
+  .kh-header.theme-dark-logo .kh-wordmark span:first-child,
+  .kh-header.theme-dark-logo .kh-wordmark span:nth-child(2),
+  .kh-header.theme-dark-logo .kh-wordmark span:last-child {
+    color: #FFFFFF !important;
+  }
+  .kh-header.theme-dark-logo .kh-crest-img {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4)) !important;
+  }
 
   /* ==========================================================================
-     UNIFIED ARCHITECTURAL MOBILE SPLIT (Exact Match to Slide 0 Reference):
-     - Top 65dvh: Architectural Editorial Content Card across ALL slides
-     - Bottom 35dvh: Photographic Canvas Window across ALL slides
-     - Anchored Actions: 2 buttons anchored at bottom of card, eliminating empty gap
+     UNIFIED ARCHITECTURAL MOBILE SPLIT (Exact 64/36 Architectural Composition):
+     - Top 64dvh: Architectural Editorial Content Card across ALL slides (Down to marked line)
+     - Bottom 36dvh: Photographic Canvas Window across ALL slides (Framed below marked line)
+     - Fully Expanded Content: Headline, description, and typography expanded downward to fill card
      ========================================================================== */
 
-  /* Photographic Windows at Bottom (Uniform 35dvh across all slides with overflow: hidden) */
+  /* Photographic Windows at Bottom (Uniform 36dvh across all slides with overflow: hidden) */
   .kh-slide-bg-window,
   #slide-0 .kh-slide-bg-picture,
   #slide-1 .kh-slide-bg-window,
@@ -1066,8 +1093,8 @@ html, body {
     bottom: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    height: 35vh !important;
-    height: 35dvh !important;
+    height: 36vh !important;
+    height: 36dvh !important;
     z-index: 1 !important;
     overflow: hidden !important;
     transform: none !important;
@@ -1088,7 +1115,7 @@ html, body {
 
   #slide-0 .kh-slide-bg-picture img,
   #slide-0 .kh-slide-bg {
-    object-position: center 15% !important;
+    object-position: center 10% !important;
   }
 
   #slide-1 .kh-slide-bg {
@@ -1096,14 +1123,14 @@ html, body {
   }
 
   #slide-2 .kh-slide-bg {
-    object-position: center center !important;
+    object-position: center 18% !important;
   }
 
   #slide-3 .kh-slide-bg {
     object-position: center 30% !important;
   }
 
-  /* Architectural Top Panels (Uniform 65dvh across all slides) */
+  /* Architectural Top Panels (Uniform 64dvh across all slides) */
   #slide-0 .kh-overlay-frosted,
   #slide-1 .kh-overlay-royal-blue,
   #slide-2 .kh-overlay-frosted,
@@ -1114,33 +1141,26 @@ html, body {
     bottom: auto !important;
     left: 0 !important;
     width: 100% !important;
-    height: 65vh !important;
-    height: 65dvh !important;
+    height: 64vh !important;
+    height: 64dvh !important;
     z-index: 2 !important;
     transform: translateY(-100%) !important;
     transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) !important;
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35) !important;
   }
 
-  /* Slide 0: Deep Royal Blue */
-  #slide-0 .kh-overlay-frosted {
+  /* Alternating Architectural Split on Mobile (Slide 0: Blue, Slide 1: White, Slide 2: Blue, Slide 3: White) */
+  /* Slide 0 & Slide 2: Deep Royal Blue Panels */
+  #slide-0 .kh-overlay-frosted,
+  #slide-2 .kh-overlay-frosted {
     background: #003882 !important;
   }
 
-  /* Slide 1: Crisp Architectural White */
-  #slide-1 .kh-overlay-royal-blue {
-    background: #FFFFFF !important;
-  }
-
-  /* Slide 2: Crisp Architectural White */
-  #slide-2 .kh-overlay-frosted {
-    background: #FFFFFF !important;
-  }
-
-  /* Slide 3: Deep Royal Blue */
+  /* Slide 1 & Slide 3: Crisp Pure White Panels */
+  #slide-1 .kh-overlay-royal-blue,
   #slide-3 .kh-overlay-royal-blue,
   #slide-3 .kh-overlay-obsidian {
-    background: #003882 !important;
+    background: #FFFFFF !important;
   }
 
   #slide-0.is-active .kh-overlay-frosted,
@@ -1152,7 +1172,7 @@ html, body {
   }
 
   /* ==========================================================================
-     CONTENT CONTAINERS (Uniform 65dvh Top Panel on all slides)
+     CONTENT CONTAINERS (Uniform 64dvh Top Panel on all slides)
      ========================================================================== */
   #slide-0 .kh-content-container,
   #slide-1 .kh-content-container,
@@ -1164,16 +1184,16 @@ html, body {
     left: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
-    height: 65vh !important;
-    height: 65dvh !important;
+    height: 64vh !important;
+    height: 64dvh !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
     align-items: flex-start !important;
-    padding-top: calc(var(--kh-header-height) + 0.35rem) !important;
-    padding-left: 1.25rem !important;
-    padding-right: clamp(2.85rem, 8.5vw, 3.4rem) !important; /* Preserves clear gutter from stepper */
-    padding-bottom: 1.15rem !important; /* Clean margin above photo seam */
+    padding-top: calc(var(--kh-header-height) + clamp(0.75rem, 2.2vh, 1.35rem)) !important;
+    padding-left: clamp(1.15rem, 3.5vw, 1.5rem) !important;
+    padding-right: clamp(2.5rem, 7vw, 3rem) !important; /* Balanced clearance for stepper */
+    padding-bottom: clamp(0.85rem, 2vh, 1.25rem) !important;
     box-sizing: border-box !important;
     z-index: 5 !important;
     overflow-y: auto !important;
@@ -1214,7 +1234,7 @@ html, body {
     margin: 0 !important;
   }
 
-  /* Anchors action buttons at the bottom of the card, exactly like Slide 0 */
+  /* Anchors action buttons at the bottom of the 64dvh card */
   .kh-actions-mask {
     overflow: visible !important;
     display: block !important;
@@ -1226,28 +1246,31 @@ html, body {
   }
 
   /* ==========================================================================
-     TYPOGRAPHY & ACTIONS: SLIDE 0 & SLIDE 3 (ROYAL BLUE CARDS)
+     TYPOGRAPHY & ACTIONS: ALTERNATING BLUE (Slide 0, 2) & WHITE (Slide 1, 3)
      ========================================================================== */
+
+  /* --- SLIDE 0 & SLIDE 2: ROYAL BLUE CARDS --- */
   #slide-0 .kh-eyebrow,
-  #slide-3 .kh-eyebrow {
+  #slide-2 .kh-eyebrow {
     color: #38E1FF !important; /* Luminous Cyan Accent */
-    font-size: 0.95rem !important;
-    font-weight: 600 !important;
-    line-height: 1.2 !important;
-    margin: 0 0 0.3rem 0 !important;
-    letter-spacing: 0.02em !important;
+    font-size: clamp(0.82rem, 2.8vw, 0.92rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    margin: 0 0 clamp(0.45rem, 1.2vh, 0.7rem) 0 !important;
+    letter-spacing: 0.11em !important;
+    text-transform: uppercase !important;
     opacity: 1 !important;
     transform: none !important;
   }
 
   #slide-0 .kh-headline,
-  #slide-3 .kh-headline {
+  #slide-2 .kh-headline {
     color: #FFFFFF !important;
-    font-size: clamp(1.26rem, 4.8vw, 1.54rem) !important;
+    font-size: clamp(1.38rem, 5.2vw, 1.72rem) !important;
     font-weight: 700 !important;
-    line-height: 1.22 !important;
-    letter-spacing: -0.02em !important;
-    margin: 0 0 0.45rem 0 !important;
+    line-height: 1.28 !important;
+    letter-spacing: -0.018em !important;
+    margin: 0 0 clamp(0.75rem, 1.8vh, 1.1rem) 0 !important;
     opacity: 1 !important;
     transform: none !important;
     word-break: normal !important;
@@ -1255,12 +1278,12 @@ html, body {
   }
 
   #slide-0 .kh-description,
-  #slide-3 .kh-description {
+  #slide-2 .kh-description {
     color: rgba(255, 255, 255, 0.94) !important;
-    font-size: 0.86rem !important;
-    line-height: 1.48 !important;
+    font-size: clamp(0.86rem, 3.1vw, 0.96rem) !important;
+    line-height: 1.64 !important;
     font-weight: 450 !important;
-    margin: 0 0 0.5rem 0 !important;
+    margin: 0 0 clamp(0.85rem, 2vh, 1.35rem) 0 !important;
     opacity: 0.96 !important;
     transform: none !important;
     display: block !important;
@@ -1271,27 +1294,27 @@ html, body {
   }
 
   #slide-0 .kh-actions,
-  #slide-3 .kh-actions {
+  #slide-2 .kh-actions {
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    gap: 0.5rem !important;
+    gap: 0.45rem !important;
     width: 100% !important;
-    margin: 0.5rem 0 0 0 !important;
+    margin: 0 !important;
     opacity: 1 !important;
     transform: none !important;
     flex-shrink: 0 !important;
   }
 
   #slide-0 .kh-btn,
-  #slide-3 .kh-btn {
+  #slide-2 .kh-btn {
     width: 100% !important;
-    min-height: 40px !important;
-    height: 40px !important;
+    min-height: 42px !important;
+    height: 42px !important;
     padding: 0 1rem !important;
-    font-size: 0.8rem !important;
+    font-size: 0.78rem !important;
     font-weight: 600 !important;
-    letter-spacing: 0.05em !important;
+    letter-spacing: 0.055em !important;
     color: #FFFFFF !important;
     border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
     background: transparent !important;
@@ -1305,9 +1328,9 @@ html, body {
   }
 
   #slide-0 .kh-btn svg,
-  #slide-3 .kh-btn svg {
-    width: 16px !important;
-    height: 16px !important;
+  #slide-2 .kh-btn svg {
+    width: 15px !important;
+    height: 15px !important;
     stroke: #FFFFFF !important;
     stroke-width: 2.2 !important;
     margin-left: auto !important;
@@ -1315,35 +1338,33 @@ html, body {
   }
 
   #slide-0 .kh-btn:active,
-  #slide-3 .kh-btn:active {
+  #slide-2 .kh-btn:active {
     background: rgba(255, 255, 255, 0.15) !important;
     border-color: #FFFFFF !important;
   }
 
-  /* ==========================================================================
-     TYPOGRAPHY & ACTIONS: SLIDE 1 & SLIDE 2 (WHITE CARDS)
-     Harmonious spacing matching Slide 0 reference exactly
-     ========================================================================== */
+  /* --- SLIDE 1 & SLIDE 3: CRISP PURE WHITE CARDS --- */
   #slide-1 .kh-eyebrow,
-  #slide-2 .kh-eyebrow {
-    color: #0077C8 !important; /* Cerulean Blue */
-    font-size: 0.95rem !important;
-    font-weight: 600 !important;
-    line-height: 1.2 !important;
-    margin: 0 0 0.3rem 0 !important;
-    letter-spacing: 0.02em !important;
+  #slide-3 .kh-eyebrow {
+    color: #0088cc !important; /* Khaitan Cerulean Cyan / Royal Accent */
+    font-size: clamp(0.82rem, 2.8vw, 0.92rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    margin: 0 0 clamp(0.45rem, 1.2vh, 0.7rem) 0 !important;
+    letter-spacing: 0.11em !important;
+    text-transform: uppercase !important;
     opacity: 1 !important;
     transform: none !important;
   }
 
   #slide-1 .kh-headline,
-  #slide-2 .kh-headline {
-    color: #003882 !important; /* Deep Royal Navy */
-    font-size: clamp(1.26rem, 4.8vw, 1.54rem) !important;
+  #slide-3 .kh-headline {
+    color: #002352 !important; /* Deep Royal Navy - Ultra Sharp High Contrast */
+    font-size: clamp(1.38rem, 5.2vw, 1.72rem) !important;
     font-weight: 700 !important;
-    line-height: 1.22 !important;
-    letter-spacing: -0.02em !important;
-    margin: 0 0 0.45rem 0 !important;
+    line-height: 1.28 !important;
+    letter-spacing: -0.018em !important;
+    margin: 0 0 clamp(0.75rem, 1.8vh, 1.1rem) 0 !important;
     opacity: 1 !important;
     transform: none !important;
     word-break: normal !important;
@@ -1351,13 +1372,13 @@ html, body {
   }
 
   #slide-1 .kh-description,
-  #slide-2 .kh-description {
-    color: #003882 !important;
-    opacity: 0.94 !important;
-    font-size: 0.86rem !important;
-    line-height: 1.48 !important;
+  #slide-3 .kh-description {
+    color: #1e293b !important; /* Slate Navy - 100% Crisp Legibility */
+    font-size: clamp(0.86rem, 3.1vw, 0.96rem) !important;
+    line-height: 1.64 !important;
     font-weight: 450 !important;
-    margin: 0 0 0.5rem 0 !important;
+    margin: 0 0 clamp(0.85rem, 2vh, 1.35rem) 0 !important;
+    opacity: 0.96 !important;
     transform: none !important;
     display: block !important;
     -webkit-line-clamp: unset !important;
@@ -1367,29 +1388,29 @@ html, body {
   }
 
   #slide-1 .kh-actions,
-  #slide-2 .kh-actions {
+  #slide-3 .kh-actions {
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    gap: 0.5rem !important;
+    gap: 0.45rem !important;
     width: 100% !important;
-    margin: 0.5rem 0 0 0 !important;
+    margin: 0 !important;
     opacity: 1 !important;
     transform: none !important;
     flex-shrink: 0 !important;
   }
 
   #slide-1 .kh-btn,
-  #slide-2 .kh-btn {
+  #slide-3 .kh-btn {
     width: 100% !important;
-    min-height: 40px !important;
-    height: 40px !important;
+    min-height: 42px !important;
+    height: 42px !important;
     padding: 0 1rem !important;
-    font-size: 0.8rem !important;
+    font-size: 0.78rem !important;
     font-weight: 600 !important;
-    letter-spacing: 0.05em !important;
-    color: #003882 !important;
-    border: 1.5px solid #003882 !important;
+    letter-spacing: 0.055em !important;
+    color: #003c8c !important;
+    border: 1.5px solid #00a0dc !important;
     background: transparent !important;
     display: inline-flex !important;
     align-items: center !important;
@@ -1401,18 +1422,19 @@ html, body {
   }
 
   #slide-1 .kh-btn svg,
-  #slide-2 .kh-btn svg {
-    width: 16px !important;
-    height: 16px !important;
-    stroke: #003882 !important;
+  #slide-3 .kh-btn svg {
+    width: 15px !important;
+    height: 15px !important;
+    stroke: #003c8c !important;
     stroke-width: 2.2 !important;
     margin-left: auto !important;
     flex-shrink: 0 !important;
   }
 
   #slide-1 .kh-btn:active,
-  #slide-2 .kh-btn:active {
-    background: rgba(0, 56, 130, 0.08) !important;
+  #slide-3 .kh-btn:active {
+    background: rgba(0, 60, 140, 0.08) !important;
+    border-color: #003c8c !important;
   }
 
   /* ==========================================================================
@@ -1504,38 +1526,136 @@ html, body {
   }
 }
 
-/* --- SMALL MOBILE (< 380px) --- */
-@media (max-width: 380px) {
+/* ==========================================================================
+   TALL MODERN SMARTPHONES (Samsung Galaxy A55, iPhone 16 Pro Max, Pixel)
+   Uniform 64/36 Architectural Split (Down to User Chin Mark) with Majestic,
+   Fully Expanded Content Downward Filling the Architectural Card
+   ========================================================================== */
+@media (min-height: 800px) and (max-width: 768px) {
+  /* Photographic Canvas framed below user's marked chin line */
+  .kh-slide-bg-window,
+  #slide-0 .kh-slide-bg-picture,
+  #slide-1 .kh-slide-bg-window,
+  #slide-2 .kh-slide-bg-window,
+  #slide-3 .kh-slide-bg-window {
+    height: 36vh !important;
+    height: 36dvh !important;
+  }
+
+  /* Architectural Card extending down to exact user mark (64dvh) */
+  #slide-0 .kh-overlay-frosted,
+  #slide-1 .kh-overlay-royal-blue,
+  #slide-2 .kh-overlay-frosted,
+  #slide-3 .kh-overlay-royal-blue,
+  #slide-3 .kh-overlay-obsidian {
+    height: 64vh !important;
+    height: 64dvh !important;
+  }
+
+  #slide-0 .kh-content-container,
+  #slide-1 .kh-content-container,
+  #slide-2 .kh-content-container,
+  #slide-3 .kh-content-container {
+    height: 64vh !important;
+    height: 64dvh !important;
+    padding-top: calc(var(--kh-header-height) + clamp(1rem, 2.2vh, 1.6rem)) !important;
+    padding-left: clamp(1.15rem, 3.5vw, 1.5rem) !important;
+    padding-right: clamp(2.5rem, 7vw, 3rem) !important;
+    padding-bottom: clamp(1rem, 2vh, 1.4rem) !important;
+  }
+
+  /* Circled content expanded downward to eliminate voids and richly fill card */
+  #slide-0 .kh-eyebrow,
+  #slide-1 .kh-eyebrow,
+  #slide-2 .kh-eyebrow,
+  #slide-3 .kh-eyebrow {
+    font-size: clamp(0.84rem, 1.5vh, 0.94rem) !important;
+    margin-bottom: clamp(0.5rem, 1.1vh, 0.7rem) !important;
+    letter-spacing: 0.11em !important;
+  }
+
   #slide-0 .kh-headline,
   #slide-1 .kh-headline,
   #slide-2 .kh-headline,
   #slide-3 .kh-headline {
-    font-size: 1.22rem !important;
+    font-size: clamp(1.42rem, 3.2vh, 1.76rem) !important;
+    line-height: 1.28 !important;
+    margin-bottom: clamp(0.75rem, 1.8vh, 1.1rem) !important;
+    letter-spacing: -0.018em !important;
   }
+
   #slide-0 .kh-description,
   #slide-1 .kh-description,
   #slide-2 .kh-description,
   #slide-3 .kh-description {
-    font-size: 0.81rem !important;
-    line-height: 1.4 !important;
+    font-size: clamp(0.88rem, 1.7vh, 0.98rem) !important;
+    line-height: 1.66 !important;
+    margin-bottom: clamp(0.85rem, 2vh, 1.35rem) !important;
     display: block !important;
     -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
     overflow: visible !important;
+    text-overflow: unset !important;
   }
+
+  #slide-0 .kh-actions,
+  #slide-1 .kh-actions,
+  #slide-2 .kh-actions,
+  #slide-3 .kh-actions {
+    gap: 0.5rem !important;
+  }
+
   #slide-0 .kh-btn,
   #slide-1 .kh-btn,
   #slide-2 .kh-btn,
   #slide-3 .kh-btn {
-    min-height: 38px !important;
-    height: 38px !important;
-    padding: 0 0.85rem !important;
-    font-size: 0.76rem !important;
+    min-height: 42px !important;
+    height: 42px !important;
+    padding: 0 1.1rem !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.055em !important;
+  }
+
+  .kh-scroll-down {
+    right: 1.25rem !important;
+    bottom: 1.25rem !important;
+    width: 44px !important;
+    height: 48px !important;
+  }
+
+  #slide-0 .kh-vertical-copyright,
+  #slide-1 .kh-vertical-copyright,
+  #slide-2 .kh-vertical-copyright,
+  #slide-3 .kh-vertical-copyright {
+    left: 1.25rem !important;
+    bottom: 1.25rem !important;
+    font-size: 0.66rem !important;
+  }
+}
+
+/* --- ULTRA COMPACT MOBILE (< 350px) --- */
+@media (max-width: 350px) {
+  #slide-0 .kh-content-container,
+  #slide-1 .kh-content-container,
+  #slide-2 .kh-content-container,
+  #slide-3 .kh-content-container {
+    padding-left: 0.95rem !important;
+    padding-right: 2.3rem !important;
   }
   .kh-wordmark {
-    display: none !important;
+    display: flex !important;
   }
-  .kh-logo-divider {
-    display: none !important;
+  .kh-wordmark span:first-child {
+    font-size: 0.6rem !important;
+  }
+  .kh-wordmark span:nth-child(2),
+  .kh-wordmark span:last-child {
+    font-size: 0.5rem !important;
+  }
+  .kh-crest-img,
+  .kh-crest-svg {
+    width: 36px !important;
+    height: 22px !important;
   }
 }
 
@@ -1624,6 +1744,7 @@ html, body {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap !important;
   user-select: none;
 }
 

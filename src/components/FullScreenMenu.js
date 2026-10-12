@@ -51,6 +51,17 @@ export function initFullScreenMenu() {
     closeBtn.addEventListener('click', closeMenu);
   }
 
+  const menuLogo = overlay.querySelector('.kh-menu-logo');
+  if (menuLogo) {
+    menuLogo.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMenu();
+      if (window.goToSlide) {
+        window.goToSlide(0);
+      }
+    });
+  }
+
   if (searchBtn) {
     searchBtn.addEventListener('click', () => {
       closeMenu();

@@ -78,8 +78,9 @@ export function initKhaitanSlider() {
     // Check if the current slide requires white logo and white menu icons
     const currentSlide = slides[currentIndex];
     const isMobile = window.innerWidth <= 768;
+    // On mobile: Slide 0 and 2 are Blue (need white header), Slide 1 and 3 are White (need navy header)
     const isDarkHeader = isMobile
-      ? (currentIndex === 0 || currentIndex === 3)
+      ? (currentIndex === 0 || currentIndex === 2)
       : (currentSlide.classList.contains('is-blue') || currentSlide.classList.contains('is-dark'));
 
     if (header) {
@@ -257,7 +258,7 @@ export function initKhaitanSlider() {
     updateStepperProgress(currentIndex);
     const isMobile = window.innerWidth <= 768;
     const isDarkHeader = isMobile
-      ? (currentIndex === 0 || currentIndex === 3)
+      ? (currentIndex === 0 || currentIndex === 2)
       : (slides[currentIndex]?.classList.contains('is-blue') || slides[currentIndex]?.classList.contains('is-dark'));
     if (header) {
       header.classList.toggle('theme-dark-logo', Boolean(isDarkHeader));
