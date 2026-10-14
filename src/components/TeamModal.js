@@ -365,7 +365,7 @@ export function initTeamModal() {
           <div class="counsel-card" data-counsel-id="${member.id}">
             <div class="counsel-card-media">
               ${member.portrait 
-                ? `<img src="${member.portrait}" alt="${member.name}" class="counsel-media-img" loading="lazy" />` 
+                ? `<img src="${member.portrait}" alt="${member.name}" class="counsel-media-img" loading="eager" decoding="async" />` 
                 : `<div class="counsel-media-fallback">${member.initials}</div>`
               }
               <div class="counsel-card-badge-overlay">
@@ -538,7 +538,7 @@ export function initTeamModal() {
           <article class="counsel-card mobile-counsel-card" data-counsel-id="${member.id}" role="button" tabindex="0" aria-label="View complete profile of ${member.name}">
             <div class="counsel-card-media">
               ${member.portrait 
-                ? `<img src="${member.portrait}" alt="${member.name}" class="counsel-media-img" loading="lazy" />` 
+                ? `<img src="${member.portrait}" alt="${member.name}" class="counsel-media-img" loading="eager" decoding="async" />` 
                 : `<div class="counsel-media-fallback">${member.initials}</div>`
               }
               <div class="counsel-card-badge-overlay">
