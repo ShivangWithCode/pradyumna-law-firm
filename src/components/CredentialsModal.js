@@ -49,7 +49,7 @@ export function initCredentialsModal() {
 
   // Delegated click listener for all credentials buttons (works reliably even across HMR reloads)
   document.addEventListener('click', (e) => {
-    const trigger = e.target.closest('.explore-credentials-btn, .view-official-order-trigger, a[href="#credentials"], [data-action="credentials"]');
+    const trigger = e.target.closest('.explore-credentials-btn, a[href="#credentials"], [data-action="credentials"]');
     if (trigger) {
       e.preventDefault();
       openModal();
@@ -96,5 +96,6 @@ export function initCredentialsModal() {
 
   // Expose global methods
   window.openCredentialsModal = openModal;
+  window.openOrderModal = openModal;
   window.closeCredentialsModal = closeModal;
 }

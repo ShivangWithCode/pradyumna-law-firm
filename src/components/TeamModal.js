@@ -155,10 +155,10 @@ export function initTeamModal() {
                 <li><strong>Academic Pedigree:</strong> ${founder.qualifications}</li>
               </ul>
               <div style="margin-top: 0.9rem;">
-                <button type="button" class="gov-view-order-btn view-official-order-trigger" style="display:inline-flex; width:auto; padding: 0.65rem 1.25rem; font-size: 0.78rem;" aria-label="View official Government of India order">
+                <a href="/assets/docs/Official_Government_Order_Gazette_Nov_2025.pdf" target="_blank" rel="noopener" class="gov-view-order-btn view-official-order-trigger" style="display:inline-flex; align-items:center; width:auto; padding: 0.65rem 1.25rem; font-size: 0.78rem; text-decoration: none;" aria-label="View official Government of India order PDF">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px; height:15px; margin-right: 6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                  <span>VIEW OFFICIAL ORDER (GOVT. OF INDIA)</span>
-                </button>
+                  <span>VIEW OFFICIAL ORDER (PDF)</span>
+                </a>
               </div>
             </div>
 
@@ -180,14 +180,6 @@ export function initTeamModal() {
           </div>
         </article>
       `;
-
-      const dOrderBtn = container.querySelector('.view-official-order-trigger');
-      if (dOrderBtn) {
-        dOrderBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          if (window.openOrderModal) window.openOrderModal();
-        });
-      }
     }
 
     // Mobile Dedicated Executive Card (Phone View Only)
@@ -268,24 +260,16 @@ export function initTeamModal() {
           </div>
 
           <div class="founder-mobile-subactions">
-            <button type="button" class="founder-sub-btn view-official-order-trigger">
+            <a href="/assets/docs/Official_Government_Order_Gazette_Nov_2025.pdf" target="_blank" rel="noopener" class="founder-sub-btn view-official-order-trigger" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">
               <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-              <span>Official Govt Order</span>
-            </button>
+              <span>Official Govt Order (PDF)</span>
+            </a>
             <button type="button" class="founder-sub-btn view-founder-dossier-btn" data-counsel-id="${founder.id}">
               <span>View Full Dossier &rarr;</span>
             </button>
           </div>
         </article>
       `;
-
-      const mOrderBtn = mobileContainer.querySelector('.view-official-order-trigger');
-      if (mOrderBtn) {
-        mOrderBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          if (window.openOrderModal) window.openOrderModal();
-        });
-      }
 
       const mDossierBtn = mobileContainer.querySelector('.view-founder-dossier-btn');
       if (mDossierBtn) {
@@ -725,10 +709,10 @@ export function initTeamModal() {
             Ministry of Law &amp; Justice, Department of Legal Affairs (Judicial Section) Order dtd. 21.11.2025 for Central Government Litigations before the Hon'ble Supreme Court of India.
           </p>
           <div style="margin-top:0.35rem;">
-            <button type="button" class="gov-view-order-btn view-official-order-trigger" style="display:inline-flex; align-items:center; justify-content:center; width:100%; padding: 0.72rem 1.25rem; font-size: 0.78rem; font-weight: 700; background: #003C8C; color: #FFFFFF; border: none; border-radius: 4px; cursor: pointer;">
+            <a href="/assets/docs/Official_Government_Order_Gazette_Nov_2025.pdf" target="_blank" rel="noopener" class="gov-view-order-btn view-official-order-trigger" style="display:inline-flex; align-items:center; justify-content:center; width:100%; padding: 0.72rem 1.25rem; font-size: 0.78rem; font-weight: 700; background: #003C8C; color: #FFFFFF; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px; height:15px; margin-right: 6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-              <span>VIEW OFFICIAL ORDER (GOVT. OF INDIA)</span>
-            </button>
+              <span>VIEW OFFICIAL ORDER (PDF)</span>
+            </a>
           </div>
         </div>
       ` : ''}
@@ -752,15 +736,6 @@ export function initTeamModal() {
         </div>
       ` : ''}
     `;
-
-    // Wire up official order button if present
-    const orderBtn = drawerBody.querySelector('.view-official-order-trigger');
-    if (orderBtn) {
-      orderBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (window.openOrderModal) window.openOrderModal();
-      });
-    }
 
     const waMsg = encodeURIComponent(`Hello, I would like to consult with ${member.name} (${member.designation}) at Pradyumna Law Associates.`);
     const waUrl = `https://wa.me/${siteConfig.contact.whatsAppNumber}?text=${waMsg}`;
