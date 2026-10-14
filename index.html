@@ -68,6 +68,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
+  <!-- Preload Critical LCP Hero Image for Maximum Speed -->
+  <link rel="preload" as="image" href="/assets/images/hero_chambers_justice.jpg" fetchpriority="high" />
+
   <!-- Core Stylesheets -->
   <link rel="stylesheet" href="/src/styles/tokens.css" />
   <link rel="stylesheet" href="/src/styles/reset.css" />
@@ -121,7 +124,7 @@
       <!-- SLIDE 0: EXPERTISE (Premier Law Firm Chambers & Advocacy) -->
       <section class="kh-slide is-light is-active" id="slide-0" aria-labelledby="title-expertise">
         <div class="kh-slide-bg-window">
-          <img src="/assets/images/hero_chambers_justice.jpg" alt="Courtroom advocacy and legal expertise: Handcrafted advocate gavel, golden scales of justice, and appellate case dossier in appellate high court chamber" class="kh-slide-bg" />
+          <img src="/assets/images/hero_chambers_justice.jpg" alt="Courtroom advocacy and legal expertise: Handcrafted advocate gavel, golden scales of justice, and appellate case dossier in appellate high court chamber" class="kh-slide-bg" loading="eager" fetchpriority="high" decoding="async" />
         </div>
         <div class="kh-overlay-frosted" aria-hidden="true"></div>
         <div class="kh-vertical-copyright" aria-hidden="true">&copy; Pradyumna Law Associates 2026</div>
@@ -152,7 +155,7 @@
       <!-- SLIDE 1: THOUGHT LEADERSHIP (Royal Blue Layout) -->
       <section class="kh-slide is-blue" id="slide-1" aria-labelledby="title-thought-leadership">
         <div class="kh-slide-bg-window">
-          <img src="/assets/images/thought_khaitan.jpg" alt="Bespoke gold fountain pen, gilded leather legal journal, and antique brass magnifying glass on polished desk" class="kh-slide-bg" />
+          <img src="/assets/images/thought_khaitan.jpg" alt="Bespoke gold fountain pen, gilded leather legal journal, and antique brass magnifying glass on polished desk" class="kh-slide-bg" loading="lazy" decoding="async" />
         </div>
         <div class="kh-overlay-royal-blue" aria-hidden="true"></div>
         <div class="kh-vertical-copyright" aria-hidden="true">&copy; Pradyumna Law Associates 2026</div>
@@ -187,7 +190,7 @@
       <!-- SLIDE 2: PEOPLE (Clean Frosted White Layout) -->
       <section class="kh-slide is-light" id="slide-2" aria-labelledby="title-people">
         <div class="kh-slide-bg-window">
-          <img src="/assets/images/people_advocates_team.jpg" alt="Distinguished senior advocates and legal partners at Pradyumna Law Associates in strategic conference chamber" class="kh-slide-bg" />
+          <img src="/assets/images/people_advocates_team.jpg" alt="Distinguished senior advocates and legal partners at Pradyumna Law Associates in strategic conference chamber" class="kh-slide-bg" loading="lazy" decoding="async" />
         </div>
         <div class="kh-overlay-frosted" aria-hidden="true"></div>
         <div class="kh-vertical-copyright" aria-hidden="true">&copy; Pradyumna Law Associates 2026</div>
@@ -218,7 +221,7 @@
       <!-- SLIDE 3: LEGACY (Exact Khaitan Classical Pillars & Royal Blue Split) -->
       <section class="kh-slide is-blue" id="slide-3" aria-labelledby="title-legacy">
         <div class="kh-slide-bg-window">
-          <img src="/assets/images/legacy_khaitan.jpg" alt="Classical Neoclassical Pillars of Justice bathed in warm golden sunlight" class="kh-slide-bg" />
+          <img src="/assets/images/legacy_khaitan.jpg" alt="Classical Neoclassical Pillars of Justice bathed in warm golden sunlight" class="kh-slide-bg" loading="lazy" decoding="async" />
         </div>
         <div class="kh-overlay-royal-blue" aria-hidden="true"></div>
         <div class="kh-vertical-copyright" aria-hidden="true">&copy; Pradyumna Law Associates 2026</div>
@@ -320,7 +323,7 @@
       
       <!-- LEFT COLUMN: Legal Drafting & Golden Scales Photography -->
       <div class="kh-menu-visual-col">
-        <img src="/assets/images/menu_legal_writing.jpg" alt="Advocate drafting legal documents with balance scale of justice" class="kh-menu-bg-img" />
+        <img src="/assets/images/menu_legal_writing.jpg" alt="Advocate drafting legal documents with balance scale of justice" class="kh-menu-bg-img" loading="lazy" decoding="async" />
         <div class="kh-menu-visual-overlay" aria-hidden="true"></div>
         <div class="kh-menu-vertical-copyright" aria-hidden="true">&copy; Pradyumna Law Associates 2026</div>
       </div>
