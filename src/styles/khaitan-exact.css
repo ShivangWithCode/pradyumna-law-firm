@@ -125,7 +125,7 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center right;
   z-index: 1;
   transform: scale(1);
   transform-origin: center center;
@@ -942,8 +942,8 @@ html, body {
   }
 }
 
-/* --- TABLET PORTRAIT (769px to 900px) --- */
-@media (max-width: 900px) and (min-width: 769px) {
+/* --- TABLET PORTRAIT (721px to 900px, including iPad & iPad Mini) --- */
+@media (max-width: 900px) and (min-width: 721px) {
   .kh-stepper {
     right: 1.5rem;
     gap: 2rem;
@@ -954,46 +954,76 @@ html, body {
   }
 
   .kh-content-container {
-    width: 75%;
-    max-width: 650px;
-    padding-left: 3rem;
-    padding-right: 2rem;
+    width: 70%;
+    max-width: 590px;
+    padding-top: clamp(6.5rem, 11vh, 8.5rem);
+    padding-bottom: clamp(2.5rem, 5vh, 4rem);
+    padding-left: clamp(2.5rem, 5vw, 3.5rem);
+    padding-right: 1.5rem;
   }
 
   .kh-overlay-frosted,
   #slide-0 .kh-overlay-frosted {
-    width: 75%;
+    width: 78%;
     background: linear-gradient(
       90deg, 
       rgba(255, 255, 255, 0.98) 0%, 
-      rgba(255, 255, 255, 0.95) 75%, 
-      rgba(255, 255, 255, 0.85) 100%
+      rgba(255, 255, 255, 0.94) 55%, 
+      rgba(255, 255, 255, 0.6) 80%,
+      rgba(255, 255, 255, 0) 100%
     );
   }
 
   .kh-overlay-royal-blue {
-    width: 75%;
+    width: 78%;
     background: linear-gradient(
       90deg, 
       #003882 0%, 
-      #003882 75%, 
-      rgba(0, 56, 130, 0.92) 100%
+      rgba(0, 56, 130, 0.96) 55%, 
+      rgba(0, 56, 130, 0.6) 80%,
+      rgba(0, 56, 130, 0) 100%
     );
   }
 
   .kh-overlay-obsidian {
-    width: 75%;
+    width: 78%;
     background: linear-gradient(
       90deg, 
       #001738 0%, 
-      #001738 75%, 
-      rgba(0, 23, 56, 0.92) 100%
+      rgba(0, 23, 56, 0.96) 55%, 
+      rgba(0, 23, 56, 0.6) 80%,
+      rgba(0, 23, 56, 0) 100%
     );
+  }
+
+  .kh-headline {
+    font-size: clamp(2.1rem, 3.5vw, 2.85rem);
+    line-height: 1.2;
+    margin-bottom: 1.15rem;
+  }
+
+  .kh-description {
+    font-size: clamp(1rem, 1.4vw, 1.16rem);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+
+  .kh-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .kh-btn {
+    width: auto !important;
+    max-width: fit-content;
+    padding: 0.72rem 1.4rem;
+    font-size: 0.82rem;
   }
 }
 
-/* --- MOBILE PHONES & PHABLETS (<= 768px) --- */
-@media (max-width: 768px) {
+/* --- MOBILE PHONES & PHABLETS (<= 720px) --- */
+@media (max-width: 720px) {
   :root {
     --kh-header-height: 56px;
   }
@@ -1115,7 +1145,7 @@ html, body {
 
   #slide-0 .kh-slide-bg-picture img,
   #slide-0 .kh-slide-bg {
-    object-position: center 10% !important;
+    object-position: 70% 65% !important;
   }
 
   #slide-1 .kh-slide-bg {
@@ -1531,7 +1561,7 @@ html, body {
    Uniform 64/36 Architectural Split (Down to User Chin Mark) with Majestic,
    Fully Expanded Content Downward Filling the Architectural Card
    ========================================================================== */
-@media (min-height: 800px) and (max-width: 768px) {
+@media (min-height: 800px) and (max-width: 720px) {
   /* Photographic Canvas framed below user's marked chin line */
   .kh-slide-bg-window,
   #slide-0 .kh-slide-bg-picture,
@@ -1660,7 +1690,7 @@ html, body {
 }
 
 /* --- COMPACT HEIGHT (Desktop / Small Laptops Only) --- */
-@media (max-height: 750px) and (min-width: 769px) {
+@media (max-height: 750px) and (min-width: 721px) {
   :root {
     --kh-header-height: 60px;
   }

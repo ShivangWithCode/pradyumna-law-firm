@@ -77,7 +77,7 @@ export function initKhaitanSlider() {
 
     // Check if the current slide requires white logo and white menu icons
     const currentSlide = slides[currentIndex];
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 720;
     // On mobile: Slide 0 and 2 are Blue (need white header), Slide 1 and 3 are White (need navy header)
     const isDarkHeader = isMobile
       ? (currentIndex === 0 || currentIndex === 2)
@@ -252,11 +252,11 @@ export function initKhaitanSlider() {
   }
 
   // Window resize handler to recalculate stepper progress line geometry & track position
-  window.addEventListener('resize', () => {
+    window.addEventListener('resize', () => {
     const unit = (window.CSS && CSS.supports && CSS.supports('height', '100dvh')) ? 'dvh' : 'vh';
     track.style.transform = `translate3d(0, -${currentIndex * 100}${unit}, 0)`;
     updateStepperProgress(currentIndex);
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 720;
     const isDarkHeader = isMobile
       ? (currentIndex === 0 || currentIndex === 2)
       : (slides[currentIndex]?.classList.contains('is-blue') || slides[currentIndex]?.classList.contains('is-dark'));

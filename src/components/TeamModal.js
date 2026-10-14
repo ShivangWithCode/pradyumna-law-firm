@@ -33,16 +33,6 @@ export function initTeamModal() {
           </button>
         `).join('')}
       </div>
-      <div class="team-tab-actions">
-        <a href="/assets/docs/Pradyumna_Tyagi_CV.pdf" download="Pradyumna_Tyagi_CV.pdf" target="_blank" class="team-download-cv-btn" title="Download Founder CV (PDF)">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          <span>Download CV</span>
-        </a>
-      </div>
     `;
 
     filterContainer.querySelectorAll('.team-filter-btn').forEach(btn => {
@@ -185,14 +175,6 @@ export function initTeamModal() {
               </a>
               <a href="${mailUrl}" class="counsel-outline-btn">
                 <span>DIRECT INQUIRY</span>
-              </a>
-              <a href="/assets/docs/Pradyumna_Tyagi_CV.pdf" download="Pradyumna_Tyagi_CV.pdf" target="_blank" class="counsel-cv-download-btn" title="Download Advocate Pradyumna Tyagi CV (PDF)">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                <span>DOWNLOAD CV (PDF)</span>
               </a>
             </div>
           </div>
@@ -342,7 +324,7 @@ export function initTeamModal() {
     const mobileFounderMount = modalOverlay.querySelector('.mobile-founder-mount');
     if (!grid) return;
 
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 720;
 
     if (!isMobile) {
       // ==========================================

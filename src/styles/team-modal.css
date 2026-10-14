@@ -504,7 +504,7 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .team-tab-actions {
     display: none;
   }
@@ -963,16 +963,62 @@
   stroke: currentColor;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px) and (min-width: 721px) {
   .founder-spotlight-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: 260px 1fr;
+    margin-bottom: 2.5rem;
   }
   .founder-portrait-column {
-    border-right: none;
-    border-bottom: 1px solid #E2E8F0;
+    padding: 1.25rem;
+    border-right: 1px solid #E2E8F0;
+    border-bottom: none;
+    gap: 1rem;
   }
   .founder-passport-frame {
-    max-height: 380px;
+    width: 100%;
+    aspect-ratio: 3 / 3.84;
+    max-height: none;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .founder-passport-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .founder-info-column {
+    padding: 1.35rem 1.6rem;
+  }
+  .founder-name {
+    font-size: 1.55rem;
+  }
+  .founder-badges-row {
+    gap: 0.4rem;
+  }
+  .founder-badge-pill {
+    font-size: 0.72rem;
+    padding: 0.28rem 0.65rem;
+  }
+  .founder-credentials-bullets li {
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+  .founder-bio-text {
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 720px) {
+  .founder-passport-frame {
+    max-width: 260px;
+    margin: 0 auto;
+    aspect-ratio: 3 / 3.84;
+    max-height: none;
+  }
+  .founder-passport-img {
+    object-position: center top;
   }
 }
 
@@ -1552,10 +1598,10 @@
 }
 
 /* ==========================================================================
-   Executive Law Firm Mobile Experience (<= 768px)
+   Executive Law Firm Mobile Experience (<= 720px)
    Strictly Preserves Desktop View while Delivering Top-Tier Phone UX
    ========================================================================== */
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   /* Sticky Modal Header Bar */
   .team-modal-header {
     background: #002B66 !important;
